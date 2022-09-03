@@ -40,4 +40,4 @@ yarn-debug.log*
 *.swp
 .DS_Store
 .env*
-.api_keys.rb
+.api_key.rb

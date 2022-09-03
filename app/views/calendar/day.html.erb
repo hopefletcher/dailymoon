@@ -1,8 +1,28 @@
 <div class="container">
   <h1>Today's moon</h1>
-  <h3><%= Time.now.strftime("%d/%m/%Y %H:%M") %></h3>
-  <p>The 27th lunar day is favorable for work and business. Trust your intuition on this day. You will quite likely find the righ answer to the question that trouvles you. Avoid anything new but focus on education instead – it is a great idea!</p>
+  <%# Time.now.strftime("%d/%m/%Y %H:%M") %>
+  <h3><%= Date.today %>, <%= Time.now.strftime("%H:%M") %></h3>
+  <p>The 27th lunar day is favorable for work and business. Trust your intuition on this day. You will quite likely find the right answer to the question that troubles you. Avoid anything new but focus on education instead – it is a great idea!</p>
 </div>
 <div class="container moon-data">
-  <h2>TODO: Fetch moon data from API</h2>
+  <img src="<%= @moon_phase_pic %>" alt="no icon available" width="100px">
+  <br><br>
+  <p>Location: <strong><%= @data["resolvedAddress"] %></strong></p>
+  <p>Moonrise: <%= @moon_data["moonrise"] %></p>
+  <p>Moonset: <%= @moon_data["moonset"]%></p>
+  <p>Moonphase: <%= @moon_data["moonphase"] %> - <%= @moon_phase %></p>
+  <%# <p>Sunrise: <%= @moon_data["sunrise"] %></p>
+  <%# <p>Sunset: <%= @moon_data["sunset"] %></p>
+  <br>
+</div>
+
+<div class="container navigation">
+  <%= link_to "Day", day_path, class:"btn btn-dark" %>
+  <%= link_to "Month", month_path, class:"btn btn-dark" %>
+  <%= link_to "Stats", stats_path, class:"btn btn-dark" %>
+</div>
+<div class="container footer">
+  <br>
+  <%# <p><a href="https://www.flaticon.com/free-icons/moon" title="moon icons">Moon icons created by Vitaly Gorbachev - Flaticon</a></p> %>
+  <%# <p><a href="https://www.flaticon.com/free-icons/moon" title="moon icons">Moon icons created by Freepik - Flaticon</a></p> %>
 </div>
