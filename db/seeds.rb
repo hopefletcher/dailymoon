@@ -6,7 +6,7 @@ Event.destroy_all
 User.destroy_all
 Moon.destroy_all
 
-puts "Creating users..."
+puts "Creating 4 users..."
 fakeuser1 = User.create!(email: "user@mail.com", password: "123456", first_name: "fake", last_name: "user", location: "Barcelona, Spain", birthday: "1992-06-04", zodiac_sign: "gemini", admin: true)
 fakeuser2 = User.create!(email: "user2@mail.com", password: "123456", first_name: "fake2", last_name: "user2", location: "Madrid, Spain", birthday: "1985-12-19", zodiac_sign: "sagittarius", admin: false)
 fakeuser3 = User.create!(email: "user3@mail.com", password: "123456",  first_name: "fake3", last_name: "user3", location: "Lisbon, Portugal", birthday: "2002-09-01", zodiac_sign: "virgo", admin: false)
@@ -42,6 +42,27 @@ puts "Creating 10 Events..."
   event.save!
 end
 
+puts "Creating 2 months of moons..."
+start_date = Date.new(2022, 8, 1)
+end_date = Date.new(2022, 9, 30)
 
+phases = ["New Moon", "Waxing Crescent Moon", "First Quarter Moon", "Waxing Gibbous Moon", "Full Moon", "Waning Gibbous Moon", "Third Quarter Moon", "Waning Crescent Moon"]
 
+signs = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
+
+# moonrise = Time.new(date.year, date.month, date.day, rand(0..8), 0, 0)
+# moonset = Time.new(date.year, date.month, date.day, rand(0..8), 0, 0) + rand(9..12).hour
+
+(start_date..end_date).each do |date|
+  phases.each do |phase|
+    moon = Moon.new(
+      date: date,
+      phase: phase,
+      moonrise: Time.new(date.year, date.month, date.day, rand(14..18), 0, 0),
+      moonset: Time.new(date.year, date.month, date.day, rand(6..9), 0, 0),
+      moon_sign: signs.sample
+    )
+    moon.save!
+  end
+end
 puts 'Finished!'
