@@ -4,7 +4,7 @@ class Moon < ApplicationRecord
     require "json"
     require "open-uri"
 
-    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Barcelona,ES?key=R597FYUYAA9JQJRLNDNTD4C6E"
+    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date1]/[date2]?key=YOUR_API_KEY"
     user_serialized = URI.open(url).read
     user = JSON.parse(user_serialized)
   end
