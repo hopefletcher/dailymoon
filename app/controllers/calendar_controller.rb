@@ -2,10 +2,9 @@ require_relative '../../.api_key.rb'
 
 class CalendarController < ApplicationController
   def day
-    @data = fetch_moon_data
+    fetch_moon_data
     @moon_data = @data["days"].first
-    @moon_phase = display_moon_phase
-    @moon_phase_pic = display_moon_phase
+    define_moon_phase
   end
 
   private
@@ -15,11 +14,11 @@ class CalendarController < ApplicationController
     require "open-uri"
 
     url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/#{current_user.location.delete(' ')}/#{Date.today}?key=#{$api_key_visualcrossing}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
-    user_serialized = URI.open(url).read
-    user = JSON.parse(user_serialized)
+    data_serialized = URI.open(url).read
+    @data = JSON.parse(data_serialized)
   end
 
-  def display_moon_phase
+  def define_moon_phase
     md = @moon_data["moonphase"]
     if md == 0 || md == 1
       @moon_phase = "New Moon"
