@@ -12,7 +12,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body class="<%= cookies[:theme] %>">
+    <% if cookies[:theme] == "off" %>
+      <%= link_to "go dark", root_path(theme: "light") %>
+    <% else %>
+      <%= link_to "go light", root_path(theme: "dark") %>
+    <% end %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <p class="notice"><%= notice %></p>
