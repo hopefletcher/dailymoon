@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>Today's moon</h1>
+  <%# Time.now.strftime("%d/%m/%Y %H:%M") %>
+  <h3><%= Date.today %>, <%= Time.now.strftime("%H:%M") %></h3>
+  <img src="/assets/moon1_new.png" alt="no icon available" width="30px">
+  <img src="/assets/moon2_waxingcrescent.png" alt="no icon available" width="30px">
+  <img src="/assets/moon3_firstquarter.png" alt="no icon available" width="30px">
+  <img src="/assets/moon4_waxinggibbous.png" alt="no icon available" width="30px">
+  <img src="/assets/moon5_full.png" alt="no icon available" width="30px">
+  <img src="/assets/moon6_waninggibbous.png" alt="no icon available" width="30px">
+  <img src="/assets/moon7_lastquarter.png" alt="no icon available" width="30px">
+  <img src="/assets/moon8_waningcrescent.png" alt="no icon available" width="30px">
+  <p>The 27th lunar day is favorable for work and business. Trust your intuition on this day. You will quite likely find the right answer to the question that troubles you. Avoid anything new but focus on education instead – it is a great idea!</p>
+</div>
+<div class="container moon-data">
+  <img src="<%= @moon_phase_pic %>" alt="no icon available" width="100px" margin="20px">
+  <br><br>
+  <p>Location: <strong><%= @data["resolvedAddress"] %></strong></p>
+  <p>Moonrise: <%= @moon_data["moonrise"] %></p>
+  <p>Moonset: <%= @moon_data["moonset"]%></p>
+  <p>Moonphase: <%= @moon_data["moonphase"] %> - <%= @moon_phase %></p>
+  <%# <p>Sunrise: <%= @moon_data["sunrise"] %></p>
+  <%# <p>Sunset: <%= @moon_data["sunset"] %></p>
+  <br>
+</div>
+
+<div class="container navigation">
+  <%= link_to "Day", day_path, class:"btn btn-dark" %>
+  <%= link_to "Month", month_path, class:"btn btn-dark" %>
+  <%= link_to "Stats", stats_path, class:"btn btn-dark" %>
+</div>
+<%# <div class="container footer"> %>
+  <%# <p><a href="https://www.flaticon.com/free-icons/moon" title="moon icons">Moon icons created by Freepik - Flaticon</a></p> %>
+<%# </div> %>
