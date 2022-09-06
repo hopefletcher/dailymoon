@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :events, only: [:new, :create]
   get 'stats', to: 'pages#stats'
   get 'month', to: 'calendar#month'
+  get 'week', to: 'calendar#week'
   get 'day', to: 'calendar#day'
 end
