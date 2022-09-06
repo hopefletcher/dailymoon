@@ -6,4 +6,8 @@ class CalendarController < ApplicationController
   def week
 
   end
+
+  def day
+
+  end
 end
