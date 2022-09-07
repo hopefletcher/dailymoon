@@ -41,7 +41,7 @@ class MoodsController < ApplicationController
     elsif @mood.rating == 4
       @emoji = "😐"
     elsif @mood.rating == 5
-      @emoji = "☺️"
+      @emoji = "🥳"
     elsif @mood.rating == 6
       @emoji = "😀"
     end

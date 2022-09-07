@@ -11,6 +11,11 @@
   </div>
 
   <div class="journal">
-    <h1>Journal Entry:<%= @mood.journal_entry %></h1>
+    <h1>Your daily thoughts</h1>
+    <h2><em>A space for self reflection...</em></h2>
+      <div class="journal-entry">
+      <%= @mood.journal_entry %>
+      </div>
   </div>
+  <%= link_to "Edit", edit_mood_path(@mood) %>
 </div>
