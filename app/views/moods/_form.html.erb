@@ -1,0 +1,7 @@
+<div class="container">
+  <%= simple_form_for @mood do |p| %>
+    <%= p.input :rating, as: :numeric %>
+    <%= p.input :journal_entry %>
+    <%= p.submit %>
+  <% end %>
+</div>
