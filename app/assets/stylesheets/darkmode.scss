@@ -1,34 +1,34 @@
 body.light {
-  color: black;
+  color: $moon-gray;
   background-color: white;
   #darkmode_on {
     background-color: white;
     border-right: 1px;
     }
   #darkmode_off {
-    color: rgb(150, 150, 150);
-    background-color: white;
+    color: white;
+    background-color: $moon-gray;
     box-shadow: inset;
-    border-color: rgb(150, 150, 150);
+    border-color: $moon-gray;
     border-left: 1px;
     }
 }
 body.dark {
   color: white;
-  background-color: black;
+  background-color: $moon-gray;
   .navbar {
-    background-color: black;
+    background-color: $moon-gray;
   }
   #darkmode_on {
     color: rgb(70, 70, 70);
-    background-color: black;
-    border-color: rgb(200, 200, 200);
+    background-color: $moon-gray;
+    border-color: $moon-yellow;
     border-right: 1px;
     }
   #darkmode_off {
-    color: white;
-    background-color: black;
-    border-color: white;
+    color: $moon-gray;
+    background-color: $moon-yellow;
+    border-color: $moon-yellow;
     border-left: 1px;
     }
 }
