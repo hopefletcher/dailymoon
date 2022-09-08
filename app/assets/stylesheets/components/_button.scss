@@ -1,0 +1,13 @@
+.btn-gradient {
+  color: white;
+  padding: 16px 24px;
+  border-radius: 40px;
+  font-weight: bold;
+  background: $moon-gradient;
+  text-decoration: none;
+}
+
+.btn-gradient:hover {
+  color: white;
+  background: $moon-purple;
+}
