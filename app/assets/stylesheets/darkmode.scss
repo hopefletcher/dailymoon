@@ -1,3 +1,5 @@
+@import "bootstrap/scss/bootstrap";
+
 body.light {
   color: $moon-gray;
   background-color: white;
@@ -35,23 +37,3 @@ body.dark {
     border-color: white;
   }
 }
-
-
-// @mixin dark {
-//   body {
-//     background-color: black !important;
-//     color: white !important;
-//   }
-// }
-
-// @media (prefers-color-sheme: light) {
-//   [data-color-mode="dark"] {
-//   @include dark;
-//   }
-// }
-
-// @media (prefers-color-sheme: dark) {
-//   [data-color-mode="auto"], [data-color-mode="dark"] {
-//   @include dark;
-//   }
-// }
