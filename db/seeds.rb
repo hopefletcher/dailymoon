@@ -65,4 +65,7 @@ signs = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpi
     moon.save!
   end
 end
+
+Moon.create(date: "2022/09/01")
+
 puts 'Finished!'
