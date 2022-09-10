@@ -1,5 +1,3 @@
-require_relative '../../.api_key.rb'
-
 namespace :moon do
   desc "Saving moon data daily"
   task save: :environment do

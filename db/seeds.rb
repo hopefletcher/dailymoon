@@ -44,7 +44,7 @@ end
 
 puts "Creating 2 months of moons..."
 start_date = Date.new(2022, 8, 1)
-end_date = Date.new(2022, 9, 30)
+end_date = Date.new(2022, 9, 1)
 
 phases = ["New Moon", "Waxing Crescent Moon", "First Quarter Moon", "Waxing Gibbous Moon", "Full Moon", "Waning Gibbous Moon", "Third Quarter Moon", "Waning Crescent Moon"]
 
@@ -67,6 +67,20 @@ signs = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpi
 end
 
 puts "Creating 1 extra moon for rake task..."
-Moon.create(date: "2022/09/01")
+Moon.create(date: "2022/09/01", moon_sign: "FOR RAKE TASK")
+
+
+puts "Importing existing moons from Database..."
+# def import_moons_from_json
+  file = "./db/export/moons.json"
+  table_name = file.split('/').last.split('.').first
+  class_type = table_name.classify.constantize
+  moons = JSON.parse(File.read(file))
+  moons.each do |moon|
+    moon_var = class_type.new(moon)
+    moon_var.save
+  end
+  ActiveRecord::Base.connection.reset_pk_sequence!(table_name)
+# end
 
 puts 'Finished!'
