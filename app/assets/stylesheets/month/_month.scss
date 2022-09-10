@@ -6,9 +6,8 @@
 }
 
 .simple-calendar thead {
-  background: $moon-light-gray;
   opacity: 0.8;
-  font-size: 26px;
+  font-size: 23px;
   border: 0 !important;
   text-align: center !important;
 }
@@ -44,7 +43,7 @@
 }
 
 .simple-calendar .today {
-  background: #303034;
+  background: $moon-gradient !important;
   border-radius: 18px;
 }
 
@@ -56,12 +55,12 @@
 .text {
   margin-bottom: 10px;
   font-size: smaller;
-  color: #757373;
+  color: #5b4242;
   font-weight: 700;
 }
 
 .simple-calendar th {
-  text-align: center;
+  text-align: center !important;
   border-bottom: 0 !important;
   border-left: 0 !important;
   border-right: 0 !important;
@@ -84,9 +83,9 @@
 }
 
 .prev-month {
-  // display: none;
+  display: none !important;
 }
 
 .next-month {
-  display: none;
+  display: none !important;
 }
