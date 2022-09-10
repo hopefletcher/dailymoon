@@ -1,18 +1,36 @@
-require_relative '../../.api_key.rb'
+require "json"
+require "open-uri"
+require "net/http"
 
 class CalendarController < ApplicationController
   def day
     fetch_moon_data
     @moon_data = @data["days"].first
     define_moon_phase
+
+    @daily_horoscope = daily_horoscope
   end
 
   private
 
-  def fetch_moon_data
-    require "json"
-    require "open-uri"
+  def daily_horoscope
+    # https://github.com/sameerkumar18/aztro
+    uri = URI.parse("https://aztro.sameerkumar.website/?sign=#{current_user.zodiac_sign}&day=today")
+    request = Net::HTTP::Post.new(uri)
 
+    req_options = {
+      use_ssl: uri.scheme == "https",
+    }
+
+    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      http.request(request)
+    end
+
+    your_day = JSON.parse response.body.gsub('=>', ':')
+    your_day["description"]
+  end
+
+  def fetch_moon_data
     url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/#{current_user.location.delete(' ')}/#{Date.today}?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
     data_serialized = URI.open(url).read
     @data = JSON.parse(data_serialized)
