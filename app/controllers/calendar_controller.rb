@@ -1,5 +1,3 @@
-require_relative '../../.api_key.rb'
-
 class CalendarController < ApplicationController
   def day
     fetch_moon_data
