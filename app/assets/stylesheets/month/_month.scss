@@ -1,0 +1,92 @@
+.simple-calendar table {
+  color: white;
+  background-color: $moon-light-gray;
+  text-align: center;
+  border: 0 !important;
+}
+
+.simple-calendar thead {
+  background: $moon-light-gray;
+  opacity: 0.8;
+  font-size: 26px;
+  border: 0 !important;
+  text-align: center !important;
+}
+
+.simple-calendar .prev-month {
+  background: #3d3939;
+  color: white;
+}
+
+.simple-calendar .next-month {
+  background: #3d3939;
+  color: white;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  --bs-table-accent-bg: var(--bs-table-striped-bg);
+  color: #ffffff;
+  border: 0;
+}
+
+.simple-calendar .calendar-heading {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  border: 0 !important;
+}
+
+.simple-calendar .calendar-heading a {
+  color: white;
+  text-decoration: none;
+}
+
+.simple-calendar .today {
+  background: #303034;
+  border-radius: 18px;
+}
+
+.image {
+  margin-bottom: 3px;
+  margin-top: 20px;
+}
+
+.text {
+  margin-bottom: 10px;
+  font-size: smaller;
+  color: #757373;
+  font-weight: 700;
+}
+
+.simple-calendar th {
+  text-align: center;
+  border-bottom: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
+}
+
+.simple-calendar td {
+  border: 0 !important;
+}
+
+.table {
+  --bs-table-striped-bg: 0;
+  background: $moon-light-gray;
+  border: 0 !important;
+}
+
+.next, .previous {
+  align-items: center;
+  display: flex;
+}
+
+.prev-month {
+  // display: none;
+}
+
+.next-month {
+  display: none;
+}
