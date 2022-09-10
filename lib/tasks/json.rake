@@ -1,21 +1,13 @@
 namespace :json do
   desc "Export all data to JSON files"
   task :export => :environment do
-    Rails.application.eager_load!
-
-    puts ActiveRecord::Base.descendants
-    ActiveRecord::Base.descendants.each do |model|
-      puts "start"
-      file = File.open(File.join(Rails.root, "db", "export", "#{model.table_name}.json"), 'w')
-      puts "..."
-      puts ActiveRecord::Base
-      puts model
-      puts "???"
-      puts model.all
-      file.write model.all.to_json
-      puts "!!!"
+    # Rails.application.eager_load!
+    # ActiveRecord::Base.descendants.each do |model|
+    #   next if model != Moon
+      file = File.open(File.join(Rails.root, "db", "export", "moons.json"), "w")
+      file.write Moon.all.to_json
       file.close
-    end
+    # end
   end
 
   desc "Import all data from JSON files"

@@ -66,6 +66,7 @@ signs = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpi
   end
 end
 
+puts "Creating 1 extra moon for rake task..."
 Moon.create(date: "2022/09/01")
 
 puts 'Finished!'
