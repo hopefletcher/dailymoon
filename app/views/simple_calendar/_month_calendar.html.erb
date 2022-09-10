@@ -1,0 +1,42 @@
+<div class="simple-calendar">
+  <div class="calendar-heading">
+    <div class="previous">
+      <%= link_to t('simple_calendar.previous', default: '<'), calendar.url_for_previous_view %>
+    </div>
+    <div class="date">
+      <span class="calendar-title" style="font-size: 40px"><%= I18n.t("date.abbr_month_names")[start_date.month] %> <%= start_date.year %>
+    </div>
+    <div class="next">
+    <%= link_to t('simple_calendar.next', default: '>'), calendar.url_for_next_view %>
+    </div>
+  </div>
+
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        <% date_range.slice(0, 7).each do |day| %>
+          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% date_range.each_slice(7) do |week| %>
+        <tr>
+          <% week.each do |day| %>
+            <span class="days"><%= content_tag :td, class: calendar.td_classes_for(day) do %>
+              <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
+                <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+              <% else %>
+                <% passed_block.call day, sorted_events.fetch(day, []) %>
+              <% end %>
+              </span>
+              <div class="image"><img src="<%= @moon_phase_pic %>" width="30px"></div>
+              <div class="text"><%= @moon_data["moonphase"] %></div>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
