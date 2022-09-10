@@ -9,5 +9,40 @@ class ApplicationController < ActionController::Base
       cookies[:theme] = theme
       redirect_to(request.referrer || root_path)
     end
+
+    @zodiac_emoji = zodiac_emoji
+  end
+
+  private
+
+  def zodiac_emoji
+    case current_user.zodiac_sign.downcase
+    when "aries"
+      "♈️"
+    when "taurus"
+      "♉️"
+    when "gemini"
+      "♊️"
+    when "cancer"
+      "♋️"
+    when "leo"
+      "♌️"
+    when "virgo"
+      "♍️"
+    when "libra"
+      "♎️"
+    when "scorpio"
+      "♏️"
+    when "sagittarius"
+      "♐️"
+    when "capricorn"
+      "♑️"
+    when "aquarius"
+      "♒️"
+    when "pisces"
+      "♓️"
+    else
+      "🐓"
+    end
   end
 end
