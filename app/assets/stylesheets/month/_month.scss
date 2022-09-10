@@ -89,3 +89,13 @@
 .next-month {
   display: none !important;
 }
+
+.simple-calendar .today:hover {
+  transform: scale(1.1) !important;
+}
+
+.simple-calendar .day:hover {
+  transform: scale(1);
+  background:rgb(161, 161, 161);
+  border-radius: 18px;
+}
