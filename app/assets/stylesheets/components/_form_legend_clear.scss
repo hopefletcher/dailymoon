@@ -8,3 +8,32 @@
 legend ~ div.form-check:first-of-type {
   clear: left;
 }
+
+.rating {
+  font-size: 34px;
+  text-align: center;
+  font-size: calc(1.375rem + 1.5vw);
+}
+
+.radio-buttons {
+  font-size: 32px;
+}
+
+.mood-form {
+  display: flex;
+  input {display: none;}
+  input:checked + label {
+    opacity: 1;
+    border-radius: 50%;
+  }
+}
+
+.form-check {
+  display: inline-block;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+label {
+  opacity: 0.8;
+}

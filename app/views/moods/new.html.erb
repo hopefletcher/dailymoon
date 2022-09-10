@@ -1,0 +1,8 @@
+
+<div class="container">
+  <div class="date-today">
+    <h1> <%= Date.today.strftime('%A') %></h1>
+    <h1> <%= Date.today.strftime(' %B %d, %Y') %></h1>
+  </div>
+  <%= render "form", mood: @mood %>
+</div>

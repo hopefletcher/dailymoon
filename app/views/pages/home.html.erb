@@ -1,2 +1,6 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>DailyMoon#home</h1>
+<p>Soon to be have a Devise Login page in here</p>
+<%= link_to "Daily View", "day", class: "btn-gradient" %>
+<% if user_signed_in? %>
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<% end %>
