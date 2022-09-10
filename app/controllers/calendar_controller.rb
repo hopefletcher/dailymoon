@@ -1,15 +1,36 @@
+require "json"
+require "open-uri"
+require "net/http"
+
 class CalendarController < ApplicationController
   def day
     fetch_moon_data if !Moon.last || Moon.last.date != Date.today
     # define_moon_phase
+    @moon_data = @data["days"].first
+
+    @daily_horoscope = daily_horoscope
   end
 
   private
 
-  def fetch_moon_data
-    require "json"
-    require "open-uri"
+  def daily_horoscope
+    # https://github.com/sameerkumar18/aztro
+    uri = URI.parse("https://aztro.sameerkumar.website/?sign=#{current_user.zodiac_sign}&day=today")
+    request = Net::HTTP::Post.new(uri)
 
+    req_options = {
+      use_ssl: uri.scheme == "https",
+    }
+
+    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      http.request(request)
+    end
+
+    your_day = JSON.parse response.body.gsub('=>', ':')
+    your_day["description"]
+  end
+
+  def fetch_moon_data
     if Moon.last
       start_date = (Moon.last.date + 1)
     else
