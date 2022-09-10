@@ -5,9 +5,6 @@ require "net/http"
 class CalendarController < ApplicationController
   def day
     fetch_moon_data if !Moon.last || Moon.last.date != Date.today
-    # define_moon_phase
-    @moon_data = @data["days"].first
-
     @daily_horoscope = daily_horoscope
   end
 
