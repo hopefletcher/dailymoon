@@ -5,6 +5,7 @@ class CalendarController < ApplicationController
     fetch_moon_data
     @moon_data = @data["days"].first
     define_moon_phase
+    fetch_moon_sign
   end
 
   private
@@ -45,5 +46,24 @@ class CalendarController < ApplicationController
       @moon_phase = "Waning Crescent"
       @moon_phase_pic = "/assets/moon8_waningcrescent.png"
     end
+  end
+
+  def fetch_moon_sign
+    @url = 'https://json.astrologyapi.com/v1/planets'
+    @result = HTTParty.post(@url,
+      :body => { :day => Date.today.day,
+                 :month => Date.today.month,
+                 :year => Date.today.year,
+                 :min => Time.now.min,
+                 :hour => Time.now.hour,
+                 :tzone => 1,
+                 :lat => 41.3926679,
+                 :lon => 2.1401891
+               }.to_json,
+      :headers => { 'Content-Type' => 'application/json' },
+      :basic_auth => {:username => "620589", :password => "42167510aaf892ac7f9e0efd947fed78"} )
+      moon = @result.find { |result| result["name"] == "Moon"}
+      moon["sign"]
+      @moon_sign = moon["sign"]
   end
 end
