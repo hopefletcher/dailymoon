@@ -1,30 +1,22 @@
+# require_relative '../../app/controllers/calendar_controller'
+
 namespace :moon do
   desc "Saving moon data daily"
   task save: :environment do
     start_date = Moon.last.date + 1
     end_date = Date.today
-    # puts start_date
-    # puts end_date
 
     require "json"
     require "open-uri"
 
-    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Lisbon/2022-01-20/2022-01-21/?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
+    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Lisbon/#{start_date}/#{end_date}/?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
     data_serialized = URI.open(url).read
     @data = JSON.parse(data_serialized)
     @moon_data = @data["days"]
-    # puts "@data: "
-    # puts @data
-    # puts "@moon_data: "
-    # puts @moon_data
 
     @moon_data.each do |md|
-      # p moon_phase_name
-      # p moon_phase
-      # p moon_phase_img
-      # define_moon_phase
       define_moon_phase
-      Moon.create(phase: @moon_phase, moon_phase_name: @moon_phase_name, moon_phase_img: @moon_phase_img, date: md["datetime"], moonrise: md["moonrise"], moonset: md["moonset"])
+      Moon.create(phase: @moon_phase, moon_phase_name: @moon_phase_name, moon_phase_img: @moon_phase_img, date: md["datetime"], moonrise: md["moonrise"], moonset: md["moonset"], location: @data["resolvedAddress"])
     end
   end
 
@@ -60,4 +52,5 @@ namespace :moon do
       end
     end
   end
+
 end
