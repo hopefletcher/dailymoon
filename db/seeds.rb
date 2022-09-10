@@ -43,8 +43,8 @@ puts "Creating 10 Events..."
 end
 
 puts "Creating 2 months of moons..."
-start_date = Date.new(2022, 8, 1)
-end_date = Date.new(2022, 9, 30)
+start_date = Date.new(2022, 7, 1)
+end_date = Date.new(2022, 8, 31)
 
 phases = ["New Moon", "Waxing Crescent Moon", "First Quarter Moon", "Waxing Gibbous Moon", "Full Moon", "Waning Gibbous Moon", "Third Quarter Moon", "Waning Crescent Moon"]
 
@@ -60,7 +60,8 @@ n = 0
       phase: phases[n],
       moonrise: Time.new(date.year, date.month, date.day, rand(14..18), 0, 0),
       moonset: Time.new(date.year, date.month, date.day, rand(6..9), 0, 0),
-      moon_sign: signs.sample
+      moon_sign: signs.sample,
+      location: "Barcelona, Catalunya, Espanya"
     )
     moon.save!
     if n < 7
@@ -70,8 +71,8 @@ n = 0
     end
 end
 
-puts "Creating 1 extra moon for rake task..."
-Moon.create(date: "2022/09/01", moonrise: "2022/09/01 00:01:00", moonset: "2022/09/01 00:02:00" , moon_sign: "FOR RAKE TASK")
+# puts "Creating 1 extra moon for rake task..."
+# Moon.create(date: "2022/09/01", moonrise: "2022/09/01 00:01:00", moonset: "2022/09/01 00:02:00" , moon_sign: "FOR RAKE TASK", location: "Barcelona, Catalunya, Espanya")
 
 
 puts "Importing existing moons from json file..."
