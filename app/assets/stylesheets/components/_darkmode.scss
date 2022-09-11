@@ -6,12 +6,18 @@ body.light {
     color: white;
     background-color: $moon-gray;
     border-radius: 8px 0 0 8px;
+    margin: -5px;
+    line-height: normal;
+    letter-spacing: 1px;
   }
 
   #darkmode_off {
-    border-color: $moon-gray;
+    color: $moon-super-light-gray;
+    border-color: $moon-super-light-gray;
     border-radius: 0 8px 8px 0;
-    }
+    line-height: normal;
+    letter-spacing: -1px;
+  }
 }
 body.dark {
   color: white;
@@ -26,6 +32,9 @@ body.dark {
     background-color: $moon-gray;
     border-color: $moon-yellow;
     border-radius: 8px 0 0 8px;
+    margin: -5px;
+    line-height: normal;
+    letter-spacing: 1px;
   }
 
   #darkmode_off {
@@ -33,5 +42,7 @@ body.dark {
     background-color: $moon-yellow;
     border-color: $moon-yellow;
     border-radius: 0 8px 8px 0;
+    line-height: normal;
+    letter-spacing: -1px;
   }
 }

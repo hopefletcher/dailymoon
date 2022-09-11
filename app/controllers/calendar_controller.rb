@@ -4,10 +4,7 @@ require "net/http"
 
 class CalendarController < ApplicationController
   def day
-    fetch_moon_data if !Moon.last || Moon.last.date != Date.today
-    # define_moon_phase
-    @moon_data = @data["days"].first
-
+    fetch_moon_data if !Moon.last || Moon.last.date != Date.today || Moon.last.location != current_user.location.delete(' ')
     @daily_horoscope = daily_horoscope
   end
 
@@ -32,7 +29,7 @@ class CalendarController < ApplicationController
 
   def fetch_moon_data
     if Moon.last
-      start_date = (Moon.last.date + 1)
+      start_date = (Moon.last.date)
     else
       start_date = "2022-09-01"
     end
@@ -41,7 +38,7 @@ class CalendarController < ApplicationController
     @data = JSON.parse(data_serialized)
     @moon_data = @data["days"]
 
-    if start_date.to_date - 1 < Date.today
+    if start_date.to_date <= Date.today
       @moon_data.each do |md|
         define_moon_phase
         moonrise = md["datetime"] + " " + md["moonrise"]
@@ -50,7 +47,7 @@ class CalendarController < ApplicationController
         else
           moonset = md["datetime"] + " " + md["moonset"]
         end
-        Moon.create(phase: @moon_phase, moon_phase_name: @moon_phase_name, moon_phase_img: @moon_phase_img, date: md["datetime"], moonrise: moonrise, moonset: moonset, location: @data["resolvedAddress"])
+        Moon.create(phase: @moon_phase, moon_phase_name: @moon_phase_name, moon_phase_img: @moon_phase_img, date: md["datetime"], moonrise: moonrise, moonset: moonset, location: @data["address"], display_location: @data["resolvedAddress"])
       end
     end
   end
