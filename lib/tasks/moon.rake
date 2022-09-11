@@ -5,11 +5,12 @@ namespace :moon do
   task save: :environment do
     start_date = Moon.last.date + 1
     end_date = Date.today
+    location = "Lisbon"
 
     require "json"
     require "open-uri"
 
-    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Lisbon/#{start_date}/#{end_date}/?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
+    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/#{location}}/#{start_date}/#{end_date}/?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
     data_serialized = URI.open(url).read
     @data = JSON.parse(data_serialized)
     @moon_data = @data["days"]
