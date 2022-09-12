@@ -56,6 +56,6 @@ class MoodsController < ApplicationController
   end
 
   def set_mood
-    @mood = current_user.moods.order("created_at").find { |mood| mood.date = Date.today }
+    @mood = current_user.moods.order("created_at").find { |mood| mood.date == Date.today }
   end
 end
