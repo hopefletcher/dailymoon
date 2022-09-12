@@ -1,5 +1,5 @@
 class Moon < ApplicationRecord
-
+  validates :date, uniqueness: { scope: :location, message: "You already saved this moon." }
   # def fetch_moon_data
   #   require "json"
   #   require "open-uri"
