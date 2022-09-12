@@ -12,7 +12,9 @@
   <p>Moonphase: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.phase %> - <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moon_phase_name %></p>
   <%# <p>Sunrise: <%= @moon_data["sunrise"] %></p>
   <%# <p>Sunset: <%= @moon_data["sunset"] %></p>
-  <br>
+  <div class="my-3">
+    <%= link_to "Add Today's Mood", moods_path %>
+  </div>
 </div>
 
 <div class="container navigation">
@@ -20,6 +22,3 @@
   <%= link_to "Month", month_path, class:"btn btn-dark" %>
   <%= link_to "Stats", stats_path, class:"btn btn-dark" %>
 </div>
-<%# <div class="container footer"> %>
-  <%# <p><a href="https://www.flaticon.com/free-icons/moon" title="moon icons">Moon icons created by Freepik - Flaticon</a></p> %>
-<%# </div> %>

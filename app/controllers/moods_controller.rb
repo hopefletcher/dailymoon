@@ -1,5 +1,4 @@
 class MoodsController < ApplicationController
-
   def show
     set_mood
     set_emoji
@@ -15,7 +14,7 @@ class MoodsController < ApplicationController
     @mood.date = Date.today
     @mood.user = current_user
     if @mood.save
-      redirect_to mood_path(@mood)
+      redirect_to moods_path
     else
       render :new
     end
@@ -54,6 +53,6 @@ class MoodsController < ApplicationController
   end
 
   def set_mood
-    @mood = Mood.find(params[:id])
+    @mood = Mood.order(created_at: :desc).find { |mood| mood.user = current_user }
   end
 end

@@ -1,21 +1,18 @@
 <div class="container">
-
-  <div class="date-today">
-      <h1> <%= @mood.date.strftime('%A') %></h1>
-      <h1> <%= @mood.date.strftime(' %B %d, %Y') %></h1>
-  </div>
+  <h1><%= Time.now.strftime("%b %d, %H:%M") %></h1>
 
   <div class="emoji">
-    <h1>Today you are feeling:</h1>
+    <h3>Today you are feeling:</h3>
     <%= @emoji %>
   </div>
 
   <div class="journal">
-    <h1>Your daily thoughts</h1>
-    <h2><em>A space for self reflection...</em></h2>
+    <h3>Your daily thoughts</h3>
+    <p><em>A space for self reflection...</em></p>
       <div class="journal-entry">
       <%= @mood.journal_entry %>
       </div>
   </div>
-  <%= link_to "Edit", edit_mood_path(@mood) %>
+  <div><%= link_to "Edit", edit_moods_path(@mood) %></div>
+  <div><%= link_to "Back to Day View", day_path(@mood) %></div>
 </div>
