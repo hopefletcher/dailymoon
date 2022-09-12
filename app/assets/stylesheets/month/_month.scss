@@ -83,11 +83,11 @@
 }
 
 .prev-month {
-  display: none !important;
+  visibility: hidden !important;
 }
 
 .next-month {
-  display: none !important;
+  visibility: hidden !important;
 }
 
 .simple-calendar .today:hover {
