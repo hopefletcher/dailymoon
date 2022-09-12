@@ -56,7 +56,6 @@ class MoodsController < ApplicationController
   end
 
   def set_mood
-    # Line above is not completely right, we'll need logic to see if Today's mood was inputted
     @mood = current_user.moods.order("created_at").find { |mood| mood.date = Date.today }
   end
 end

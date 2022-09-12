@@ -1,0 +1,8 @@
+<div class="cards">
+  <% @events.each do |event| %>
+    <div class="info-card my-3">
+      <p><%= event.start_time.strftime("%H:%M") %> - <%= event.end_time.strftime("%H:%M") %></p>
+      <h3><%= event.title %></h3>
+    </div>
+  <% end %>
+</div>
