@@ -12,16 +12,22 @@ class EventsController < ApplicationController
     @event.date = Date.today
     @event.user = current_user
     @event.save!
-    if @event.save
-      redirect_to event_path
+    if @event.save!
+      redirect_to events_path
     else
       render :new
     end
   end
 
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to events_path
+  end
+
   private
 
   def event_params
-
+    params.require(:event).permit(:title, :start_time, :end_time, :description, :location)
   end
 end

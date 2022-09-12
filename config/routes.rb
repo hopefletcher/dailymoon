@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resource :mood, only: [:new, :create, :edit, :show, :update]
   resolve('Mood') { [:mood] }
 
-  resources :events, only: [:index, :new, :create]
+  resources :events, only: [:index, :new, :create, :destroy]
 
   get 'stats', to: 'pages#stats'
   get 'month', to: 'calendar#month'
