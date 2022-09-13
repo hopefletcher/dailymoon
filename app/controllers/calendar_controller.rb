@@ -64,7 +64,7 @@ class CalendarController < ApplicationController
       @moon_phase = @data["days"][0]["moonphase"]
       if @moon_phase == 0 || @moon_phase == 1
         @moon_phase_name = "New Moon"
-        @moon_phase_img = "/assets/moon1_new.png"
+        @moon_phase_img = "/assets/moon1new.png"
       elsif @moon_phase < 0.25
         @moon_phase_name = "Waxing Crescent"
         @moon_phase_img = "/assets/moon2_waxingcrescent.png"
