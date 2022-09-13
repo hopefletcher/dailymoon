@@ -26,6 +26,7 @@ gem 'net-imap', require: false
 gem 'net-pop', require: false
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+
 gem 'faker'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -34,7 +35,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 # Rails Admin
 gem 'rails_admin', '~> 2.0'
-
+gem "simple_calendar", "~> 2.4"
 gem 'sprockets', '< 4.0.0'
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass', '~> 5.6.1'
@@ -69,3 +70,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'httparty'
