@@ -5,6 +5,7 @@ require "net/http"
 class CalendarController < ApplicationController
   def day
     fetch_moon_data if !Moon.last || Moon.last.date != Date.today || Moon.last.location != current_user.location.delete(' ')
+    fetch_moon_sign
     @daily_horoscope = daily_horoscope
   end
 
@@ -83,4 +84,23 @@ class CalendarController < ApplicationController
     end
   end
 
+
+  def fetch_moon_sign
+    @url = 'https://json.astrologyapi.com/v1/planets'
+    @result = HTTParty.post(@url,
+      :body => { :day => Date.today.day,
+                 :month => Date.today.month,
+                 :year => Date.today.year,
+                 :min => Time.now.min,
+                 :hour => Time.now.hour,
+                 :tzone => 1,
+                 :lat => 41.3926679,
+                 :lon => 2.1401891
+               }.to_json,
+      :headers => { 'Content-Type' => 'application/json' },
+      :basic_auth => {:username => "620589", :password => "42167510aaf892ac7f9e0efd947fed78"} )
+      moon = @result.find { |result| result["name"] == "Moon"}
+      moon["sign"]
+      @moon_sign = moon["sign"]
+  end
 end
