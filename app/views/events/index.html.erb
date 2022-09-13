@@ -1,0 +1,17 @@
+<div class="cards">
+  <% @events.each do |event| %>
+    <div class="info-card my-3">
+      <%= event.start_time.strftime("%H:%M") %> - <%= event.end_time.strftime("%H:%M") %>
+      <h3><%= event.title %></h3>
+      <p><%= event.description %></p>
+      <%= link_to "Remove Event",
+                        event_path(event),
+                        method: :delete,
+                        data: { confirm: "Please, think twice..."},
+                        style: "color: #211E1E" %>
+    </div>
+  <% end %>
+  <div class="my-3">
+    <%= link_to "Add Event", new_event_path, class: "btn-gradient" %>
+  </div>
+</div>

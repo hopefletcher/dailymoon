@@ -1,11 +1,18 @@
 <div class="container">
   <%= simple_form_for @mood do |p| %>
     <div class="mood-form">
-    <%= p.input :rating, as: :radio_buttons, collection: [['1', '😢'], ['2', '💩'], ['3', '😡'], ['4','😐'], ['5', '☺️'], ['6', '😀']], label_method: :second, value_method: :first, wrapper_html: {class: 'radio-buttons' }  %>
+      <%= p.input :rating, as: :radio_buttons,
+                          collection: [['1', '😢'],
+                                        ['2', '💩'],
+                                        ['3', '😡'],
+                                        ['4','😐'],
+                                        ['5', '☺️'],
+                                        ['6', '😀']],
+                          label_method: :second,
+                          value_method: :first,
+                          wrapper_html: { class: 'radio-buttons' } %>
     </div>
     <%= p.input :journal_entry, wrapper_html: { class: 'h1' } %>
-    <%= p.submit %>
+    <%= p.button :submit, "Submit Mood", class: "btn-gradient" %>
   <% end %>
 </div>
-
-       <%# <%= p.input :rating, as: :numeric, disabled: true, label: 'How are you feeling today?', wrapper_html: { class: 'h1' } %>
