@@ -9,6 +9,12 @@ class CalendarController < ApplicationController
     @daily_horoscope = daily_horoscope
   end
 
+  def month
+    fetch_moon_data
+    @moon_data = @data["days"].first
+    define_moon_phase
+  end
+
   private
 
   def daily_horoscope
@@ -55,7 +61,7 @@ class CalendarController < ApplicationController
 
   def define_moon_phase
     @moon_data.each do |md|
-      @moon_phase = md["moonphase"]
+      @moon_phase = @data["days"][0]["moonphase"]
       if @moon_phase == 0 || @moon_phase == 1
         @moon_phase_name = "New Moon"
         @moon_phase_img = "/assets/moon1_new.png"
