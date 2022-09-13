@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= Time.now.strftime("%b %d, %H:%M") %></h1>
+  <h1 class="date-today"><%= Time.now.strftime("%b %d, %H:%M") %></h1>
 
   <div class="emoji">
     <h3>Today you are feeling:</h3>
@@ -16,4 +16,25 @@
   <div class="my-3">
     <%= link_to "Edit Mood", edit_mood_path %>
   </div>
+
+  <div class="moon-nav">
+    <%= link_to day_path do %>
+        <i class="fas fa-arrow-left"> </i>
+      <% end %>
+
+    <%= link_to day_path do %>
+        <i class="far fa-circle"> </i>
+      <% end %>
+
+    <i class="fas fa-circle"></i>
+
+      <%= link_to events_path do %>
+        <i class="far fa-circle"> </i>
+      <% end %>
+
+      <%= link_to events_path do %>
+        <i class="fas fa-arrow-right"> </i>
+      <% end %>
+  </div>
+
 </div>

@@ -15,10 +15,24 @@
   <p>Moonphase: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.phase %> - <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moon_phase_name %></p>
   <p> Vedic Moon sign: <%= @moon_sign %></p>
 
-  <div class="my-3">
-    <%= link_to "Add Today's Mood", mood_path %>
-  </div>
-  <div class="my-3">
-    <%= link_to "See Your Events", events_path %>
+  <div class="moon-nav">
+    <i class="fas fa-arrow-left"> </i>
+    <i class="fas fa-circle">  </i>
+    <%# mood link logic %>
+    <% if Mood.where(date: Date.today, user_id: current_user.id) %>
+        <%= link_to mood_path do %>
+          <i class="far fa-circle"></i>
+        <% end %>
+      <% elsif %>
+        <%= link_to new_mood_path do %>
+          <i class="far fa-circle"></i>
+        <% end %>
+    <% end %>
+      <%= link_to events_path do %>
+        <i class="far fa-circle"> </i>
+      <% end %>
+      <%= link_to mood_path do %>
+        <i class="fas fa-arrow-right"> </i>
+      <% end %>
   </div>
 </div>
