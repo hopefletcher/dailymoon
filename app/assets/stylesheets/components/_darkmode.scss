@@ -1,0 +1,48 @@
+body.light {
+  color: $moon-gray;
+  background-color: white;
+
+  #darkmode_on {
+    color: white;
+    background-color: $moon-gray;
+    border-radius: 8px 0 0 8px;
+    margin: -5px;
+    line-height: normal;
+    letter-spacing: 1px;
+  }
+
+  #darkmode_off {
+    color: $moon-super-light-gray;
+    border-color: $moon-super-light-gray;
+    border-radius: 0 8px 8px 0;
+    line-height: normal;
+    letter-spacing: -1px;
+  }
+}
+body.dark {
+  color: white;
+  background-color: $moon-gray;
+
+  .navbar {
+    background-color: $moon-gray;
+  }
+
+  #darkmode_on {
+    color: rgb(70, 70, 70);
+    background-color: $moon-gray;
+    border-color: $moon-yellow;
+    border-radius: 8px 0 0 8px;
+    margin: -5px;
+    line-height: normal;
+    letter-spacing: 1px;
+  }
+
+  #darkmode_off {
+    color: $moon-gray;
+    background-color: $moon-yellow;
+    border-color: $moon-yellow;
+    border-radius: 0 8px 8px 0;
+    line-height: normal;
+    letter-spacing: -1px;
+  }
+}

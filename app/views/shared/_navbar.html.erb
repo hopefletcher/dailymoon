@@ -1,19 +1,23 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon mx-3">
-  <%= link_to "/", class: "navbar-brand" do %>
-    <%= image_tag "moon1_new.png" %>
-  <% end %>
-
   <% if user_signed_in? %>
-    <div>Hi, <%= current_user.first_name.capitalize %>!</div>
+    <%= link_to "/", class: "nav-link" do %>
+      Hi, <%= current_user.first_name.capitalize %>! <%= @zodiac_emoji %>
+    <% end %>
+    <li class="nav-item dropdown">
+      <%= image_tag "moon1_new.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <%= link_to "My Profile", root_path, class: "dropdown-item" %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { turbo_method: :delete } %>
+      </div>
+    </li>
   <% else %>
-    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+    <div>
+      <%= link_to "/", class: "navbar-brand" do %>
+        <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+    </div>
   <% end %>
-
-  <div class="darkmode">
-    <form action="/day" method="get">
-    Darkmode
-    <button id="darkmode_on" type="submit" name="theme" value="dark">ON</button>
-    <button id="darkmode_off" type="submit" name="theme" value="light">OFF</button>
-    </form>
-  </div>
 </div>

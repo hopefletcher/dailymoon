@@ -11,17 +11,16 @@
   <img src="/assets/moon6_waninggibbous.png" alt="no icon available" width="30px">
   <img src="/assets/moon7_lastquarter.png" alt="no icon available" width="30px">
   <img src="/assets/moon8_waningcrescent.png" alt="no icon available" width="30px">
-  <div class="info-card my-3">The 27th lunar day is favorable for work and business. Trust your intuition on this day. You will quite likely find the right answer to the question that troubles you. Avoid anything new but focus on education instead – it is a great idea!</div>
+  <div class="info-card my-3"><%= @daily_horoscope %></div>
 </div>
 <div class="container moon-data">
-  <img src="<%= @moon_phase_pic %>" alt="no icon available" width="100px" margin="20px">
+  <img src="<%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moon_phase_img %>" alt="no icon available" width="100px" margin="20px">
   <br><br>
-  <p>Location: <strong><%= @data["resolvedAddress"] %></strong></p>
-  <p>Moonrise: <%= @moon_data["moonrise"] %></p>
-  <p>Moonset: <%= @moon_data["moonset"]%></p>
-  <p>Moonphase: <%= @moon_data["moonphase"] %> - <%= @moon_phase %></p>
+  <p>Location: <strong><%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.display_location %></strong></p>
+  <p>Moonrise: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moonrise %></p>
+  <p>Moonset: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moonset%></p>
+  <p>Moonphase: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.phase %> - <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moon_phase_name %></p>
   <p>Moon sign: <%= @moon_sign %></p>
-
   <br>
 </div>
 

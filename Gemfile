@@ -30,7 +30,10 @@ gem 'faker'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+# Devise
 gem 'devise'
+# Rails Admin
+gem 'rails_admin', '~> 2.0'
 
 gem 'sprockets', '< 4.0.0'
 gem 'autoprefixer-rails', '10.2.5'
