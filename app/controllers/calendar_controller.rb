@@ -9,10 +9,32 @@ class CalendarController < ApplicationController
     @daily_horoscope = daily_horoscope
   end
 
+  def api_call
+
+  end
+
+
   def month
-    fetch_moon_data
-    @moon_data = @data["days"].first
-    define_moon_phase
+    # fetch_moon_data
+    # import_moons_from_json
+    file = "./db/export/moons.json"
+  table_name = file.split('/').last.split('.').first
+  class_type = table_name.classify.constantize
+  json_file_content = File.read(file)
+  if json_file_content != ''
+    moons = JSON.parse(File.read(file))
+    moons.each do |moon|
+      if moon["date"]
+          @phase = moon["phase"]
+          return @phase
+      end
+      raise
+    end
+  else
+    puts "No moons saved in json file"
+  end
+  ActiveRecord::Base.connection.reset_pk_sequence!(table_name)
+    # define_moon_phase
   end
 
   private
@@ -34,30 +56,30 @@ class CalendarController < ApplicationController
     your_day["description"]
   end
 
-  def fetch_moon_data
-    if Moon.last
-      start_date = (Moon.last.date)
-    else
-      start_date = "2022-09-01"
-    end
-    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/#{current_user.location.delete(' ')}/#{start_date}/#{Date.today}?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
-    data_serialized = URI.open(url).read
-    @data = JSON.parse(data_serialized)
-    @moon_data = @data["days"]
+  # def fetch_moon_data
+  #   if Moon.last
+  #     start_date = (Moon.last.date)
+  #   else
+  #     start_date = "2022-09-01"
+  #   end
+  #   url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/#{current_user.location.delete(' ')}/#{start_date}/#{Date.today}?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
+  #   data_serialized = URI.open(url).read
+  #   @data = JSON.parse(data_serialized)
+  #   @moon_data = @data["days"]
 
-    if start_date.to_date <= Date.today
-      @moon_data.each do |md|
-        define_moon_phase
-        moonrise = md["datetime"] + " " + md["moonrise"]
-        if md["moonset"] == nil
-          moonset = "No moonset today"
-        else
-          moonset = md["datetime"] + " " + md["moonset"]
-        end
-        Moon.create(phase: @moon_phase, moon_phase_name: @moon_phase_name, moon_phase_img: @moon_phase_img, date: md["datetime"], moonrise: moonrise, moonset: moonset, location: @data["address"], display_location: @data["resolvedAddress"])
-      end
-    end
-  end
+  #   if start_date.to_date <= Date.today
+  #     @moon_data.each do |md|
+  #       define_moon_phase
+  #       moonrise = md["datetime"] + " " + md["moonrise"]
+  #       if md["moonset"] == nil
+  #         moonset = "No moonset today"
+  #       else
+  #         moonset = md["datetime"] + " " + md["moonset"]
+  #       end
+  #       Moon.create(phase: @moon_phase, moon_phase_name: @moon_phase_name, moon_phase_img: @moon_phase_img, date: md["datetime"], moonrise: moonrise, moonset: moonset, location: @data["address"], display_location: @data["resolvedAddress"])
+  #     end
+  #   end
+  # end
 
   def define_moon_phase
     @moon_data.each do |md|

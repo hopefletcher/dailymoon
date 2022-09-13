@@ -93,4 +93,5 @@ puts "Importing existing moons from json file..."
   ActiveRecord::Base.connection.reset_pk_sequence!(table_name)
 # end
 
+
 puts 'Finished!'

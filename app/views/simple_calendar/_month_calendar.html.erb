@@ -26,13 +26,13 @@
           <% week.each do |day| %>
             <span class="days"><%= content_tag :td, class: calendar.td_classes_for(day) do %>
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
-                <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+                <% @cal = capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
               <% else %>
                 <% passed_block.call day, sorted_events.fetch(day, []) %>
               <% end %>
               </span>
               <div class="image"><img src="<%= @moon_phase_img %>" width="30px"></div>
-              <div class="text"><%= @moon_data["moonphase"] %></div>
+              <div class="text"><%= @phase %></div>
             <% end %>
           <% end %>
         </tr>
