@@ -13,6 +13,7 @@
                 input_html: { autocomplete: "Last Name" }%>
     <%= f.input :birthday,
                 as: :date,
+                order: [:day, :month, :year],
                 start_year: Date.today.year - 100,
                 end_year: Date.today.year,
                 required: true,
