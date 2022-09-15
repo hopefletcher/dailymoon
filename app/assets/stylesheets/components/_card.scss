@@ -7,3 +7,12 @@
   font-size: 14px;
   border-radius: 8px;
 }
+
+.a-card {
+  color: $moon-light-gray;
+  text-decoration: none;
+}
+
+.a-card:focus {
+  color: $moon-gray;
+}
