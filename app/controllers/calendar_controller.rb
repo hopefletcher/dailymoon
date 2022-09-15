@@ -64,32 +64,31 @@ class CalendarController < ApplicationController
       @moon_phase = @data["days"][0]["moonphase"]
       if @moon_phase == 0 || @moon_phase == 1
         @moon_phase_name = "New Moon"
-        @moon_phase_img = "/assets/moon1_new.png"
+        @moon_phase_img = "/assets/moon1new.png"
       elsif @moon_phase < 0.25
         @moon_phase_name = "Waxing Crescent"
-        @moon_phase_img = "/assets/moon2_waxingcrescent.png"
+        @moon_phase_img = "/assets/moon2waxingcrescent.png"
       elsif @moon_phase == 0.25
         @moon_phase_name = "First Quarter"
-        @moon_phase_img = "/assets/moon3_firstquarter.png"
+        @moon_phase_img = "/assets/moon3firstquarter.png"
       elsif @moon_phase < 0.5
         @moon_phase_name = "Waxing Gibbous"
-        @moon_phase_img = "/assets/moon4_waxinggibbous.png"
+        @moon_phase_img = "/assets/moon4waxinggibbous.png"
       elsif @moon_phase == 0.5
         @moon_phase_name = "Full Moon"
-        @moon_phase_img = "/assets/moon5_full.png"
+        @moon_phase_img = "/assets/moon5full.png"
       elsif @moon_phase < 0.75
         @moon_phase_name = "Waning Gibbous"
-        @moon_phase_img = "/assets/moon6_waninggibbous.png"
+        @moon_phase_img = "/assets/moon6waninggibbous.png"
       elsif @moon_phase == 0.75
         @moon_phase_name = "Last Quarter"
-        @moon_phase_img = "/assets/moon7_lastquarter.png"
+        @moon_phase_img = "/assets/moon7lastquarter.png"
       else @moon_phase < 1
         @moon_phase_name = "Waning Crescent"
-        @moon_phase_img = "/assets/moon8_waningcrescent.png"
+        @moon_phase_img = "/assets/moon8waningcrescent.png"
       end
     end
   end
-
 
   def fetch_moon_sign
     @url = 'https://json.astrologyapi.com/v1/planets'

@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :set_event, only: %i[edit update destroy]
+
   def index
     @events = Event.where(:date => Date.today)
   end
@@ -19,13 +21,23 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    @event.update(event_params)
+    redirect_to events_path, notice: "Looks good! ✨"
+  end
+
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy
     redirect_to events_path
   end
 
   private
+
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
   def event_params
     params.require(:event).permit(:title, :start_time, :end_time, :description, :location)
