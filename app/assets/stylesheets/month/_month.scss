@@ -99,3 +99,8 @@
   background:rgb(161, 161, 161);
   border-radius: 18px;
 }
+
+.simple-calendar td a {
+  color: var(--bs-link-color);
+  text-decoration: none;
+}

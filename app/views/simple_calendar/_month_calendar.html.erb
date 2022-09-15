@@ -19,21 +19,26 @@
         <% end %>
       </tr>
     </thead>
-
     <tbody>
-      <% date_range.each_slice(7) do |week| %>
+ <% date_range.each_slice(7) do |week| %>
         <tr>
-          <% week.each do |day| %>
-            <span class="days"><%= content_tag :td, class: calendar.td_classes_for(day) do %>
-              <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
-                <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
-              <% else %>
-                <% passed_block.call day, sorted_events.fetch(day, []) %>
-              <% end %>
+          <% week.each_with_index do |day, index| %>
+              <span class="days"><%= content_tag :td, class: calendar.td_classes_for(day) do %>
+               <%= link_to mood_path do %>
+                <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
+                  <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+                <% else %>
+                  <% passed_block.call day, sorted_events.fetch(day, []) %>
+                <% end %>
+                <% @current_month_moons.each do |m| %>
+                  <% if m["date"] === day.to_s %>
+                    <div class="image"><img src="<%= m["moon_phase_img"] %>" width="30px"></div>
+                    <div class="text"><%= m["moon_phase_name"] %></div>
+                  <% end %>
+                <% end %>
               </span>
-              <div class="image"><img src="<%= @moon_phase_img %>" width="30px"></div>
-              <div class="text"><%= @moon_data["moonphase"] %></div>
             <% end %>
+          <% end %>
           <% end %>
         </tr>
       <% end %>
