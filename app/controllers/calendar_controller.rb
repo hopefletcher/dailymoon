@@ -41,7 +41,7 @@ class CalendarController < ApplicationController
     ActiveRecord::Base.connection.reset_pk_sequence!(table_name)
   end
 
-  #Fetches data from the API and saves Moons in the DB
+  # #Fetches data from the API and saves Moons in the DB
   # def fetch_moon_data
 
   #     start_date = "2022-05-01"
@@ -54,12 +54,18 @@ class CalendarController < ApplicationController
   #     if start_date.to_date <= Date.today
   #       @moon_data.each do |md|
   #         moon_phase_name_resolved, moon_phase_img_resolved = get_moon_phase_name(md["moonphase"].to_f)
-  #         Moon.create(phase: @moon_phase, moon_phase_name: moon_phase_name_resolved, moon_phase_img: moon_phase_img_resolved, date: md["datetime"], moonrise: "12:30:32", moonset: "12:30:32", location: @data["address"], display_location: @data["resolvedAddress"])
+  #         if md["moonset"] == nil
+  #           moonset = "No moonset today"
+  #         else
+  #           moonset = md["moonset"]
+  #         end
+  #         moonrise = md["moonrise"]
+  #         Moon.create(phase: @moon_phase, moon_phase_name: moon_phase_name_resolved, moon_phase_img: moon_phase_img_resolved, date: md["datetime"], moonrise: moonrise, moonset: moonset, location: @data["address"], display_location: @data["resolvedAddress"])
   #       end
   #     end
   #   end
 
-  #Gets moonphase value from the API and returns and array with 2 postions(moonphase_name, moonphase_img) based on value
+  # # Gets moonphase value from the API and returns and array with 2 postions(moonphase_name, moonphase_img) based on value
   # def get_moon_phase_name(value)
   #     if value == 0 || value == 1
   #         return ["New Moon", "/assets/moon1_new.png"]
