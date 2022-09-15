@@ -7,11 +7,15 @@
 </div>
 
 <div class="container moon-data">
-  <img src="<%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moon_phase_img %>" class="moon-image" alt="no icon available" width="100px" margin="20px">
+<%= image_tag Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moon_phase_img, class: "moon-image", width: "100px" %>
   <br><br>
   <p>Location: <strong><%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.display_location %></strong></p>
-  <p>Moonrise: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moonrise.strftime("%H:%M %Z") %></p>
+  <%
+=begin%>
+ <p>Moonrise: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moonrise.strftime("%H:%M %Z") %></p>
   <p>Moonset: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moonset.strftime("%H:%M %Z")%></p>
+<%
+=end%>
   <p>Moonphase: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.phase %> - <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moon_phase_name %></p>
   <p> Vedic Moon sign: <%= @moon_sign %></p>
 
