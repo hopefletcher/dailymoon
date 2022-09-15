@@ -6,6 +6,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Defaulting new users to admin: false
+  before_create :default_admin
+
   # Fetches Moonsign right after User creation
   before_create :fetch_zodiac_sign
 
@@ -38,4 +41,8 @@ class User < ApplicationRecord
       zodiac = results.find { |result| result["name"] == "Sun"}
       self.zodiac_sign = zodiac["sign"]
   end
+
+  def default_admin
+    self.admin ||= false
+ end
 end
