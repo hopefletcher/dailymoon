@@ -7,16 +7,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # Fetches Moonsign right after User creation
-  before_create :fetch_moon_sign
+  before_create :fetch_zodiac_sign
 
   private
 
-  def fetch_moon_sign
+  def fetch_zodiac_sign
     # First match birthday to dd-mm-yyyy (mind you the self.birthday is now of Date class)
     stripdate = self.birthday.strftime('%d-%m-%Y')
     date = stripdate.match(/(\d{2})-(\d{2})-(\d{4})/)
     # Now fetch from API
     url = 'https://json.astrologyapi.com/v1/planets'
+    # This method pretty much copies what @Hope did in Calendar#Day
     results = HTTParty.post(url,
       :body => { :day => date[1],
                  :month => date[2],
@@ -24,6 +25,7 @@ class User < ApplicationRecord
                  :min => Time.now.min,
                  :hour => Time.now.hour,
                  :tzone => 1,
+                 # We can Geocode this...
                  :lat => 41.3926679,
                  :lon => 2.1401891
                }.to_json,

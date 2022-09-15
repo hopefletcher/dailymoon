@@ -35,6 +35,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 # Rails Admin
 gem 'rails_admin', '~> 2.0'
+# Geocoder
+gem 'geocoder'
+
 gem "simple_calendar", "~> 2.4"
 gem 'sprockets', '< 4.0.0'
 gem 'autoprefixer-rails', '10.2.5'
