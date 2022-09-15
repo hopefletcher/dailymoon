@@ -1,22 +1,38 @@
 <div class="container">
-  <h1><%= Time.now.strftime("%b %d, %H:%M") %></h1>
+
+  <h1 class="date-today"><%= Time.now.strftime("%b %d, %H:%M") %></h1>
+
   <%# Fetch daily horoscope %>
   <div class="info-card my-3"><%= @daily_horoscope %></div>
 </div>
 
 <div class="container moon-data">
-  <img src="<%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moon_phase_img %>" alt="no icon available" width="100px" margin="20px">
+  <img src="<%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moon_phase_img %>" class="moon-image" alt="no icon available" width="100px" margin="20px">
   <br><br>
   <p>Location: <strong><%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.display_location %></strong></p>
-  <p>Moonrise: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moonrise %></p>
-  <p>Moonset: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moonset%></p>
+  <p>Moonrise: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moonrise.strftime("%H:%M %Z") %></p>
+  <p>Moonset: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moonset.strftime("%H:%M %Z")%></p>
   <p>Moonphase: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.phase %> - <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moon_phase_name %></p>
-   <p>Moon sign: <%= @moon_sign %></p>
-  <br>
-  <div class="my-3">
-    <%= link_to "Add Today's Mood", mood_path %>
-  </div>
-  <div class="my-3">
-    <%= link_to "See Your Events", events_path %>
+  <p> Vedic Moon sign: <%= @moon_sign %></p>
+
+  <div class="moon-nav">
+    <i class="fas fa-arrow-left"> </i>
+    <i class="fas fa-circle">  </i>
+    <%# mood link logic %>
+    <% if Mood.where(date: Date.today, user_id: current_user.id) %>
+        <%= link_to mood_path do %>
+          <i class="far fa-circle"></i>
+        <% end %>
+      <% elsif %>
+        <%= link_to new_mood_path do %>
+          <i class="far fa-circle"></i>
+        <% end %>
+    <% end %>
+      <%= link_to events_path do %>
+        <i class="far fa-circle"> </i>
+      <% end %>
+      <%= link_to mood_path do %>
+        <i class="fas fa-arrow-right"> </i>
+      <% end %>
   </div>
 </div>

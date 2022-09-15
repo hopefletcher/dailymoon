@@ -16,4 +16,34 @@
   <div class="my-3">
     <%= link_to "Add Event", new_event_path, class: "btn-gradient" %>
   </div>
+
+  <div class="moon-nav">
+    <% if Mood.where(date: Date.today, user_id: current_user.id) %>
+        <%= link_to mood_path do %>
+          <i class="fas fa-arrow-left"> </i>
+        <% end %>
+      <% elsif %>
+        <%= link_to new_mood_path do %>
+          <i class="fas fa-arrow-left"> </i>
+        <% end %>
+    <% end %>
+
+    <%= link_to day_path do %>
+          <i class="far fa-circle"></i>
+        <% end %>
+
+ <%# mood link logic %>
+    <% if Mood.where(date: Date.today, user_id: current_user.id) %>
+        <%= link_to mood_path do %>
+          <i class="far fa-circle"></i>
+        <% end %>
+      <% elsif %>
+        <%= link_to new_mood_path do %>
+          <i class="far fa-circle"></i>
+        <% end %>
+    <% end %>
+
+    <i class="fas fa-circle"></i>
+    <i class="fas fa-arrow-right"> </i>
+  </div>
 </div>
