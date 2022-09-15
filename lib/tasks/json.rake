@@ -4,7 +4,7 @@ namespace :json do
     # Rails.application.eager_load!
     # ActiveRecord::Base.descendants.each do |model|
     #   next if model != Moon
-      file = File.open(File.join(Rails.root, "db", "export", "moons.json"), "w")
+      file = File.open(File.join(Rails.root, "db", "export", "moons_may_dec.json"), "w")
       file.write Moon.all.to_json
       file.close
     # end
