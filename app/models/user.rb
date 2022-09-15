@@ -9,6 +9,10 @@ class User < ApplicationRecord
   # Fetches Moonsign right after User creation
   before_create :fetch_zodiac_sign
 
+  # Geocoder
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
+
   private
 
   def fetch_zodiac_sign
@@ -25,9 +29,9 @@ class User < ApplicationRecord
                  :min => Time.now.min,
                  :hour => Time.now.hour,
                  :tzone => 1,
-                 # We can Geocode this...
-                 :lat => 41.3926679,
-                 :lon => 2.1401891
+                 # We can Geocode this now
+                 :lat => self.latitude,
+                 :lon => self.longitude
                }.to_json,
       :headers => { 'Content-Type' => 'application/json' },
       :basic_auth => { :username => "620589", :password => "42167510aaf892ac7f9e0efd947fed78" })
