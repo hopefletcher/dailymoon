@@ -9,32 +9,28 @@
   <div class="journal">
     <h3>Your daily thoughts</h3>
     <p><em>A space for self reflection...</em></p>
+    <div class="moon-data">
       <div class="journal-entry">
       <%= @mood.journal_entry %>
       </div>
+    <div class="my-3">
+      <%= link_to "Edit Mood", edit_mood_path %>
+    </div>
+
+    <div class="moon-nav">
+      <%= link_to day_path do %>
+          <i class="fas fa-arrow-left"> </i>
+        <% end %>
+      <%= link_to day_path do %>
+          <i class="far fa-circle"> </i>
+        <% end %>
+      <i class="fas fa-circle"></i>
+        <%= link_to events_path do %>
+          <i class="far fa-circle"> </i>
+        <% end %>
+        <%= link_to events_path do %>
+          <i class="fas fa-arrow-right"> </i>
+        <% end %>
+    </div>
   </div>
-  <div class="my-3">
-    <%= link_to "Edit Mood", edit_mood_path %>
-  </div>
-
-  <div class="moon-nav">
-    <%= link_to day_path do %>
-        <i class="fas fa-arrow-left"> </i>
-      <% end %>
-
-    <%= link_to day_path do %>
-        <i class="far fa-circle"> </i>
-      <% end %>
-
-    <i class="fas fa-circle"></i>
-
-      <%= link_to events_path do %>
-        <i class="far fa-circle"> </i>
-      <% end %>
-
-      <%= link_to events_path do %>
-        <i class="fas fa-arrow-right"> </i>
-      <% end %>
-  </div>
-
 </div>
