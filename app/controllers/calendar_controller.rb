@@ -90,7 +90,6 @@ class CalendarController < ApplicationController
     end
   end
 
-
   def fetch_moon_sign
     @url = 'https://json.astrologyapi.com/v1/planets'
     @result = HTTParty.post(@url,

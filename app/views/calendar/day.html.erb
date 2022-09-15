@@ -1,8 +1,6 @@
 <div class="container">
-
   <h1><%= Time.now.strftime("%b %d, %H:%M") %></h1>
   <%# Fetch daily horoscope %>
-
   <div class="info-card my-3"><%= @daily_horoscope %></div>
 </div>
 
@@ -22,4 +20,3 @@
     <%= link_to "See Your Events", events_path %>
   </div>
 </div>
-  
