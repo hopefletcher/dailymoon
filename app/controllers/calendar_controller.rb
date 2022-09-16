@@ -4,14 +4,11 @@ require "net/http"
 
 class CalendarController < ApplicationController
   def day
-    fetch_moon_data_today if !Moon.last || Moon.last.date != Date.today || Moon.last.location != current_user.location.delete(' ')
+    fetch_moon_data_today if !Moon.last || Moon.last.date != params[:date].to_date || Moon.last.location != current_user.location.delete(' ')
     @daily_horoscope = daily_horoscope
   end
 
-  def api_call
-
-  end
-
+  # def api_call; end
 
   def month
     if params[:start_date] == nil
@@ -61,12 +58,14 @@ class CalendarController < ApplicationController
 
   def fetch_moon_data_today
     Moon.last ? start_date = (Moon.last.date) : start_date = "2022-09-14"
+    start_date = params[:date].to_date - 1 if start_date > params[:date].to_date
+
     url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/#{current_user.location.delete(' ')}/#{start_date}/#{params[:date]}?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
     data_serialized = URI.open(url).read
     @data = JSON.parse(data_serialized)
     @moon_data = @data["days"]
 
-    if start_date.to_date <= Date.today
+    if start_date.to_date <= params[:date].to_date
       @moon_data.each do |md|
         define_moon_phase(md)
         md["moonrise"] == nil ? moonrise = "No moonrise" : moonrise = md["datetime"] + " " + md["moonrise"]
@@ -79,29 +78,21 @@ class CalendarController < ApplicationController
   def define_moon_phase(day_data)
     @moon_phase = day_data["moonphase"]
     if @moon_phase == 0 || @moon_phase == 1
-      @moon_phase_name = "New Moon"
-      @moon_phase_img = "moon1new.png"
+      @moon_phase_name = "New Moon"; @moon_phase_img = "moon1new.png"
     elsif @moon_phase < 0.25
-      @moon_phase_name = "Waxing Crescent"
-      @moon_phase_img = "moon2waxingcrescent.png"
+      @moon_phase_name = "Waxing Crescent"; @moon_phase_img = "moon2waxingcrescent.png"
     elsif @moon_phase == 0.25
-      @moon_phase_name = "First Quarter"
-      @moon_phase_img = "moon3firstquarter.png"
+      @moon_phase_name = "First Quarter"; @moon_phase_img = "moon3firstquarter.png"
     elsif @moon_phase < 0.5
-      @moon_phase_name = "Waxing Gibbous"
-      @moon_phase_img = "moon4waxinggibbous.png"
+      @moon_phase_name = "Waxing Gibbous"; @moon_phase_img = "moon4waxinggibbous.png"
     elsif @moon_phase == 0.5
-      @moon_phase_name = "Full Moon"
-      @moon_phase_img = "moon5full.png"
+      @moon_phase_name = "Full Moon"; @moon_phase_img = "moon5full.png"
     elsif @moon_phase < 0.75
-      @moon_phase_name = "Waning Gibbous"
-      @moon_phase_img = "moon6waninggibbous.png"
+      @moon_phase_name = "Waning Gibbous"; @moon_phase_img = "moon6waninggibbous.png"
     elsif @moon_phase == 0.75
-      @moon_phase_name = "Last Quarter"
-      @moon_phase_img = "moon7lastquarter.png"
+      @moon_phase_name = "Last Quarter"; @moon_phase_img = "moon7lastquarter.png"
     else @moon_phase < 1
-      @moon_phase_name = "Waning Crescent"
-      @moon_phase_img = "moon8waningcrescent.png"
+      @moon_phase_name = "Waning Crescent"; @moon_phase_img = "moon8waningcrescent.png"
     end
   end
 
