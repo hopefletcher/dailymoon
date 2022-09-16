@@ -61,7 +61,7 @@
         "moonrise": "2022-09-01T12:30:32.000Z",
         "moonset": "2022-09-01T22:58:08.000Z",
         "moon_phase_name": "Full Moon",
-        "moon_phase_img": "/assets/moon5_full.png",
+        "moon_phase_img": "/assets/moon5full.png",
         "location": "Barcelona, Catalunya, Espanya"
     },
     {
@@ -74,7 +74,7 @@
         "moonrise": "2022-09-02T13:43:09.000Z",
         "moonset": "2022-09-02T23:30:11.000Z",
         "moon_phase_name": "Full Moon",
-        "moon_phase_img": "/assets/moon5_full.png",
+        "moon_phase_img": "/assets/moon5full.png",
         "location": "Barcelona, Catalunya, Espanya"
     },
     {
@@ -87,7 +87,7 @@
         "moonrise": "2022-09-03T14:56:49.000Z",
         "moonset": null,
         "moon_phase_name": "Full Moon",
-        "moon_phase_img": "/assets/moon5_full.png",
+        "moon_phase_img": "/assets/moon5full.png",
         "location": "Barcelona, Catalunya, Espanya"
     },
     {
@@ -100,7 +100,7 @@
         "moonrise": "2022-09-04T16:09:33.000Z",
         "moonset": "2022-09-04T00:09:30.000Z",
         "moon_phase_name": "Full Moon",
-        "moon_phase_img": "/assets/moon5_full.png",
+        "moon_phase_img": "/assets/moon5full.png",
         "location": "Barcelona, Catalunya, Espanya"
     },
     {
@@ -113,7 +113,7 @@
         "moonrise": "2022-09-05T17:17:07.000Z",
         "moonset": "2022-09-05T00:59:59.000Z",
         "moon_phase_name": "Full Moon",
-        "moon_phase_img": "/assets/moon5_full.png",
+        "moon_phase_img": "/assets/moon5full.png",
         "location": "Barcelona, Catalunya, Espanya"
     },
     {
@@ -126,7 +126,7 @@
         "moonrise": "2022-09-06T18:14:27.000Z",
         "moonset": "2022-09-06T02:02:11.000Z",
         "moon_phase_name": "Full Moon",
-        "moon_phase_img": "/assets/moon5_full.png",
+        "moon_phase_img": "/assets/moon5full.png",
         "location": "Barcelona, Catalunya, Espanya"
     },
     {
@@ -139,7 +139,7 @@
         "moonrise": "2022-09-07T19:01:34.000Z",
         "moonset": "2022-09-07T03:14:50.000Z",
         "moon_phase_name": "Full Moon",
-        "moon_phase_img": "/assets/moon5_full.png",
+        "moon_phase_img": "/assets/moon5full.png",
         "location": "Barcelona, Catalunya, Espanya"
     },
     {
@@ -152,7 +152,7 @@
         "moonrise": "2022-09-08T19:39:23.000Z",
         "moonset": "2022-09-08T04:32:34.000Z",
         "moon_phase_name": "Full Moon",
-        "moon_phase_img": "/assets/moon5_full.png",
+        "moon_phase_img": "/assets/moon5full.png",
         "location": "Barcelona, Catalunya, Espanya"
     },
     {
@@ -165,7 +165,7 @@
         "moonrise": "2022-09-09T20:09:44.000Z",
         "moonset": "2022-09-09T05:51:51.000Z",
         "moon_phase_name": "Full Moon",
-        "moon_phase_img": "/assets/moon5_full.png",
+        "moon_phase_img": "/assets/moon5full.png",
         "location": "Barcelona, Catalunya, Espanya"
     },
     {
@@ -178,7 +178,7 @@
         "moonrise": "2022-09-10T20:36:02.000Z",
         "moonset": "2022-09-10T07:08:37.000Z",
         "moon_phase_name": "Full Moon",
-        "moon_phase_img": "/assets/moon5_full.png",
+        "moon_phase_img": "/assets/moon5full.png",
         "location": "Barcelona, Catalunya, Espanya"
     },
     {

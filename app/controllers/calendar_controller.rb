@@ -4,7 +4,8 @@ require "net/http"
 
 class CalendarController < ApplicationController
   def day
-    fetch_moon_data_today if !Moon.last || Moon.last.date != params[:date].to_date || Moon.last.location != current_user.location.delete(' ')
+    fetch_moon_data_today if Moon.where(date: params[:date], location: current_user.location.delete(' ')) == []
+    # fetch_moon_data_today if !Moon.last || Moon.last.date != params[:date].to_date || Moon.last.location != current_user.location.delete(' ')
     @daily_horoscope = daily_horoscope
   end
 
@@ -58,7 +59,7 @@ class CalendarController < ApplicationController
 
   def fetch_moon_data_today
     Moon.last ? start_date = (Moon.last.date) : start_date = "2022-09-14"
-    start_date = params[:date].to_date - 1 if start_date > params[:date].to_date
+    start_date = params[:date].to_date - 1 if start_date.to_date > params[:date].to_date
 
     url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/#{current_user.location.delete(' ')}/#{start_date}/#{params[:date]}?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
     data_serialized = URI.open(url).read
@@ -143,20 +144,20 @@ end
 
 def get_moon_phase_name(value)
   if value == 0 || value == 1
-    return ["New Moon", "/assets/moon1_new.png"]
+    return ["New Moon", "/assets/moon1new.png"]
   elsif value < 0.25
-    return ["Waxing Crescent", "/assets/moon2_waxingcrescent.png"]
+    return ["Waxing Crescent", "/assets/moon2waxingcrescent.png"]
   elsif value == 0.25
-    return [ "First Quarter", "/assets/moon3_firstquarter.png"]
+    return [ "First Quarter", "/assets/moon3firstquarter.png"]
   elsif value < 0.5
-    return ["Waxing Gibbous", "/assets/moon4_waxinggibbous.png"]
+    return ["Waxing Gibbous", "/assets/moon4waxinggibbous.png"]
   elsif value == 0.5
-    return ["Full Moon", "/assets/moon5_full.png"]
+    return ["Full Moon", "/assets/moon5full.png"]
   elsif value < 0.75
-    return ["Waning Gibbous", "/assets/moon6_waninggibbous.png"]
+    return ["Waning Gibbous", "/assets/moon6waninggibbous.png"]
   elsif value == 0.75
-    return ["Last Quarter", "/assets/moon7_lastquarter.png"]
+    return ["Last Quarter", "/assets/moon7lastquarter.png"]
   else value < 1
-    return ["Waning Crescent", "/assets/moon8_waningcrescent.png"]
+    return ["Waning Crescent", "/assets/moon8waningcrescent.png"]
   end
 end
