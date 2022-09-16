@@ -41,51 +41,6 @@ class CalendarController < ApplicationController
     ActiveRecord::Base.connection.reset_pk_sequence!(table_name)
   end
 
-  #Fetches data from the API and saves Moons in the DB
-  # def fetch_moon_data
-
-  #     start_date = "2022-05-01"
-  #     end_date = "2022-12-31"
-  #     url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/#{current_user.location.delete(' ')}/#{start_date}/#{end_date}?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase"
-  #     data_serialized = URI.open(url).read
-  #     @data = JSON.parse(data_serialized)
-  #     @moon_data = @data["days"]
-
-  #     if start_date.to_date <= Date.today
-  #       @moon_data.each do |md|
-  #         moon_phase_name_resolved, moon_phase_img_resolved = get_moon_phase_name(md["moonphase"].to_f)
-  #         if md["moonset"] == nil
-  #           moonset = "No moonset today"
-  #         else
-  #           moonset = md["moonset"]
-  #         end
-  #         moonrise = md["moonrise"]
-  #         Moon.create(phase: @moon_phase, moon_phase_name: moon_phase_name_resolved, moon_phase_img: moon_phase_img_resolved, date: md["datetime"], moonrise: moonrise, moonset: moonset, location: @data["address"], display_location: @data["resolvedAddress"])
-  #       end
-  #     end
-  #   end
-
-  # # Gets moonphase value from the API and returns and array with 2 postions(moonphase_name, moonphase_img) based on value
-  def get_moon_phase_name(value)
-      if value == 0 || value == 1
-          return ["New Moon", "/assets/moon1_new.png"]
-        elsif value < 0.25
-          return ["Waxing Crescent", "/assets/moon2_waxingcrescent.png"]
-        elsif value == 0.25
-          return [ "First Quarter", "/assets/moon3_firstquarter.png"]
-        elsif value < 0.5
-          return ["Waxing Gibbous", "/assets/moon4_waxinggibbous.png"]
-        elsif value == 0.5
-          return ["Full Moon", "/assets/moon5_full.png"]
-        elsif value < 0.75
-          return ["Waning Gibbous", "/assets/moon6_waninggibbous.png"]
-        elsif value == 0.75
-          return ["Last Quarter", "/assets/moon7_lastquarter.png"]
-        else value < 1
-          return ["Waning Crescent", "/assets/moon8_waningcrescent.png"]
-        end
-  end
-
   private
 
   def daily_horoscope
@@ -119,7 +74,7 @@ class CalendarController < ApplicationController
 
     if start_date.to_date <= Date.today
       @moon_data.each do |md|
-        define_moon_phase
+        define_moon_phase(md)
         moonrise = md["datetime"] + " " + md["moonrise"]
         if md["moonset"] == nil
           moonset = "No moonset today"
@@ -131,35 +86,32 @@ class CalendarController < ApplicationController
     end
   end
 
-  def define_moon_phase
-    @moon_data.each do |md|
-      @moon_phase = @data["days"][0]["moonphase"]
-      @moonphase = md["moonphase"]
-      if @moon_phase == 0 || @moon_phase == 1
-        @moon_phase_name = "New Moon"
-        @moon_phase_img = "moon1new.png"
-      elsif @moon_phase < 0.25
-        @moon_phase_name = "Waxing Crescent"
-        @moon_phase_img = "moon2waxingcrescent.png"
-      elsif @moon_phase == 0.25
-        @moon_phase_name = "First Quarter"
-        @moon_phase_img = "moon3firstquarter.png"
-      elsif @moon_phase < 0.5
-        @moon_phase_name = "Waxing Gibbous"
-        @moon_phase_img = "moon4waxinggibbous.png"
-      elsif @moon_phase == 0.5
-        @moon_phase_name = "Full Moon"
-        @moon_phase_img = "moon5full.png"
-      elsif @moon_phase < 0.75
-        @moon_phase_name = "Waning Gibbous"
-        @moon_phase_img = "moon6waninggibbous.png"
-      elsif @moon_phase == 0.75
-        @moon_phase_name = "Last Quarter"
-        @moon_phase_img = "moon7lastquarter.png"
-      else @moon_phase < 1
-        @moon_phase_name = "Waning Crescent"
-        @moon_phase_img = "moon8waningcrescent.png"
-      end
+  def define_moon_phase(day_data)
+    @moon_phase = day_data["moonphase"]
+    if @moon_phase == 0 || @moon_phase == 1
+      @moon_phase_name = "New Moon"
+      @moon_phase_img = "moon1new.png"
+    elsif @moon_phase < 0.25
+      @moon_phase_name = "Waxing Crescent"
+      @moon_phase_img = "moon2waxingcrescent.png"
+    elsif @moon_phase == 0.25
+      @moon_phase_name = "First Quarter"
+      @moon_phase_img = "moon3firstquarter.png"
+    elsif @moon_phase < 0.5
+      @moon_phase_name = "Waxing Gibbous"
+      @moon_phase_img = "moon4waxinggibbous.png"
+    elsif @moon_phase == 0.5
+      @moon_phase_name = "Full Moon"
+      @moon_phase_img = "moon5full.png"
+    elsif @moon_phase < 0.75
+      @moon_phase_name = "Waning Gibbous"
+      @moon_phase_img = "moon6waninggibbous.png"
+    elsif @moon_phase == 0.75
+      @moon_phase_name = "Last Quarter"
+      @moon_phase_img = "moon7lastquarter.png"
+    else @moon_phase < 1
+      @moon_phase_name = "Waning Crescent"
+      @moon_phase_img = "moon8waningcrescent.png"
     end
   end
 
@@ -180,5 +132,50 @@ class CalendarController < ApplicationController
       moon = @result.find { |result| result["name"] == "Moon"}
       moon["sign"]
       @moon_sign = moon["sign"]
+  end
+end
+
+#Fetches data from the API and saves Moons in the DB
+# def fetch_moon_data
+
+#     start_date = "2022-05-01"
+#     end_date = "2022-12-31"
+#     url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/#{current_user.location.delete(' ')}/#{start_date}/#{end_date}?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase"
+#     data_serialized = URI.open(url).read
+#     @data = JSON.parse(data_serialized)
+#     @moon_data = @data["days"]
+
+#     if start_date.to_date <= Date.today
+#       @moon_data.each do |md|
+#         moon_phase_name_resolved, moon_phase_img_resolved = get_moon_phase_name(md["moonphase"].to_f)
+#         if md["moonset"] == nil
+#           moonset = "No moonset today"
+#         else
+#           moonset = md["moonset"]
+#         end
+#         moonrise = md["moonrise"]
+#         Moon.create(phase: @moon_phase, moon_phase_name: moon_phase_name_resolved, moon_phase_img: moon_phase_img_resolved, date: md["datetime"], moonrise: moonrise, moonset: moonset, location: @data["address"], display_location: @data["resolvedAddress"])
+#       end
+#     end
+#   end
+
+# # Gets moonphase value from the API and returns and array with 2 postions(moonphase_name, moonphase_img) based on value
+def get_moon_phase_name(value)
+  if value == 0 || value == 1
+    return ["New Moon", "/assets/moon1_new.png"]
+  elsif value < 0.25
+    return ["Waxing Crescent", "/assets/moon2_waxingcrescent.png"]
+  elsif value == 0.25
+    return [ "First Quarter", "/assets/moon3_firstquarter.png"]
+  elsif value < 0.5
+    return ["Waxing Gibbous", "/assets/moon4_waxinggibbous.png"]
+  elsif value == 0.5
+    return ["Full Moon", "/assets/moon5_full.png"]
+  elsif value < 0.75
+    return ["Waning Gibbous", "/assets/moon6_waninggibbous.png"]
+  elsif value == 0.75
+    return ["Last Quarter", "/assets/moon7_lastquarter.png"]
+  else value < 1
+    return ["Waning Crescent", "/assets/moon8_waningcrescent.png"]
   end
 end
