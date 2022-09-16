@@ -5,7 +5,6 @@ require "net/http"
 class CalendarController < ApplicationController
   def day
     fetch_moon_data_today if !Moon.last || Moon.last.date != Date.today || Moon.last.location != current_user.location.delete(' ')
-    fetch_moon_sign
     @daily_horoscope = daily_horoscope
   end
 
@@ -61,13 +60,8 @@ class CalendarController < ApplicationController
   end
 
   def fetch_moon_data_today
-    # if Moon.last
-    #   start_date = (Moon.last.date)
-    # else
-    #   start_date = "2022-09-01"
-    # end
-    start_date = "2022-09-14"
-    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/#{current_user.location.delete(' ')}/#{start_date}/#{Date.today}?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
+    Moon.last ? start_date = (Moon.last.date) : start_date = "2022-09-14"
+    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/#{current_user.location.delete(' ')}/#{start_date}/#{params[:date]}?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
     data_serialized = URI.open(url).read
     @data = JSON.parse(data_serialized)
     @moon_data = @data["days"]
@@ -75,13 +69,9 @@ class CalendarController < ApplicationController
     if start_date.to_date <= Date.today
       @moon_data.each do |md|
         define_moon_phase(md)
-        moonrise = md["datetime"] + " " + md["moonrise"]
-        if md["moonset"] == nil
-          moonset = "No moonset today"
-        else
-          moonset = md["datetime"] + " " + md["moonset"]
-        end
-        Moon.create(phase: @moon_phase, moon_phase_name: @moon_phase_name, moon_phase_img: @moon_phase_img, date: md["datetime"], moonrise: moonrise, moonset: moonset, location: @data["address"], display_location: @data["resolvedAddress"])
+        md["moonrise"] == nil ? moonrise = "No moonrise" : moonrise = md["datetime"] + " " + md["moonrise"]
+        md["moonset"] == nil ? moonset = "No moonset" : moonset = md["datetime"] + " " + md["moonset"]
+        Moon.create(phase: @moon_phase, moon_phase_name: @moon_phase_name, moon_phase_img: @moon_phase_img, date: md["datetime"], moonrise: moonrise, moonset: moonset, location: @data["address"], display_location: @data["resolvedAddress"], moon_sign: fetch_moon_sign(md["datetime"]))
       end
     end
   end
@@ -115,12 +105,12 @@ class CalendarController < ApplicationController
     end
   end
 
-  def fetch_moon_sign
+  def fetch_moon_sign(day)
     @url = 'https://json.astrologyapi.com/v1/planets'
     @result = HTTParty.post(@url,
-      :body => { :day => Date.today.day,
-                 :month => Date.today.month,
-                 :year => Date.today.year,
+      :body => { :day => day.to_date.day,
+                 :month => day.to_date.month,
+                 :year => day.to_date.year,
                  :min => Time.now.min,
                  :hour => Time.now.hour,
                  :tzone => 1,
@@ -128,9 +118,8 @@ class CalendarController < ApplicationController
                  :lon => 2.1401891
                }.to_json,
       :headers => { 'Content-Type' => 'application/json' },
-      :basic_auth => {:username => "620589", :password => "42167510aaf892ac7f9e0efd947fed78"} )
+      :basic_auth => {:username => "#{ENV["ASTRO_API_USERNAME"]}", :password => "#{ENV["ASTRO_API_KEY"]}"} )
       moon = @result.find { |result| result["name"] == "Moon"}
-      moon["sign"]
       @moon_sign = moon["sign"]
   end
 end
@@ -160,6 +149,7 @@ end
 #   end
 
 # # Gets moonphase value from the API and returns and array with 2 postions(moonphase_name, moonphase_img) based on value
+
 def get_moon_phase_name(value)
   if value == 0 || value == 1
     return ["New Moon", "/assets/moon1_new.png"]
