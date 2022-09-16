@@ -1,7 +1,13 @@
 <div class="container">
-
+<div class="date-navigation">
+  <%= link_to "/day?date=#{((params[:date].to_date - 1).strftime("%Y-%m-%d"))}" do %>
+    <i class="fas fa-arrow-left"> </i>
+  <% end %>
   <h1 class="date-today"><%= params[:date].to_date.strftime("%b %d") %>, <%= Time.now.strftime("%H:%M") %></h1>
-
+  <%= link_to "/day?date=#{((params[:date].to_date + 1).strftime("%Y-%m-%d"))}" do %>
+    <i class="fas fa-arrow-right"> </i>
+  <% end %>
+</div>
   <%# Fetch daily horoscope %>
   <div class="info-card my-3"><%= @daily_horoscope %></div>
 </div>
