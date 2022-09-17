@@ -3,11 +3,11 @@
     <div class="mood-form">
       <%= p.input :rating, as: :radio_buttons,
                           collection: [['1', '😢'],
-                                        ['2', '💩'],
-                                        ['3', '😡'],
-                                        ['4','😐'],
-                                        ['5', '☺️'],
-                                        ['6', '😀']],
+                                       ['2', '💩'],
+                                       ['3', '😡'],
+                                       ['4','😐'],
+                                       ['5', '☺️'],
+                                       ['6', '😀']],
                           label_method: :second,
                           value_method: :first,
                           wrapper_html: { class: 'radio-buttons' } %>
