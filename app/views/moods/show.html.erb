@@ -3,8 +3,9 @@
 
   <div class="emoji">
     <h3>Today you are feeling:</h3>
-    <%= @emoji %>
+    <div class="emoji_img"><%= @emoji %></div>
   </div>
+  <span class="emoji moon" role="img" aria-label="moon phases"></span>
 
   <div class="journal">
     <h3>Your daily thoughts</h3>
@@ -14,7 +15,7 @@
       <%= @mood.journal_entry %>
       </div>
     <div class="my-3">
-      <%= link_to "Edit Mood", edit_mood_path(date: params[:date]) %>
+      <%= link_to "Edit Mood", edit_mood_path(date: params[:date]), class: "btn-gradient"  %>
     </div>
 
     <!-- Tabs -->
