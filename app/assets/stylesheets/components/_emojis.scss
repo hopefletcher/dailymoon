@@ -3,6 +3,7 @@
   min-width: 1.4em;
   margin: 0.3em 0.4em;
   text-align: center;
+  margin-top: 0px;
 }
 
 .emoji::after {
@@ -55,8 +56,6 @@
   min-width: 1.4em;
   margin: 0.3em 0.4em;
   text-align: center;
-  height: 100px;
-  width:100px;
 }
 
 .sad::after {
@@ -79,7 +78,7 @@
 
 
   50% {
-      content: '🥲';
+      content: '😣';
   }
 
 
@@ -88,6 +87,45 @@
   }
 }
 
+// Shit emoji
+
+.shit {
+  font-size: calc(100px + 4vw);
+  min-width: 1.4em;
+  margin: 0.3em 0.4em;
+  text-align: center;
+}
+
+.shit::after {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+.shit::after {
+  content: '😖';
+  animation-name: shit;
+  animation-duration: 7s;
+}
+
+
+@keyframes shit {
+  25% {
+      content: '😵‍💫';
+  }
+
+
+  50% {
+      content: '😵';
+  }
+
+
+  75% {
+      content: '💩';
+  }
+}
+
+
 // Angry emoji
 
 .angry {
@@ -95,8 +133,6 @@
   min-width: 1.4em;
   margin: 0.3em 0.4em;
   text-align: center;
-  height: 100px;
-  width:100px;
 }
 
 .angry::after {
@@ -135,8 +171,6 @@
   min-width: 1.4em;
   margin: 0.3em 0.4em;
   text-align: center;
-  height: 100px;
-  width:100px;
 }
 
 .neutral::after {
@@ -165,31 +199,29 @@
 
 // good emoji
 
-.m {
+.good {
   font-size: calc(100px + 4vw);
   min-width: 1.4em;
   margin: 0.3em 0.4em;
   text-align: center;
-  height: 100px;
-  width:100px;
 }
 
-.m::after {
+.good::after {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
 
-.m::after {
-  content: '😋';
-  animation-name: m;
+.good::after {
+  content: '😊';
+  animation-name: good;
   animation-duration: 7s;
 }
 
 
-@keyframes m {
+@keyframes good {
   25% {
-      content: '😊';
+      content: '😋';
   }
 
 
@@ -205,8 +237,6 @@
   min-width: 1.4em;
   margin: 0.3em 0.4em;
   text-align: center;
-  height: 100px;
-  width:100px;
 }
 
 .happy::after {
@@ -232,3 +262,5 @@
       content: '😁';
   }
 }
+
+// other css
