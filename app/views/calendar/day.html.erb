@@ -11,9 +11,8 @@
   <% end %>
 </div>
   <%# Fetch daily horoscope %>
-  <div class="info-card my-3"><%= @daily_horoscope %></div>
+  <div class="info-card my-3 mx-2"><%= @daily_horoscope %></div>
 </div>
-
 <div class="container moon-data">
 <% moon_today = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first %>
 <%= image_tag moon_today.moon_phase_img, class: "moon-image", width: "100px" %>
@@ -31,7 +30,7 @@
 <% end %>
 
 <p>Moonphase: <%= moon_today.phase %> - <%= moon_today.moon_phase_name %></p>
-<p>Vedic Moon sign: <%= moon_today.moon_sign %></p>
+<p>Vedic Moon Sign: <%= moon_today.moon_sign %></p>
 
   <!-- Tabs -->
   <div class="moon-nav">
