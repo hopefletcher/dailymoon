@@ -1,0 +1,49 @@
+.emoji {
+  font-size: calc(100px + 4vw);
+  min-width: 1.4em;
+  margin: 0.3em 0.4em;
+  text-align: center;
+}
+
+.emoji::after {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+.moon::after {
+  content: '🌕';
+  animation-name: moon;
+  animation-duration: 10s;
+}
+
+
+@keyframes moon {
+  12.5% {
+      content: '🌖';
+  }
+
+  25% {
+      content: '🌗';
+  }
+
+  37.5% {
+      content: '🌘 ';
+  }
+
+  50% {
+      content: '🌑';
+  }
+
+  62.5% {
+      content: '🌒';
+  }
+
+  75% {
+      content: '🌓';
+  }
+
+  87.5% {
+      content: '🌔';
+  }
+}
