@@ -1,4 +1,4 @@
 <div class="container">
-  <h1><%= Time.now.strftime("%b %d, %H:%M") %></h1>
+  <h1><%= @date.strftime("%b %d") %></h1>
   <%= render "form", event: @event %>
 </div>
