@@ -4,6 +4,7 @@ require "net/http"
 
 class CalendarController < ApplicationController
   def day
+    params[:date] = Date.today if params[:date].nil?
     fetch_moon_data_today if Moon.where(date: params[:date], location: current_user.location.delete(' ')) == []
     # fetch_moon_data_today if !Moon.last || Moon.last.date != params[:date].to_date || Moon.last.location != current_user.location.delete(' ')
     @daily_horoscope = daily_horoscope
@@ -58,22 +59,28 @@ class CalendarController < ApplicationController
   end
 
   def fetch_moon_data_today
-    Moon.last ? start_date = (Moon.last.date) : start_date = "2022-09-14"
-    start_date = params[:date].to_date - 1 if start_date.to_date > params[:date].to_date
+    # Moon.last ? start_date = (Moon.last.date) : start_date = "2022-09-14"
+    if params[:date]
+      start_date = params[:date].to_date - 5
+      end_date = params[:date].to_date + 5
+    else
+      start_date = Date.today - 5
+      end_date = Date.today + 5
+    end
 
-    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/#{current_user.location.delete(' ')}/#{start_date}/#{params[:date]}?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
+    url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/#{current_user.location.delete(' ')}/#{start_date}/#{end_date}?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
     data_serialized = URI.open(url).read
     @data = JSON.parse(data_serialized)
     @moon_data = @data["days"]
 
-    if start_date.to_date <= params[:date].to_date
+    # if start_date.to_date <= params[:date].to_date
       @moon_data.each do |md|
         define_moon_phase(md)
         md["moonrise"] == nil ? moonrise = "No moonrise" : moonrise = md["datetime"] + " " + md["moonrise"]
         md["moonset"] == nil ? moonset = "No moonset" : moonset = md["datetime"] + " " + md["moonset"]
         Moon.create(phase: @moon_phase, moon_phase_name: @moon_phase_name, moon_phase_img: @moon_phase_img, date: md["datetime"], moonrise: moonrise, moonset: moonset, location: @data["address"], display_location: @data["resolvedAddress"], moon_sign: fetch_moon_sign(md["datetime"]))
       end
-    end
+    # end
   end
 
   def define_moon_phase(day_data)
