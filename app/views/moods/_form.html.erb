@@ -13,6 +13,7 @@
                           wrapper_html: { class: 'radio-buttons' } %>
     </div>
     <%= p.input :journal_entry, wrapper_html: { class: 'h1' } %>
+    <%= p.hidden_field :id, value: @mood.id %>
     <%= p.button :submit, "Submit Mood", class: "btn-gradient" %>
   <% end %>
 

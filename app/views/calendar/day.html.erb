@@ -25,24 +25,30 @@
   <p>Moonphase: <%= Moon.where(date: params[:date], location: current_user.location.delete(' ')).first.phase %> - <%= Moon.where(date: params[:date], location: current_user.location.delete(' ')).first.moon_phase_name %></p>
   <p>Vedic Moon sign: <%= Moon.where(date: params[:date], location: current_user.location.delete(' ')).first.moon_sign %></p>
 
+  <!-- Tabs -->
   <div class="moon-nav">
     <i class="fas fa-arrow-left"> </i>
     <i class="fas fa-circle">  </i>
-    <%# mood link logic %>
     <% if Mood.where(date: params[:date], user_id: current_user.id) %>
-        <%= link_to mood_path do %>
-          <i class="far fa-circle"></i>
-        <% end %>
-      <% elsif %>
-        <%= link_to new_mood_path do %>
-          <i class="far fa-circle"></i>
-        <% end %>
-    <% end %>
-      <%= link_to events_path do %>
-        <i class="far fa-circle"> </i>
+      <%= link_to mood_path(date: params[:date]) do %>
+        <i class="far fa-circle"></i>
       <% end %>
-      <%= link_to mood_path do %>
+      <% elsif %>
+      <%= link_to new_mood_path(date: params[:date]) do %>
+        <i class="far fa-circle"></i>
+      <% end %>
+    <% end %>
+    <%= link_to events_path(date: params[:date]) do %>
+      <i class="far fa-circle"> </i>
+    <% end %>
+    <% if Mood.where(date: params[:date], user_id: current_user.id) %>
+      <%= link_to mood_path(date: params[:date]) do %>
         <i class="fas fa-arrow-right"> </i>
       <% end %>
+      <% elsif %>
+      <%= link_to new_mood_path(date: params[:date]) do %>
+        <i class="fas fa-arrow-right"> </i>
+      <% end %>
+    <% end %>
   </div>
 </div>
