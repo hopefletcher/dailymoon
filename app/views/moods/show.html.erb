@@ -10,11 +10,11 @@
     <h3>Your daily thoughts</h3>
     <p><em>A space for self reflection...</em></p>
     <div class="moon-data">
-      <div class="info-card my-3 mx-2">
+      <div class="info-card my-3 mx-2git ">
       <%= @mood.journal_entry %>
       </div>
     <div class="my-3">
-      <%= link_to "Edit Mood", edit_mood_path %>
+      <%= link_to "Edit Mood", edit_mood_path, class: "btn-gradient" %>
     </div>
 
     <div class="moon-nav">
