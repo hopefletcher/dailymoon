@@ -1,11 +1,13 @@
 <div class="container">
 <div class="date-navigation">
-  <%= link_to "/day?date=#{((params[:date].to_date - 1).strftime("%Y-%m-%d"))}" do %>
-    <i class="fas fa-arrow-left"> </i>
-  <% end %>
-  <h1 class="date-today"><%= params[:date].to_date.strftime("%b %d") %>, <%= Time.now.strftime("%H:%M") %></h1>
-  <%= link_to "/day?date=#{((params[:date].to_date + 1).strftime("%Y-%m-%d"))}" do %>
-    <i class="fas fa-arrow-right"> </i>
+  <% if params[:date] %>
+    <%= link_to day_path(date: (params[:date].to_date - 1)) do %>
+      <i class="fas fa-arrow-left"> </i>
+    <% end %>
+    <h1 class="date-today"><%= params[:date].to_date.strftime("%b %d") %>, <%= Time.now.strftime("%H:%M") %></h1>
+    <%= link_to day_path(date: (params[:date].to_date + 1)) do %>
+      <i class="fas fa-arrow-right"> </i>
+    <% end %>
   <% end %>
 </div>
   <%# Fetch daily horoscope %>
@@ -13,36 +15,48 @@
 </div>
 
 <div class="container moon-data">
+<% moon_today = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first %>
+<%= image_tag moon_today.moon_phase_img, class: "moon-image", width: "100px" %>
+<br><br>
+<p>Location: <strong><%= moon_today.display_location %></strong></p>
+<% if moon_today.moonrise %>
+  <p>Moonrise: <%= moon_today.moonrise.strftime("%H:%M %Z") %></p>
+<% else %>
+  <p>Moonrise: No moonrise today</p>
+<% end %>
+  <% if moon_today.moonset %>
+  <p>Moonset: <%= moon_today.moonset.strftime("%H:%M %Z")%></p>
+<% else %>
+  <p>Moonset: No moonset today</p>
+<% end %>
 
-<%= image_tag Moon.where(date: params[:date], location: current_user.location.delete(' ')).first.moon_phase_img, class: "moon-image", width: "100px" %>
+<p>Moonphase: <%= moon_today.phase %> - <%= moon_today.moon_phase_name %></p>
+<p>Vedic Moon sign: <%= moon_today.moon_sign %></p>
 
-  <br><br>
-  <p>Location: <strong><%= Moon.where(date: params[:date], location: current_user.location.delete(' ')).first.display_location %></strong></p>
-
-  <p>Moonrise: <%= Moon.where(date: params[:date], location: current_user.location.delete(' ')).first.moonrise.strftime("%H:%M %Z") %></p>
-  <p>Moonset: <%= Moon.where(date: params[:date], location: current_user.location.delete(' ')).first.moonset.strftime("%H:%M %Z")%></p>
-
-  <p>Moonphase: <%= Moon.where(date: params[:date], location: current_user.location.delete(' ')).first.phase %> - <%= Moon.where(date: params[:date], location: current_user.location.delete(' ')).first.moon_phase_name %></p>
-  <p>Vedic Moon sign: <%= Moon.where(date: params[:date], location: current_user.location.delete(' ')).first.moon_sign %></p>
-
+  <!-- Tabs -->
   <div class="moon-nav">
     <i class="fas fa-arrow-left"> </i>
     <i class="fas fa-circle">  </i>
-    <%# mood link logic %>
     <% if Mood.where(date: params[:date], user_id: current_user.id) %>
-        <%= link_to mood_path do %>
-          <i class="far fa-circle"></i>
-        <% end %>
-      <% elsif %>
-        <%= link_to new_mood_path do %>
-          <i class="far fa-circle"></i>
-        <% end %>
-    <% end %>
-      <%= link_to events_path do %>
-        <i class="far fa-circle"> </i>
+      <%= link_to mood_path(date: params[:date]) do %>
+        <i class="far fa-circle"></i>
       <% end %>
-      <%= link_to mood_path do %>
+      <% elsif %>
+      <%= link_to new_mood_path(date: params[:date]) do %>
+        <i class="far fa-circle"></i>
+      <% end %>
+    <% end %>
+    <%= link_to events_path(date: params[:date]) do %>
+      <i class="far fa-circle"> </i>
+    <% end %>
+    <% if Mood.where(date: params[:date], user_id: current_user.id) %>
+      <%= link_to mood_path(date: params[:date]) do %>
         <i class="fas fa-arrow-right"> </i>
       <% end %>
+      <% elsif %>
+      <%= link_to new_mood_path(date: params[:date]) do %>
+        <i class="fas fa-arrow-right"> </i>
+      <% end %>
+    <% end %>
   </div>
 </div>

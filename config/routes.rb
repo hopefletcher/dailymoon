@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   root to: 'calendar#day'
+  # day_path(date: Date.today)
   get 'home', to: 'pages#home'
 
   resource :mood, only: [:new, :create, :edit, :show, :update]
-  resolve('Mood') { [:mood] }
+  # resolve('Mood') { [:mood] }
 
   resources :events, only: [:index, :new, :create, :edit, :update, :destroy]
 

@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="date-today"><%= Time.now.strftime("%b %d, %H:%M") %></h1>
+  <h1 class="date-today"><%= @date.strftime("%b %d") %></h1>
 
   <div class="emoji">
     <h3>Today you are feeling:</h3>
@@ -15,24 +15,24 @@
       <%= @mood.journal_entry %>
       </div>
     <div class="my-3">
-      <%= button_to "Edit Mood", edit_mood_path, :id => "Edit-Mood",
-      :class => "btn-gradient", :method => :get %>
+      <%= link_to "Edit Mood", edit_mood_path(date: params[:date]), class: "btn-gradient"  %>
     </div>
 
+    <!-- Tabs -->
     <div class="moon-nav">
-      <%= link_to day_path do %>
+      <%= link_to day_path(date: params[:date]) do %>
           <i class="fas fa-arrow-left"> </i>
-        <% end %>
-      <%= link_to day_path do %>
+      <% end %>
+      <%= link_to day_path(date: params[:date]) do %>
           <i class="far fa-circle"> </i>
-        <% end %>
+      <% end %>
       <i class="fas fa-circle"></i>
-        <%= link_to events_path do %>
-          <i class="far fa-circle"> </i>
-        <% end %>
-        <%= link_to events_path do %>
-          <i class="fas fa-arrow-right"> </i>
-        <% end %>
+      <%= link_to events_path(date: params[:date]) do %>
+        <i class="far fa-circle"> </i>
+      <% end %>
+      <%= link_to events_path(date: params[:date]) do %>
+        <i class="fas fa-arrow-right"> </i>
+      <% end %>
     </div>
   </div>
 </div>
