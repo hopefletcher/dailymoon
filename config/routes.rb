@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'home', to: 'pages#home'
 
   resource :mood, only: [:new, :create, :edit, :show, :update]
-  resolve('Mood') { [:mood] }
+  # resolve('Mood') { [:mood] }
 
   resources :events, only: [:index, :new, :create, :edit, :update, :destroy]
 
