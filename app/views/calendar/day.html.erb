@@ -9,14 +9,10 @@
 <%= image_tag Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moon_phase_img, class: "moon-image", width: "100px" %>
   <br><br>
   <p>Location: <strong><%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.display_location %></strong></p>
-  <%
-=begin%>
- <p>Moonrise: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moonrise.strftime("%H:%M %Z") %></p>
+  <p>Moonrise: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moonrise.strftime("%H:%M %Z") %></p>
   <p>Moonset: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moonset.strftime("%H:%M %Z")%></p>
-<%
-=end%>
   <p>Moonphase: <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.phase %> - <%= Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moon_phase_name %></p>
-  <p> Vedic Moon sign: <%= @moon_sign %></p>
+  <p> Vedic Moon Sign: <%= @moon_sign %></p>
 
   <div class="moon-nav">
     <i class="fas fa-arrow-left"> </i>
