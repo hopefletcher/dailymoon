@@ -1,0 +1,8 @@
+<% good_moods =  Mood.where(rating: 4 || 5) %>
+<% good_dates = good_moods.map do  |mood|%>
+  <% mood.date %>
+<%= end %>
+
+good_moons = good_dates.map do |good_date|
+  Moon.where(date: good_date)
+<% end %>

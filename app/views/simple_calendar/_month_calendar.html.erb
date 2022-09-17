@@ -32,7 +32,7 @@
                 <% end %>
                 <% @current_month_moons.each do |m| %>
                   <% if m["date"] === day.to_s %>
-                    <div class="image"><img src="moon5full.png" width="30px"></div>
+                    <div class="image"><img src="<%= m["moon_phase_img"] %>" width="30px"></div>
                     <div class="text"><%= m["moon_phase_name"] %></div>
                   <% end %>
                 <% end %>
