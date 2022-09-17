@@ -47,3 +47,188 @@
       content: '🌔';
   }
 }
+
+// Sad emoji
+
+.sad {
+  font-size: calc(100px + 4vw);
+  min-width: 1.4em;
+  margin: 0.3em 0.4em;
+  text-align: center;
+  height: 100px;
+  width:100px;
+}
+
+.sad::after {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+.sad::after {
+  content: '😔';
+  animation-name: sad;
+  animation-duration: 7s;
+}
+
+
+@keyframes sad {
+  25% {
+      content: '😥';
+  }
+
+
+  50% {
+      content: '🥲';
+  }
+
+
+  75% {
+      content: '😞';
+  }
+}
+
+// Angry emoji
+
+.angry {
+  font-size: calc(100px + 4vw);
+  min-width: 1.4em;
+  margin: 0.3em 0.4em;
+  text-align: center;
+  height: 100px;
+  width:100px;
+}
+
+.angry::after {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+.angry::after {
+  content: '😠';
+  animation-name: angry;
+  animation-duration: 7s;
+}
+
+
+@keyframes angry {
+  25% {
+      content: '😤';
+  }
+
+
+  50% {
+      content: '😡';
+  }
+
+
+  75% {
+      content: '🤬';
+  }
+}
+
+// neutral emoji
+
+.neutral {
+  font-size: calc(100px + 4vw);
+  min-width: 1.4em;
+  margin: 0.3em 0.4em;
+  text-align: center;
+  height: 100px;
+  width:100px;
+}
+
+.neutral::after {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+.neutral::after {
+  content: '😑';
+  animation-name: neutral;
+  animation-duration: 7s;
+}
+
+
+@keyframes neutral {
+  25% {
+      content: '😐';
+  }
+
+
+  50% {
+      content: '😒';
+  }
+}
+
+// good emoji
+
+.m {
+  font-size: calc(100px + 4vw);
+  min-width: 1.4em;
+  margin: 0.3em 0.4em;
+  text-align: center;
+  height: 100px;
+  width:100px;
+}
+
+.m::after {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+.m::after {
+  content: '😋';
+  animation-name: m;
+  animation-duration: 7s;
+}
+
+
+@keyframes m {
+  25% {
+      content: '😊';
+  }
+
+
+  50% {
+      content: '🤗';
+  }
+}
+
+// happy emoji
+
+.happy {
+  font-size: calc(100px + 4vw);
+  min-width: 1.4em;
+  margin: 0.3em 0.4em;
+  text-align: center;
+  height: 100px;
+  width:100px;
+}
+
+.happy::after {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+.happy::after {
+  content: '😄';
+  animation-name: happy;
+  animation-duration: 7s;
+}
+
+
+@keyframes happy {
+  25% {
+      content: '😀';
+  }
+
+
+  50% {
+      content: '😁';
+  }
+}
