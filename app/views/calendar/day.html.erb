@@ -5,7 +5,6 @@
   <%# Fetch daily horoscope %>
   <div class="info-card my-3"><%= @daily_horoscope %></div>
 </div>
-
 <div class="container moon-data">
 <%= image_tag Moon.where(date: Date.today, location: current_user.location.delete(' ')).first.moon_phase_img, class: "moon-image", width: "100px" %>
   <br><br>
