@@ -24,7 +24,7 @@
         <tr>
           <% week.each_with_index do |day, index| %>
               <span class="days"><%= content_tag :td, class: calendar.td_classes_for(day) do %>
-               <%= link_to mood_path do %>
+               <%= link_to day_path(date: day) do %>
                 <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
                   <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
                 <% else %>

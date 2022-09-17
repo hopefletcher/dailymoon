@@ -46,11 +46,6 @@ end
 # start_date = Date.new(2022, 7, 1)
 # end_date = Date.new(2022, 8, 31)
 
-
-
-
-
-
 # phases = ["New Moon", "Waxing Crescent Moon", "First Quarter Moon", "Waxing Gibbous Moon", "Full Moon", "Waning Gibbous Moon", "Third Quarter Moon", "Waning Crescent Moon"]
 
 # signs = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
@@ -80,23 +75,23 @@ end
 # # Moon.create(date: "2022/09/01", moonrise: "2022/09/01 00:01:00", moonset: "2022/09/01 00:02:00" , moon_sign: "FOR RAKE TASK", location: "Barcelona, Catalunya, Espanya")
 
 
-# puts "Importing existing moons from json file..."
-# # def import_moons_from_json
-#   file = "./db/export/moons_may_dec.json"
-#   table_name = file.split('/').last.split('.').first
-#   class_type = table_name.classify.constantize
-#   json_file_content = File.read(file)
-#   if json_file_content != ''
-#     moons = JSON.parse(File.read(file))
-#     moons.each do |moon|
-#       moon_var = class_type.new(moon)
-#       moon_var.save
-#     end
-#   else
-#     puts "No moons saved in json file"
-#   end
-#   ActiveRecord::Base.connection.reset_pk_sequence!(table_name)
-# # end
+puts "Importing existing moons from json file..."
+# def import_moons_from_json
+  file = "./db/export/moons.json"
+  table_name = file.split('/').last.split('.').first
+  class_type = table_name.classify.constantize
+  json_file_content = File.read(file)
+  if json_file_content != ''
+    moons = JSON.parse(File.read(file))
+    moons.each do |moon|
+      moon_var = class_type.new(moon)
+      moon_var.save
+    end
+  else
+    puts "No moons saved in json file"
+  end
+  ActiveRecord::Base.connection.reset_pk_sequence!(table_name)
+# end
 
 
 puts 'Finished!'

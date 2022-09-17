@@ -1,3 +1,14 @@
 .date-today {
   text-align: center;
+  line-height: 2.2;
+}
+
+.date-navigation {
+  display: flex;
+  align-content: space-between;
+  justify-content: space-evenly;
+  i {
+    font-size: 28px;
+    margin: 20px;
+  }
 }
