@@ -46,11 +46,6 @@ end
 # start_date = Date.new(2022, 7, 1)
 # end_date = Date.new(2022, 8, 31)
 
-
-
-
-
-
 # phases = ["New Moon", "Waxing Crescent Moon", "First Quarter Moon", "Waxing Gibbous Moon", "Full Moon", "Waning Gibbous Moon", "Third Quarter Moon", "Waning Crescent Moon"]
 
 # signs = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
