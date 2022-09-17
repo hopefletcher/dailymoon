@@ -6,37 +6,11 @@ class CalendarController < ApplicationController
   def day
     params[:date] = Date.today if params[:date].nil?
     fetch_moon_data_today if Moon.where(date: params[:date], location: current_user.location.delete(' ')) == []
-    # fetch_moon_data_today if !Moon.last || Moon.last.date != params[:date].to_date || Moon.last.location != current_user.location.delete(' ')
     @daily_horoscope = daily_horoscope
   end
 
-  # def api_call; end
-
   def month
-    if params[:start_date] == nil
-      start_date = Time.now.beginning_of_month.strftime("%Y-%m-%d")
-    else
-      start_date = params[:start_date]
-    end
-    # fetch_moon_data
-    #contains treated data from fetch_moon_data from May to end of December
-    file = "./db/export/moons_may_dec.json"
-    json_file_content = File.read(file)
-    if json_file_content != ''
-      moons = JSON.parse(File.read(file))
-       @current_month_moons = []
-      moons.each do |moon|
-        tmp_moon_month = moon["date"].split('-')[1]
-        if tmp_moon_month == start_date.split('-')[1]
-          # @current_month_moons.append([moon["moon_phase_name"],moon["moon_phase_img"]])
-          @current_month_moons.append(moon)
-        end
-      end
-      return @current_month_moons
-    else
-      puts "No moons saved in json file"
-    end
-    ActiveRecord::Base.connection.reset_pk_sequence!(table_name)
+    # read_json
   end
 
   private
@@ -61,11 +35,11 @@ class CalendarController < ApplicationController
   def fetch_moon_data_today
     # Moon.last ? start_date = (Moon.last.date) : start_date = "2022-09-14"
     if params[:date]
-      start_date = params[:date].to_date - 5
-      end_date = params[:date].to_date + 5
+      start_date = params[:date].to_date - 3
+      end_date = params[:date].to_date + 2
     else
-      start_date = Date.today - 5
-      end_date = Date.today + 5
+      start_date = Date.today - 3
+      end_date = Date.today + 2
     end
 
     url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/#{current_user.location.delete(' ')}/#{start_date}/#{end_date}?key=#{ENV["VISUALCROSSING_KEY"]}&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset"
@@ -123,6 +97,33 @@ class CalendarController < ApplicationController
   end
 end
 
+def read_json
+  if params[:start_date] == nil
+    start_date = Time.now.beginning_of_month.strftime("%Y-%m-%d")
+  else
+    start_date = params[:start_date]
+  end
+  # fetch_moon_data
+  #contains treated data from fetch_moon_data from May to end of December
+  file = "./db/export/moons_may_dec.json"
+  json_file_content = File.read(file)
+  if json_file_content != ''
+    moons = JSON.parse(File.read(file))
+    @current_month_moons = []
+    moons.each do |moon|
+      tmp_moon_month = moon["date"].split('-')[1]
+      if tmp_moon_month == start_date.split('-')[1]
+        # @current_month_moons.append([moon["moon_phase_name"],moon["moon_phase_img"]])
+        @current_month_moons.append(moon)
+      end
+    end
+    return @current_month_moons
+  else
+    puts "No moons saved in json file"
+  end
+  ActiveRecord::Base.connection.reset_pk_sequence!(table_name)
+end
+
 #Fetches data from the API and saves Moons in the DB
 # def fetch_moon_data
 
@@ -149,22 +150,22 @@ end
 
 # # Gets moonphase value from the API and returns and array with 2 postions(moonphase_name, moonphase_img) based on value
 
-def get_moon_phase_name(value)
-  if value == 0 || value == 1
-    return ["New Moon", "/assets/moon1new.png"]
-  elsif value < 0.25
-    return ["Waxing Crescent", "/assets/moon2waxingcrescent.png"]
-  elsif value == 0.25
-    return [ "First Quarter", "/assets/moon3firstquarter.png"]
-  elsif value < 0.5
-    return ["Waxing Gibbous", "/assets/moon4waxinggibbous.png"]
-  elsif value == 0.5
-    return ["Full Moon", "/assets/moon5full.png"]
-  elsif value < 0.75
-    return ["Waning Gibbous", "/assets/moon6waninggibbous.png"]
-  elsif value == 0.75
-    return ["Last Quarter", "/assets/moon7lastquarter.png"]
-  else value < 1
-    return ["Waning Crescent", "/assets/moon8waningcrescent.png"]
-  end
-end
+# def get_moon_phase_name(value)
+#   if value == 0 || value == 1
+#     return ["New Moon", "/assets/moon1new.png"]
+#   elsif value < 0.25
+#     return ["Waxing Crescent", "/assets/moon2waxingcrescent.png"]
+#   elsif value == 0.25
+#     return [ "First Quarter", "/assets/moon3firstquarter.png"]
+#   elsif value < 0.5
+#     return ["Waxing Gibbous", "/assets/moon4waxinggibbous.png"]
+#   elsif value == 0.5
+#     return ["Full Moon", "/assets/moon5full.png"]
+#   elsif value < 0.75
+#     return ["Waning Gibbous", "/assets/moon6waninggibbous.png"]
+#   elsif value == 0.75
+#     return ["Last Quarter", "/assets/moon7lastquarter.png"]
+#   else value < 1
+#     return ["Waning Crescent", "/assets/moon8waningcrescent.png"]
+#   end
+# end
