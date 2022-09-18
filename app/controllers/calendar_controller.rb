@@ -12,7 +12,7 @@ class CalendarController < ApplicationController
   def month
     params[:start_date] = params[:date] if params[:start_date].nil?
     params[:start_date] = Date.today if params[:date].nil?
-    fetch_moon_data_month if Moon.where(date: params[:start_date], location: current_user.location.delete(' ')) == []
+    fetch_moon_data_month if Moon.where(date: (params[:start_date].to_date.beginning_of_month..params[:start_date].to_date.end_of_month), location: current_user.location.delete(' ')).count < params[:start_date].to_date.end_of_month.day
     # read_json
   end
 
