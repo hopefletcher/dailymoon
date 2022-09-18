@@ -57,28 +57,28 @@ class CalendarController < ApplicationController
       define_moon_phase(md)
       md["moonrise"] == nil ? moonrise = "No moonrise" : moonrise = md["datetime"] + " " + md["moonrise"]
       md["moonset"] == nil ? moonset = "No moonset" : moonset = md["datetime"] + " " + md["moonset"]
-      Moon.create(phase: @moon_phase, moon_phase_name: @moon_phase_name, moon_phase_img: @moon_phase_img, date: md["datetime"], moonrise: moonrise, moonset: moonset, location: data["address"], display_location: data["resolvedAddress"], moon_sign: fetch_moon_sign(md["datetime"]))
+      Moon.create(phase: md["moonphase"], moon_phase_name: @moon_phase_name, moon_phase_img: @moon_phase_img, date: md["datetime"], moonrise: moonrise, moonset: moonset, location: data["address"], display_location: data["resolvedAddress"], moon_sign: fetch_moon_sign(md["datetime"]))
     end
   end
 
 
   def define_moon_phase(day_data)
-    @moon_phase = day_data["moonphase"]
-    if @moon_phase == 0 || @moon_phase == 1
+    moon_phase = day_data["moonphase"]
+    if moon_phase == 0 || moon_phase == 1
       @moon_phase_name = "New Moon"; @moon_phase_img = "moon1new.png"
-    elsif @moon_phase < 0.25
+    elsif moon_phase < 0.25
       @moon_phase_name = "Waxing Crescent"; @moon_phase_img = "moon2waxingcrescent.png"
-    elsif @moon_phase == 0.25
+    elsif moon_phase == 0.25
       @moon_phase_name = "First Quarter"; @moon_phase_img = "moon3firstquarter.png"
-    elsif @moon_phase < 0.5
+    elsif moon_phase < 0.5
       @moon_phase_name = "Waxing Gibbous"; @moon_phase_img = "moon4waxinggibbous.png"
-    elsif @moon_phase == 0.5
+    elsif moon_phase == 0.5
       @moon_phase_name = "Full Moon"; @moon_phase_img = "moon5full.png"
-    elsif @moon_phase < 0.75
+    elsif moon_phase < 0.75
       @moon_phase_name = "Waning Gibbous"; @moon_phase_img = "moon6waninggibbous.png"
-    elsif @moon_phase == 0.75
+    elsif moon_phase == 0.75
       @moon_phase_name = "Last Quarter"; @moon_phase_img = "moon7lastquarter.png"
-    else @moon_phase < 1
+    else moon_phase < 1
       @moon_phase_name = "Waning Crescent"; @moon_phase_img = "moon8waningcrescent.png"
     end
   end
