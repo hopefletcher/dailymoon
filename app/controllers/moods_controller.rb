@@ -1,25 +1,25 @@
 class MoodsController < ApplicationController
-  before_action :set_mood, only: %i[show edit]
+  before_action :set_mood, only: %i[show new edit]
 
   def show
     @date = Date.parse(date_params)
     if @mood.nil?
-      redirect_to new_mood_path
+      redirect_to new_mood_path(date: @date)
     else
       set_emoji
     end
   end
 
   def new
-    @mood = Mood.new
+    @date = Date.parse(params[:date])
+    @mood = Mood.new(date: @date)
   end
 
   def create
     @mood = Mood.new(mood_params)
-    @mood.save
-    @mood.date = Date.today
     @mood.user = current_user
-    if @mood.save
+    @mood.save!
+    if @mood.save!
       redirect_to mood_path(date: @mood.date)
     else
       render :new
