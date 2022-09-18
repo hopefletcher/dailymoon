@@ -1,9 +1,9 @@
 .info-card {
   background-size: cover;
   background-position: center;
-  background-color: $light-gray;
+  background-color: $card-background;
   padding: 16px 20px;
-  color: $moon-light-gray;
+  color: white;
   font-size: 14px;
   border-radius: 8px;
 }
@@ -15,4 +15,9 @@
 
 .a-card:focus {
   color: $moon-gray;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
 }
