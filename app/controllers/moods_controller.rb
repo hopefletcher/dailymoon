@@ -20,7 +20,7 @@ class MoodsController < ApplicationController
     @mood.date = Date.today
     @mood.user = current_user
     if @mood.save
-      redirect_to mood_path
+      redirect_to mood_path(date: @mood.date)
     else
       render :new
     end
