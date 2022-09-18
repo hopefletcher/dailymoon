@@ -10,7 +10,7 @@
       <% end %>
     <% end %>
   </div>
-  <%# Fetch daily horoscope %>
+  <!-- Fetch daily horoscope -->
   <div class="info-card my-3 mx-2"><%= @daily_horoscope %></div>
 </div>
 
@@ -36,28 +36,4 @@
 </div>
 
 <!-- Tabs -->
-<div class="container moon-nav">
-  <i class="fas fa-arrow-left"></i>
-  <i class="fas fa-circle"></i>
-  <% if Mood.where(date: params[:date], user_id: current_user.id) %>
-    <%= link_to mood_path(date: params[:date]) do %>
-      <i class="far fa-circle"></i>
-    <% end %>
-  <% elsif %>
-    <%= link_to new_mood_path(date: params[:date]) do %>
-      <i class="far fa-circle"></i>
-    <% end %>
-  <% end %>
-  <%= link_to events_path(date: params[:date]) do %>
-    <i class="far fa-circle"> </i>
-  <% end %>
-  <% if Mood.where(date: params[:date], user_id: current_user.id) %>
-    <%= link_to mood_path(date: params[:date]) do %>
-      <i class="fas fa-arrow-right"> </i>
-    <% end %>
-    <% elsif %>
-    <%= link_to new_mood_path(date: params[:date]) do %>
-      <i class="fas fa-arrow-right"> </i>
-    <% end %>
-  <% end %>
-</div>
+<%= render "tabs" %>

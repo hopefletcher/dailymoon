@@ -1,5 +1,4 @@
 <div class="container">
   <h1><%= Date.parse(params[:date]).strftime("%b %d") %></h1>
-
   <%= render "form", mood: @mood %>
 </div>
