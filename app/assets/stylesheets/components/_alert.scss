@@ -1,6 +1,18 @@
 .alert {
-  color: $moon-light-gray;
+  background-color: $moon-gray;
+  color: $moon-yellow;
+  border-color: $moon-yellow;
   border-radius: 8px !important;
+  padding: 5px 30px 5px 10px;
+  font-size: small;
   position: fixed;
+  top: 45px;
+  left: 30px;
   z-index: 1000;
+  .btn-close {
+    color: $moon-yellow;
+    font-weight: bold;
+    opacity: 0.8;
+    padding: 5px;
+  }
 }
