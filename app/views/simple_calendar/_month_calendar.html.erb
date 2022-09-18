@@ -31,15 +31,15 @@
                   <% passed_block.call day, sorted_events.fetch(day, []) %>
                 <% end %>
 
-                <%= day %>
-
-                <%# moon_day = Moon.where(date: day, location: current_user.location.delete(' ')).first %>
-                <%# <div class="image"> %>
-                <%# image_tag moon_day.moon_phase_img, width: "30px" %>
-                <%# </div> %>
-                <%# <div class="text"> %>
-                <p><%# moon_day.moon_phase_name %></p>
-                <%# </div> %>
+                <% moon_day = Moon.where(date: day, location: current_user.location.delete(' ')).first %>
+                <% if moon_day %>
+                  <div class="image">
+                    <%= image_tag "#{moon_day.moon_phase_img}", width: "30px" %>
+                  </div>
+                  <div class="text">
+                    <%= moon_day.moon_phase_name %>
+                  </div>
+                <% end %>
 
                 <%# <% @current_month_moons.each do |m| %>
                   <%# <% if m["date"] === day.to_s %>
