@@ -1,9 +1,12 @@
 class MoodsController < ApplicationController
+  before_action :set_mood, only: %i[show edit]
+
   def show
-    if set_mood
-      set_emoji
-    else
+    @date = Date.parse(date_params)
+    if @mood.nil?
       redirect_to new_mood_path
+    else
+      set_emoji
     end
   end
 
@@ -23,14 +26,13 @@ class MoodsController < ApplicationController
     end
   end
 
-  def edit
-    set_mood
-  end
+  def edit; end
 
   def update
-    set_mood
+    @mood = Mood.find(mood_params[:id])
     @mood.update(mood_params)
-    redirect_to mood_path
+    @mood.save!
+    redirect_to mood_path(date: @mood.date)
   end
 
   def set_emoji
@@ -52,10 +54,14 @@ class MoodsController < ApplicationController
   private
 
   def mood_params
-    params.require(:mood).permit(:rating, :journal_entry, :date)
+    params.require(:mood).permit(:rating, :journal_entry, :date, :id)
+  end
+
+  def date_params
+    params.require(:date)
   end
 
   def set_mood
-    @mood = current_user.moods.order("created_at").find { |mood| mood.date == Date.today }
+    @mood = current_user.moods.find_by(date: Date.parse(date_params))
   end
 end

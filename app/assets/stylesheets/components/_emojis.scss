@@ -1,0 +1,266 @@
+.emoji {
+  font-size: calc(100px + 4vw);
+  min-width: 1.4em;
+  margin: 0.3em 0.4em;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.emoji::after {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+.moon::after {
+  content: '🌕';
+  animation-name: moon;
+  animation-duration: 10s;
+}
+
+
+@keyframes moon {
+  12.5% {
+      content: '🌖';
+  }
+
+  25% {
+      content: '🌗';
+  }
+
+  37.5% {
+      content: '🌘 ';
+  }
+
+  50% {
+      content: '🌑';
+  }
+
+  62.5% {
+      content: '🌒';
+  }
+
+  75% {
+      content: '🌓';
+  }
+
+  87.5% {
+      content: '🌔';
+  }
+}
+
+// Sad emoji
+
+.sad {
+  font-size: calc(100px + 4vw);
+  min-width: 1.4em;
+  margin: 0.3em 0.4em;
+  text-align: center;
+}
+
+.sad::after {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+.sad::after {
+  content: '😔';
+  animation-name: sad;
+  animation-duration: 7s;
+}
+
+
+@keyframes sad {
+  25% {
+      content: '😥';
+  }
+
+
+  50% {
+      content: '😣';
+  }
+
+
+  75% {
+      content: '😞';
+  }
+}
+
+// Shit emoji
+
+.shit {
+  font-size: calc(100px + 4vw);
+  min-width: 1.4em;
+  margin: 0.3em 0.4em;
+  text-align: center;
+}
+
+.shit::after {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+.shit::after {
+  content: '😖';
+  animation-name: shit;
+  animation-duration: 7s;
+}
+
+
+@keyframes shit {
+  25% {
+      content: '😵‍💫';
+  }
+
+
+  50% {
+      content: '😵';
+  }
+
+
+  75% {
+      content: '💩';
+  }
+}
+
+
+// Angry emoji
+
+.angry {
+  font-size: calc(100px + 4vw);
+  min-width: 1.4em;
+  margin: 0.3em 0.4em;
+  text-align: center;
+}
+
+.angry::after {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+.angry::after {
+  content: '😠';
+  animation-name: angry;
+  animation-duration: 7s;
+}
+
+
+@keyframes angry {
+  25% {
+      content: '😤';
+  }
+
+
+  50% {
+      content: '😡';
+  }
+
+
+  75% {
+      content: '🤬';
+  }
+}
+
+// neutral emoji
+
+.neutral {
+  font-size: calc(100px + 4vw);
+  min-width: 1.4em;
+  margin: 0.3em 0.4em;
+  text-align: center;
+}
+
+.neutral::after {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+.neutral::after {
+  content: '😑';
+  animation-name: neutral;
+  animation-duration: 7s;
+}
+
+
+@keyframes neutral {
+  25% {
+      content: '😐';
+  }
+
+
+  50% {
+      content: '😒';
+  }
+}
+
+// good emoji
+
+.good {
+  font-size: calc(100px + 4vw);
+  min-width: 1.4em;
+  margin: 0.3em 0.4em;
+  text-align: center;
+}
+
+.good::after {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+.good::after {
+  content: '😊';
+  animation-name: good;
+  animation-duration: 7s;
+}
+
+
+@keyframes good {
+  25% {
+      content: '😋';
+  }
+
+
+  50% {
+      content: '🤗';
+  }
+}
+
+// happy emoji
+
+.happy {
+  font-size: calc(100px + 4vw);
+  min-width: 1.4em;
+  margin: 0.3em 0.4em;
+  text-align: center;
+}
+
+.happy::after {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+.happy::after {
+  content: '😄';
+  animation-name: happy;
+  animation-duration: 7s;
+}
+
+
+@keyframes happy {
+  25% {
+      content: '😀';
+  }
+
+
+  50% {
+      content: '😁';
+  }
+}
+
+// other css

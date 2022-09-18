@@ -1,36 +1,57 @@
 <div class="container">
-  <h1 class="date-today"><%= Time.now.strftime("%b %d, %H:%M") %></h1>
+  <h1 class="date-today"><%= @date.strftime("%b %d") %></h1>
 
   <div class="emoji">
-    <h3>Today you are feeling:</h3>
-    <%= @emoji %>
+    <div class="emoji_main_text"><h3>Today you are feeling:</h3></div>
+    <div class="emoji_img">
+         <% if @emoji == "😢" %>
+            <% sad_class = "sad"%>
+              <div class='<%= sad_class %>'></div>
+          <% elsif @emoji == "💩" %>
+            <% shit_class = "shit"%>
+              <div class='<%= shit_class %>'></div>
+          <% elsif @emoji == "😡" %>
+            <% angry_class = "angry"%>
+              <div class='<%= angry_class %>'></div>
+          <% elsif @emoji == "😐" %>
+            <% neutral_class = "neutral"%>
+              <div class='<%= neutral_class %>'></div>
+          <% elsif @emoji == "😊" %>
+            <% good_class = "good"%>
+              <div class='<%= good_class %>'></div>
+          <% else @emoji == "😀" %>
+            <% happy_class = "happy"%>
+              <div class='<%= happy_class %>'></div>
+         <% end %>
+    </div>
   </div>
 
   <div class="journal">
-    <h3>Your daily thoughts</h3>
+    <div class="journal_text"><h3>Your daily thoughts</h3></div>
     <p><em>A space for self reflection...</em></p>
     <div class="moon-data">
-      <div class="journal-entry">
+      <div class="info-card my-3 mx-2">
       <%= @mood.journal_entry %>
       </div>
     <div class="my-3">
-      <%= link_to "Edit Mood", edit_mood_path %>
+      <%= link_to "Edit Mood", edit_mood_path(date: params[:date]), class: "btn-gradient"  %>
     </div>
 
+    <!-- Tabs -->
     <div class="moon-nav">
-      <%= link_to day_path do %>
+      <%= link_to day_path(date: params[:date]) do %>
           <i class="fas fa-arrow-left"> </i>
-        <% end %>
-      <%= link_to day_path do %>
+      <% end %>
+      <%= link_to day_path(date: params[:date]) do %>
           <i class="far fa-circle"> </i>
-        <% end %>
+      <% end %>
       <i class="fas fa-circle"></i>
-        <%= link_to events_path do %>
-          <i class="far fa-circle"> </i>
-        <% end %>
-        <%= link_to events_path do %>
-          <i class="fas fa-arrow-right"> </i>
-        <% end %>
+      <%= link_to events_path(date: params[:date]) do %>
+        <i class="far fa-circle"> </i>
+      <% end %>
+      <%= link_to events_path(date: params[:date]) do %>
+        <i class="fas fa-arrow-right"> </i>
+      <% end %>
     </div>
   </div>
 </div>

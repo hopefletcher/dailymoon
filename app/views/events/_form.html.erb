@@ -2,8 +2,8 @@
   <div class="form-inputs">
     <%= simple_form_for @event do |p| %>
       <%= p.input :title %>
-      <%= p.input :start_time, as: :time, default: Time.now, :minute_step => 15 %>
-      <%= p.input :end_time, as: :time, default: (Time.now + 1), :minute_step => 15 %>
+      <%= p.input :start_time, as: :time, default: @event.start_time.utc, :minute_step => 15 %>
+      <%= p.input :end_time, as: :time, default: @event.start_time.utc + 60.minutes, :minute_step => 15 %>
       <%= p.input :description, as: :text, :input_html => { :rows => 3 } %>
       <%= p.input :location %>
       <%= p.button :submit, "Submit Event", class: "btn-gradient" %>

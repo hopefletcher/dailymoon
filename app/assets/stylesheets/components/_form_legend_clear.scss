@@ -16,7 +16,11 @@ legend ~ div.form-check:first-of-type {
 }
 
 .radio-buttons {
-  font-size: 32px;
+  font-size: 38px;
+}
+
+.form-check:hover {
+  transform: scale(1.2);
 }
 
 .mood-form {
@@ -32,8 +36,45 @@ legend ~ div.form-check:first-of-type {
   display: inline-block;
   justify-content: space-between;
   // padding: 10px;
+  padding-left: 0.08em;
 }
 
 label {
   opacity: 0.8;
+}
+
+.form-inputs {
+  text-align: center;
+}
+
+.optional {
+  background-size: cover !important;
+  background-position: center !important;
+  color: white !important;
+  border-radius: 8px;
+}
+
+.form-control.is-valid {
+  background-image: none;
+  border-color: #727272;
+  padding: 8px 3px 60px 20px;
+}
+
+.pt-0 {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin-top: 40px;
+  color: #845EF1;
+}
+
+.emoji_main_text h3 {
+  font-size: xxx-large;
+}
+
+.journal_text h3 {
+  color: $moon-purple;
+}
+
+.change-text {
+  font-size: x-large;
 }

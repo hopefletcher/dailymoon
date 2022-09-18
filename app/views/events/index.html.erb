@@ -1,7 +1,8 @@
 <div class="cards">
+  <h1><%= @date.strftime("%b %d") %></h1>
   <% @events.each do |event| %>
     <%= link_to edit_event_path(event), class: "a-card" do %>
-      <div class="info-card my-3">
+      <div class="info-card my-3 mx-2">
         <%= event.start_time.strftime("%H:%M") %> - <%= event.end_time.strftime("%H:%M") %>
         <h3><%= event.title %></h3>
         <p><%= event.description %></p>
@@ -13,34 +14,35 @@
       </div>
     <% end %>
   <% end %>
-  <div class="my-3">
-    <%= link_to "Add Event", new_event_path, class: "btn-gradient" %>
+  <div class="btn-wrapper">
+    <div class="my-3">
+    <%= link_to "Add Event", new_event_path(date: params[:date]), class: "btn-gradient" %>
   </div>
 
+  <!-- Tabs -->
   <div class="moon-nav">
     <% if Mood.where(date: Date.today, user_id: current_user.id) %>
-        <%= link_to mood_path do %>
-          <i class="fas fa-arrow-left"> </i>
-        <% end %>
-      <% elsif %>
-        <%= link_to new_mood_path do %>
-          <i class="fas fa-arrow-left"> </i>
-        <% end %>
+      <%= link_to mood_path(date: params[:date]) do %>
+        <i class="fas fa-arrow-left"> </i>
+      <% end %>
+    <% elsif %>
+      <%= link_to new_mood_path(date: params[:date]) do %>
+        <i class="fas fa-arrow-left"> </i>
+      <% end %>
     <% end %>
 
-    <%= link_to day_path do %>
-          <i class="far fa-circle"></i>
-        <% end %>
+    <%= link_to day_path(date: params[:date]) do %>
+      <i class="far fa-circle"></i>
+    <% end %>
 
- <%# mood link logic %>
     <% if Mood.where(date: Date.today, user_id: current_user.id) %>
-        <%= link_to mood_path do %>
-          <i class="far fa-circle"></i>
-        <% end %>
-      <% elsif %>
-        <%= link_to new_mood_path do %>
-          <i class="far fa-circle"></i>
-        <% end %>
+      <%= link_to mood_path(date: params[:date]) do %>
+        <i class="far fa-circle"></i>
+      <% end %>
+    <% elsif %>
+      <%= link_to new_mood_path(date: params[:date]) do %>
+        <i class="far fa-circle"></i>
+      <% end %>
     <% end %>
 
     <i class="fas fa-circle"></i>
