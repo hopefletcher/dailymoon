@@ -1,5 +1,15 @@
 <div class="container">
-  <h1 class="date-today"><%= @date.strftime("%b %d") %></h1>
+  <div class="date-navigation">
+    <% if params[:date] %>
+      <%= link_to mood_path(date: (params[:date].to_date - 1)) do %>
+        <i class="fas fa-arrow-left"> </i>
+      <% end %>
+      <h1 class="date-today"><%= params[:date].to_date.strftime("%b %d") %>, <%= Time.now.strftime("%H:%M") %></h1>
+      <%= link_to mood_path(date: (params[:date].to_date + 1)) do %>
+        <i class="fas fa-arrow-right"> </i>
+      <% end %>
+    <% end %>
+  </div>
 
   <div class="emoji">
     <div class="emoji_main_text"><h3>Today you are feeling:</h3></div>
