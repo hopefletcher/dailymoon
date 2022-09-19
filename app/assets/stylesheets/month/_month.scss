@@ -1,3 +1,7 @@
+.calendar-title {
+  font-size: 26px !important;
+}
+
 .simple-calendar table {
   color: white;
   background-color: $moon-light-gray;
@@ -7,7 +11,7 @@
 
 .simple-calendar thead {
   opacity: 0.8;
-  font-size: 23px;
+  font-size: 18px;
   border: 0 !important;
   text-align: center !important;
 }
@@ -45,18 +49,21 @@
 .simple-calendar .today {
   background: $moon-gradient !important;
   border-radius: 18px;
+  .text {
+    color: $moon-light-gray;
+  }
 }
 
 .image {
   margin-bottom: 3px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .text {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-size: smaller;
-  color: #5b4242;
-  font-weight: 700;
+  color: $moon-super-light-gray;
+  font-weight: 500;
 }
 
 .simple-calendar th {
