@@ -20,6 +20,9 @@ body.light {
   .info-card {
     background-color: $gray;
     color: $moon-gray;
+    p {
+      color: $moon-gray;
+    }
   }
   .fas {
     color: $moon-purple;

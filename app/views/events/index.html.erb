@@ -1,24 +1,26 @@
-<div class="cards">
-  <h1><%= @date.strftime("%b %d") %></h1>
-  <% @events.each do |event| %>
-    <%= link_to edit_event_path(event), class: "a-card" do %>
-      <div class="info-card my-3 mx-2">
-        <%= event.start_time.strftime("%H:%M") %> - <%= event.end_time.strftime("%H:%M") %>
-        <h3><%= event.title %></h3>
-        <p><%= event.description %></p>
-        <%= link_to "Remove Event",
-                          event_path(event),
-                          method: :delete,
-                          data: { confirm: "Are you sure you want to delete this event?"},
-                          style: "color: #211E1E" %>
-      </div>
+<div class="container page">
+  <div class="cards">
+    <h1><%= @date.strftime("%b %d") %></h1>
+    <% @events.each do |event| %>
+      <%= link_to edit_event_path(event), class: "a-card" do %>
+        <div class="info-card my-3 mx-2">
+          <%= event.start_time.strftime("%H:%M") %> - <%= event.end_time.strftime("%H:%M") %>
+          <h3><%= event.title %></h3>
+          <p><%= event.description %></p>
+          <%= link_to "Remove Event",
+                            event_path(event),
+                            method: :delete,
+                            data: { confirm: "Are you sure you want to delete this event?"},
+                            style: "color: #211E1E" %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-  <div class="btn-wrapper">
-    <div class="my-3">
-    <%= link_to "Add Event", new_event_path(date: params[:date]), class: "btn-gradient" %>
+    <div class="btn-wrapper">
+      <div class="my-3">
+      <%= link_to "Add Event", new_event_path(date: params[:date]), class: "btn-gradient" %>
+    </div>
   </div>
-</div>
 
-<!-- Tabs -->
-<%= render "tabs" %>
+  <!-- Tabs -->
+  <%= render "tabs" %>
+</div>

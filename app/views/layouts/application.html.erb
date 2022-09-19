@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body class="<%= cookies[:theme] %>">
+  <body class="<%= cookies[:theme] %> container page">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <p class="notice"><% notice %></p>
