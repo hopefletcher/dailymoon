@@ -1,0 +1,28 @@
+<div class="container moon-nav">
+  <% if Mood.where(date: Date.today, user_id: current_user.id) %>
+    <%= link_to mood_path(date: params[:date]) do %>
+      <i class="fas fa-arrow-left"> </i>
+    <% end %>
+  <% elsif %>
+    <%= link_to new_mood_path(date: params[:date]) do %>
+      <i class="fas fa-arrow-left"> </i>
+    <% end %>
+  <% end %>
+
+  <%= link_to day_path(date: params[:date]) do %>
+    <i class="far fa-circle"></i>
+  <% end %>
+
+  <% if Mood.where(date: Date.today, user_id: current_user.id) %>
+    <%= link_to mood_path(date: params[:date]) do %>
+      <i class="far fa-circle"></i>
+    <% end %>
+  <% elsif %>
+    <%= link_to new_mood_path(date: params[:date]) do %>
+      <i class="far fa-circle"></i>
+    <% end %>
+  <% end %>
+
+  <i class="fas fa-circle"></i>
+  <i class="fas fa-arrow-right"> </i>
+</div>

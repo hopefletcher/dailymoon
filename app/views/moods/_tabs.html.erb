@@ -1,0 +1,15 @@
+<div class="container moon-nav">
+  <%= link_to day_path(date: params[:date]) do %>
+      <i class="fas fa-arrow-left"> </i>
+  <% end %>
+  <%= link_to day_path(date: params[:date]) do %>
+      <i class="far fa-circle"> </i>
+  <% end %>
+  <i class="fas fa-circle"></i>
+  <%= link_to events_path(date: params[:date]) do %>
+    <i class="far fa-circle"> </i>
+  <% end %>
+  <%= link_to events_path(date: params[:date]) do %>
+    <i class="fas fa-arrow-right"> </i>
+  <% end %>
+</div>

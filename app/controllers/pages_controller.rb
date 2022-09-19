@@ -23,7 +23,7 @@ class PagesController < ApplicationController
       mood.date
     end
     good_moons = good_dates.map do |good_date|
-      Moon.where(date: good_date, location: current_user.location.delete(' ')).first.moon_phase_name
+      Moon.where(date: good_dates, location: current_user.location.delete(' ')).first.moon_phase_name
     end
     @best_phase = good_moons.tally.sort_by { |k, v| v }.reverse[0][0]
   end
@@ -34,7 +34,7 @@ class PagesController < ApplicationController
       mood.date
     end
     poop_moons = poop_dates.map do |poop_date|
-      Moon.where(date: poop_date, location: current_user.location.delete(' ')).first.moon_phase_name
+      Moon.where(date: poop_dates, location: current_user.location.delete(' ')).first.moon_phase_name
     end
     @poop_phase = poop_moons.tally.sort_by { |k, v| v }.reverse[0][0]
   end
@@ -45,7 +45,7 @@ class PagesController < ApplicationController
       mood.date
     end
     mad_moons = mad_dates.map do |mad_date|
-      Moon.where(date: mad_date, location: current_user.location.delete(' ')).first.moon_phase_name
+      Moon.where(date: mad_dates, location: current_user.location.delete(' ')).first.moon_phase_name
     end
     @mad_phase = mad_moons.tally.sort_by { |k, v| v }.reverse[0][0]
   end
@@ -56,7 +56,7 @@ class PagesController < ApplicationController
       mood.date
     end
     good_moonsigns = good_dates.map do |good_date|
-      Moon.where(date: good_date, location: current_user.location.delete(' ')).first.moon_sign
+      Moon.where(date: good_dates, location: current_user.location.delete(' ')).first.moon_sign
     end
     @best_sign = good_moonsigns.tally.sort_by { |k, v| v }.reverse[0][0]
   end
@@ -98,7 +98,7 @@ class PagesController < ApplicationController
       mood.date
     end
     good_moons = good_dates.map do |good_date|
-      Moon.where(date: good_date, location: current_user.location.delete(' ')).first.moon_phase_img
+      Moon.where(date: good_dates, location: current_user.location.delete(' ')).first.moon_phase_img
     end
     @best_phase_img = good_moons.tally.sort_by { |k, v| v }.reverse[0][0]
   end
@@ -109,7 +109,7 @@ class PagesController < ApplicationController
       mood.date
     end
     poop_moons = poop_dates.map do |poop_date|
-      Moon.where(date: poop_date, location: current_user.location.delete(' ')).first.moon_phase_img
+      Moon.where(date: poop_dates, location: current_user.location.delete(' ')).first.moon_phase_img
     end
     @poop_phase_img = poop_moons.tally.sort_by { |k, v| v }.reverse[0][0]
   end
@@ -120,7 +120,7 @@ class PagesController < ApplicationController
       mood.date
     end
     mad_moons = mad_dates.map do |mad_date|
-      Moon.where(date: mad_date, location: current_user.location.delete(' ')).first.moon_phase_img
+      Moon.where(date: mad_dates, location: current_user.location.delete(' ')).first.moon_phase_img
     end
     @mad_phase_img = mad_moons.tally.sort_by { |k, v| v }.reverse[0][0]
   end
