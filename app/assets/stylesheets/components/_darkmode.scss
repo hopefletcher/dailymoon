@@ -1,16 +1,15 @@
 body.light {
   color: $moon-gray;
-  background-color: white;
+  background-color: $light-gray;
 
   #darkmode_on {
     color: white;
     background-color: $moon-gray;
     border-radius: 8px 0 0 8px;
-    margin: -5px;
+    margin: 0 -5px 0 15px;
     line-height: normal;
     letter-spacing: 1px;
   }
-
   #darkmode_off {
     color: $moon-super-light-gray;
     border-color: $moon-super-light-gray;
@@ -18,7 +17,35 @@ body.light {
     line-height: normal;
     letter-spacing: -1px;
   }
+  .info-card {
+    background-color: $gray;
+    color: $moon-gray;
+  }
+  .fas {
+    color: $moon-purple;
+  }
+  .moon-nav i {
+    color: $moon-gray;
+  }
+  th {
+    color: $moon-light-gray;
+  }
+  td a {
+    color: $moon-purple;
+    font-weight: bold;
+  }
+  .simple-calendar .today {
+    background: $moon-super-light-gray !important;
+    border-radius: 18px;
+  }
+  .simple-calendar a {
+    color: $moon-gray;
+  }
+  .text {
+    color: $moon-gray;
+  }
 }
+
 body.dark {
   color: white;
   background-color: $moon-gray;
@@ -32,7 +59,7 @@ body.dark {
     background-color: $moon-gray;
     border-color: $moon-yellow;
     border-radius: 8px 0 0 8px;
-    margin: -5px;
+    margin: 0 -5px 0 15px;
     line-height: normal;
     letter-spacing: 1px;
   }

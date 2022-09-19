@@ -34,10 +34,14 @@
                 <% moon_day = Moon.where(date: day, location: current_user.location.delete(' ')).first %>
                 <% if moon_day %>
                   <div class="image">
-                    <%= image_tag "#{moon_day.moon_phase_img}", width: "30px" %>
+                    <%= image_tag "#{moon_day.moon_phase_img}", width: "25px" %>
                   </div>
                   <div class="text">
-                    <%= moon_day.moon_phase_name %>
+                  <% if moon_day.phase.to_f <= 0.5 %>
+                    <%= (moon_day.phase.to_f * 200).round(0) %>%
+                  <% else %>
+                    <%= (((moon_day.phase.to_f - 1) * 200) * (- 1)).round(0) %>%
+                  <% end %>
                   </div>
                 <% end %>
 
