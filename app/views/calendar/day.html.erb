@@ -32,9 +32,13 @@
     <% end %>
     <div class="Title"> <h4>Moonphase:</h4> <p><%= moon_today.phase %> - <%= moon_today.moon_phase_name %></p></div>
     <div class="Title"> <h4>Vedic Moon Sign:</h4> <p><%= moon_today.moon_sign %></p></div>
-
   </div>
 
   <!-- Tabs -->
   <%= render "tabs" %>
+   <div class="container navigation my-3">
+        <%= link_to "Day", day_path(:date => Date.today), class:"btn btn-dark day-page-btn" %>
+        <%= link_to "Month", month_path(:date => params[:date]), class:"btn btn-dark day-page-month-btn " %>
+        <%= link_to "Stats", stats_path, class:"btn btn-dark day-page-stats-btn" %>
+      </div>
 </div>

@@ -63,3 +63,8 @@
     </tbody>
   </table>
 </div>
+ <div class="container navigation my-3">
+    <%= link_to "Day", day_path(:date => Date.today), class:"btn btn-dark month-page-day-btn" %>
+    <%= link_to "Month", month_path(:date => params[:date]), class:"btn btn-dark month-page-month-btn " %>
+    <%= link_to "Stats", stats_path, class:"btn btn-dark month-page-stats-btn" %>
+</div>
