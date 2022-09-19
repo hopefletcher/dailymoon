@@ -31,6 +31,17 @@
                   <% passed_block.call day, sorted_events.fetch(day, []) %>
                 <% end %>
 
+                <% event_day = Event.where(date: day) %>
+                <% if event_day != [] %>
+                  ▪
+                  <%# <i class="fa-regular fa-calendar"></i> %>
+                <% end %>
+
+                <% if current_user.birthday.month == day.month && current_user.birthday.day == day.day %>
+                  🎁
+                <% end %>
+                <%# 📆🗓📅▫🎈 %>
+
                 <% moon_day = Moon.where(date: day, location: current_user.location.delete(' ')).first %>
                 <% if moon_day %>
                   <div class="image">
@@ -40,7 +51,7 @@
                   <% if moon_day.phase.to_f <= 0.5 %>
                     <%= (moon_day.phase.to_f * 200).round(0) %>%
                   <% else %>
-                    <%= (((moon_day.phase.to_f - 1) * 200) * (- 1)).round(0) %>%
+                    <%= (((moon_day.phase.to_f - 1) * (- 200))).round(0) %>%
                   <% end %>
                   </div>
                 <% end %>
