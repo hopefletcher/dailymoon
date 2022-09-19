@@ -18,21 +18,20 @@
   <div class="container moon-data">
     <% moon_today = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first %>
     <%= image_tag moon_today.moon_phase_img, class: "moon-image", width: "100px" %>
-    <br><br>
-    <p>Location: <strong><%= moon_today.display_location %></strong></p>
+    <br>
+    <div class="Title"> <h4>Location:</h4> <p><%= moon_today.display_location %></p></div>
     <% if moon_today.moonrise %>
-      <p>Moonrise: <%= moon_today.moonrise.strftime("%H:%M %Z") %></p>
+      <div class="Title"> <h4>Moonrise:</h4> <p><%= moon_today.moonrise.strftime("%H:%M %Z") %></p></div>
     <% else %>
-      <p>Moonrise: No moonrise today</p>
+      <div class="Title"> <h4>Moonrise:</h4> <p>No moonrise today</p></div>
     <% end %>
       <% if moon_today.moonset %>
-      <p>Moonset: <%= moon_today.moonset.strftime("%H:%M %Z")%></p>
+      <div class="Title"> <h4>Moonset:</h4> <p><%= moon_today.moonset.strftime("%H:%M %Z")%></p></div>
     <% else %>
-      <p>Moonset: No moonset today</p>
+      <div class="Title"> <h4>Moonset:</h4> <p>No moonset today</p></div>
     <% end %>
-
-    <p>Moonphase: <%= moon_today.phase %> - <%= moon_today.moon_phase_name %></p>
-    <p>Vedic Moon Sign: <%= moon_today.moon_sign %></p>
+    <div class="Title"> <h4>Moonphase:</h4> <p><%= moon_today.phase %> - <%= moon_today.moon_phase_name %></p></div>
+    <div class="Title"> <h4>Vedic Moon Sign:</h4> <p><%= moon_today.moon_sign %></p></div>
 
   </div>
 
