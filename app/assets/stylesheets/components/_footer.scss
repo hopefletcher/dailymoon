@@ -3,3 +3,13 @@
   position: relative;
   bottom: 0px;
 }
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 2px;
+  padding: 0;
+  .btn {
+    flex-grow: 1;
+  }
+}
