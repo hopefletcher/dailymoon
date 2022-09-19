@@ -21,20 +21,20 @@
 @media (max-width: 960px) {
   /* For a screen < 960px, this CSS will be read */
   .container.page {
-    width: 65%;
+    width: 75%;
   }
   .footer {
-    width: 65%;
+    width: 75%;
   }
 }
 
 @media (max-width: 720px) {
   /* For a screen < 720px, this CSS will be read */
   .container.page {
-    width: 85%;
+    width: 90%;
   }
   .footer {
-    width: 85%;
+    width: 90%;
   }
 }
 

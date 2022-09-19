@@ -19,9 +19,21 @@ body.light {
   }
   .info-card {
     background-color: $gray;
+    h3, p {
     color: $moon-gray;
-    p {
+    }
+    a {
+      color: $moon-purple;
+      text-decoration: none;
+      &:hover {
+        color: $moon-super-light-gray;
+      }
+    }
+    .a-card {
       color: $moon-gray;
+      &:hover {
+        color: $moon-super-light-gray;
+      }
     }
   }
   .fas {
@@ -74,5 +86,22 @@ body.dark {
     border-radius: 0 8px 8px 0;
     line-height: normal;
     letter-spacing: -1px;
+  }
+
+  .info-card {
+    background-color: $moon-light-gray;
+    a {
+      color: $moon-yellow;
+      text-decoration: none;
+      &:hover {
+        color: $moon-super-light-gray;
+      }
+    }
+    .a-card {
+      color: white;
+      &:hover {
+        color: $moon-super-light-gray;
+      }
+    }
   }
 }
