@@ -1,16 +1,18 @@
 <div class="container page">
   <div class="container">
     <div class="date-navigation">
-      <% if params[:date] %>
-        <%= link_to day_path(date: (params[:date].to_date - 1)) do %>
-          <i class="fas fa-arrow-left"> </i>
+        <% if params[:date] %>
+          <%= link_to day_path(date: (params[:date].to_date - 1)) do %>
+            <i class="fas fa-arrow-left"> </i>
+          <% end %>
+          <h1 class="date-today"><%= params[:date].to_date.strftime("%b %d") %>, <%= Time.now.strftime("%H:%M") %></h1>
+          <%= link_to day_path(date: (params[:date].to_date + 1)) do %>
+            <i class="fas fa-arrow-right"> </i>
+          <% end %>
         <% end %>
-        <h1 class="date-today"><%= params[:date].to_date.strftime("%b %d") %>, <%= Time.now.strftime("%H:%M") %></h1>
-        <%= link_to day_path(date: (params[:date].to_date + 1)) do %>
-          <i class="fas fa-arrow-right"> </i>
-        <% end %>
-      <% end %>
-    </div>
+         </div>
+        <% moon_today = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first %>
+      <div class="Title-location"> <p><%= moon_today.display_location %></p></div>
     <!-- Fetch daily horoscope -->
     <div class="info-card my-3 mx-2"><%= @daily_horoscope %></div>
   </div>
@@ -18,20 +20,18 @@
   <div class="container moon-data">
     <% moon_today = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first %>
     <%= image_tag moon_today.moon_phase_img, class: "moon-image", width: "100px" %>
-    <br>
-    <div class="Title"> <h4>Location:</h4> <p><%= moon_today.display_location %></p></div>
     <% if moon_today.moonrise %>
-      <div class="Title"> <h4>Moonrise:</h4> <p><%= moon_today.moonrise.strftime("%H:%M %Z") %></p></div>
+      <div class="Title-moonrise"> <h4>Moonrise</h4> <p><%= moon_today.moonrise.strftime("%H:%M %Z") %></p></div>
     <% else %>
-      <div class="Title"> <h4>Moonrise:</h4> <p>No moonrise today</p></div>
+      <div class="Title-moonrise"> <h4>Moonrise</h4> <p>No moonrise today</p></div>
     <% end %>
       <% if moon_today.moonset %>
-      <div class="Title"> <h4>Moonset:</h4> <p><%= moon_today.moonset.strftime("%H:%M %Z")%></p></div>
+      <div class="Title-moonset"> <h4>Moonset</h4> <p><%= moon_today.moonset.strftime("%H:%M %Z")%></p></div>
     <% else %>
-      <div class="Title"> <h4>Moonset:</h4> <p>No moonset today</p></div>
+      <div class="Title-moonset"> <h4>Moonset</h4> <p>No moonset today</p></div>
     <% end %>
-    <div class="Title"> <h4>Moonphase:</h4> <p><%= moon_today.phase %> - <%= moon_today.moon_phase_name %></p></div>
-    <div class="Title"> <h4>Vedic Moon Sign:</h4> <p><%= moon_today.moon_sign %></p></div>
+    <div class="Title-moonphase"> <h4>Moonphase</h4><p> <%= moon_today.moon_phase_name %></p></div>
+      <div class="Title-moon-sign"> <h4>Moon Sign</h4> <p><%= moon_today.moon_sign %></p><%= @moon_zodiac %></p></div>
   </div>
 
   <!-- Tabs -->

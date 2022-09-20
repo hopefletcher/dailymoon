@@ -7,6 +7,9 @@ class CalendarController < ApplicationController
     params[:date] = Date.today if params[:date].nil?
     fetch_moon_data_today if Moon.where(date: params[:date], location: current_user.location.delete(' ')) == []
     @daily_horoscope = daily_horoscope
+    moon_today  = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first
+    moon_today.moon_sign = @best_sign
+    moon_zodiac
   end
 
   def month
@@ -99,6 +102,37 @@ class CalendarController < ApplicationController
       :basic_auth => {:username => "#{ENV["ASTRO_API_USERNAME"]}", :password => "#{ENV["ASTRO_API_KEY"]}"} )
       moon = @result.find { |result| result["name"] == "Moon"}
       @moon_sign = moon["sign"]
+  end
+end
+
+def moon_zodiac
+  case @best_sign
+  when "Aries"
+    @moon_zodiac = "♈️"
+  when "Taurus"
+    @moon_zodiac = "♉️"
+  when "Gemini"
+    @moon_zodiac = "♊️"
+  when "Cancer"
+    @moon_zodiac = "♋️"
+  when "Leo"
+    @moon_zodiac = "♌️"
+  when "Virgo"
+    @moon_zodiac = "♍️"
+  when "Libra"
+    @moon_zodiac = "♎️"
+  when "Scorpio"
+    @moon_zodiac = "♏️"
+  when "Sagittarius"
+    @moon_zodiac = "♐️"
+  when "Capricorn"
+    @moon_zodiac = "♑️"
+  when "Aquarius"
+    @moon_zodiac = "♒️"
+  when "Pisces"
+    @moon_zodiac = "♓️"
+  else
+    @moon_zodiac = "🐓"
   end
 end
 
