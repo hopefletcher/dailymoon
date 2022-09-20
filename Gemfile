@@ -37,7 +37,7 @@ gem 'devise'
 gem 'rails_admin', '~> 2.0'
 # Geocoder
 gem 'geocoder'
-# Cloudinary
+# Cloudinary - Run 'rake cloudinary:sync_static' if you added new imgs
 gem 'cloudinary', '~> 1.16.0'
 
 gem 'rails_12factor', group: :production
