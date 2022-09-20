@@ -10,9 +10,9 @@
 
 // Your CSS partials
 @import "components/index";
+@import "components/month";
 @import "pages/index";
-@import "month/month";
 @import "simple_calendar";
 
-// leave at the end
+// Darkmod toggle
 @import "components/darkmode";
