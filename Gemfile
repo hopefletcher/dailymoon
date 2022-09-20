@@ -37,6 +37,9 @@ gem 'devise'
 gem 'rails_admin', '~> 2.0'
 # Geocoder
 gem 'geocoder'
+# Cloudinary
+gem 'cloudinary', '~> 1.16.0'
+
 gem 'rails_12factor', group: :production
 gem "simple_calendar", "~> 2.4"
 gem 'sprockets', '< 4.0.0'

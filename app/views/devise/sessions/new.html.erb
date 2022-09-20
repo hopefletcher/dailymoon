@@ -1,34 +1,31 @@
-<%# image_tag "/../../../assets/moon1new.png", width: "30px" %>
-<%# image_tag asset_path("moon1new.png"), width: "50px" %>
-
 <div class="container-log_in page">
-<span class="emoji moon" role="img" aria-label="moon phases" width="160px"></span>
+  <span class="emoji moon" role="img" aria-label="moon phases" width="160px"></span>
 
-<h2>Daily Moon</h2>
-<img src="/assets/moon2waxingcrescent.png" alt="Waxing Crescent" width="24px">
-<img src="/assets/moon3firstquarter.png" alt="First Quarter" width="24px">
-<img src="/assets/moon4waxinggibbous.png" alt="Waxing Gibbous" width="24px">
-<img src="/assets/moon5full.png" alt="Full Moon" width="24px">
-<img src="/assets/moon6waninggibbous.png" alt="Waning Gibbous" width="24px">
-<img src="/assets/moon7lastquarter.png" alt="Last Quarter" width="24px">
-<img src="/assets/moon8waningcrescent.png" alt="Waning Crescent" width="24px">
+  <h2>Daily Moon</h2>
+  <%= image_tag "moon2waxingcrescent.png", alt: "Waxing Crescent", style: "width: 24px;" %>
+  <%= image_tag "moon3firstquarter.png", alt: "First Quarter", style: "width: 24px;" %>
+  <%= image_tag "moon4waxinggibbous.png", alt: "Waxing Gibbous", style: "width: 24px;" %>
+  <%= image_tag "moon5full.png", alt: "Full Moon", style: "width: 24px;" %>
+  <%= image_tag "moon6waninggibbous.png", alt: "Waning Gibbous", style: "width: 24px;" %>
+  <%= image_tag "moon7lastquarter.png", alt: "Last Quarter", style: "width: 24px;" %>
+  <%= image_tag "moon8waningcrescent.png", alt: "Waning Crescent", style: "width: 24px;" %>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in", class: "btn-gradient" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, "Log in", class: "btn-gradient" %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
 </div>
