@@ -1,15 +1,15 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
     <div class="previous">
-      <%= link_to t('simple_calendar.previous', default: ''), calendar.url_for_previous_view %>
-      <i class="fas fa-arrow-left"></i>
+      <%= link_to t('simple_calendar.previous', default: '<'), calendar.url_for_previous_view %>
+      <%# <i class="fas fa-arrow-leTOft"></i> %>
     </div>
     <div class="date">
       <span class="calendar-title" style="font-size: 40px"><%= I18n.t("date.abbr_month_names")[start_date.month] %> <%= start_date.year %>
     </div>
     <div class="next">
-    <%= link_to t('simple_calendar.next', default: ''), calendar.url_for_next_view %>
-    <i class="fas fa-arrow-right"></i>
+      <%= link_to t('simple_calendar.next', default: '>'), calendar.url_for_next_view %>
+    <%# <i class="fas fa-arrow-right"></i> %>
     </div>
   </div>
 
@@ -21,28 +21,25 @@
         <% end %>
       </tr>
     </thead>
+
     <tbody>
- <% date_range.each_slice(7) do |week| %>
+      <% date_range.each_slice(7) do |week| %>
         <tr>
           <% week.each_with_index do |day, index| %>
-              <span class="days"><%= content_tag :td, class: calendar.td_classes_for(day) do %>
-               <%= link_to day_path(date: day) do %>
+            <span class="days"><%= content_tag :td, class: calendar.td_classes_for(day) do %>
+              <%= link_to day_path(date: day) do %>
                 <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
                   <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
                 <% else %>
                   <% passed_block.call day, sorted_events.fetch(day, []) %>
                 <% end %>
 
-                <% event_day = Event.where(date: day) %>
-                <% if event_day != [] %>
-                  ▪
-                  <%# <i class="fa-regular fa-calendar"></i> %>
-                <% end %>
-
-                <% if current_user.birthday.month == day.month && current_user.birthday.day == day.day %>
-                  🎁
-                <% end %>
-                <%# 📆🗓📅▫🎈 %>
+                <div class="event-label">
+                  <% event_day = Event.where(date: day) %>
+                  <% if event_day != [] %>__
+                    <%# <i class="fa-regular fa-calendar"></i> %>
+                  <% end %>
+                </div>
 
                 <% moon_day = Moon.where(date: day, location: current_user.location.delete(' ')).first %>
                 <% if moon_day %>
@@ -50,29 +47,28 @@
                     <%= image_tag "#{moon_day.moon_phase_img}", width: "25px" %>
                   </div>
                   <div class="text">
-                  <% if moon_day.phase.to_f <= 0.5 %>
-                    <%= (moon_day.phase.to_f * 200).round(0) %>%
-                  <% else %>
-                    <%= (((moon_day.phase.to_f - 1) * (- 200))).round(0) %>%
-                  <% end %>
+                    <% if moon_day.phase.to_f <= 0.5 %>
+                      <%= (moon_day.phase.to_f * 200).round(0) %>%
+                    <% else %>
+                      <%= (((moon_day.phase.to_f - 1) * (- 200))).round(0) %>%
+                    <% end %>
                   </div>
                 <% end %>
-
                 <%# <% @current_month_moons.each do |m| %>
                   <%# <% if m["date"] === day.to_s %>
-                    <%# <div class="image"><img src="<%= m["moon_phase_img"] %>
-                    <%# " width="30px"></div> %>
+                    <%# <div class="image"><img src="<%= m["moon_phase_img"], width="30px">
+                    <%# </div> %>
                     <%# <div class="text"><%= m["moon_phase_name"] %>
                     <%# </div> %>
                   <%# <% end %>
                 <%# <% end %>
-
-              </span>
+              <% end %>
             <% end %>
-          <% end %>
+            </span>
           <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
+
 </div>

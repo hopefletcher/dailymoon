@@ -1,5 +1,10 @@
 <div class="container page">
   <%= month_calendar do |date| %>
-    <%= date.day %>
+    <% if current_user.birthday.month == date.month && current_user.birthday.day == date.day %>
+      <%= "🎁" %>
+      <%# 📆🗓📅▫🎈 %>
+    <% else %>
+      <%= date.day %>
+    <% end %>
   <% end %>
 </div>
