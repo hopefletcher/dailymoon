@@ -12,7 +12,23 @@
       <% end %>
     </div>
     <!-- Fetch daily horoscope -->
-    <div class="info-card my-3 mx-2"><%= @daily_horoscope %></div>
+    <div class="info-card my-3 mx-2">
+    <% moon_today = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first %>
+    <% if moon_today.date.to_date == Date.today %>
+      <p><strong>Today's Horoscope:</strong></p>
+      <%= @daily_horoscope %></p>
+    <% elsif moon_today.date.to_date == Date.today - 1.day %>
+      <p><strong>Yesterday's Horoscope:</strong></p>
+      <%= @yesterday_horoscope %></p>
+    <% elsif moon_today.date.to_date == Date.today + 1.day %>
+      <p><strong>Tomorrow's Horoscope:</strong></p>
+      <%= @tomorrow_horoscope %></p>
+    <% elsif moon_today.date.to_date < Date.today %>
+    <p>✨ Let the past be the past. This day has come and gone. What has been is what had to be. What has not been, was never meant to be. ✨</p>
+    <% elsif moon_today.date.to_date > Date.today %>
+      <p>✨ Don't get too caught up in the future. The time is now and it's advisable to live in the present moment. Come back on <%= (moon_today.date - 1.day).strftime("%B %d") %> at the earliest to see your horoscope for this day. ✨</p>
+    <% end %>
+    </div>
   </div>
 
   <div class="container moon-data">
