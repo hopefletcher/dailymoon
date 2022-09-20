@@ -1,3 +1,17 @@
+#darkmode_on {
+  border-radius: 8px 0 0 8px;
+  line-height: normal;
+  letter-spacing: 1px;
+  font-size: small;
+  margin-right: -5px;
+}
+#darkmode_off {
+  border-radius: 0 8px 8px 0;
+  line-height: normal;
+  letter-spacing: -1px;
+  font-size: small;
+}
+
 body.light {
   color: $moon-gray;
   background-color: $light-gray;
@@ -5,17 +19,10 @@ body.light {
   #darkmode_on {
     color: white;
     background-color: $moon-gray;
-    border-radius: 8px 0 0 8px;
-    margin: 0 -5px 0 15px;
-    line-height: normal;
-    letter-spacing: 1px;
   }
   #darkmode_off {
     color: $moon-super-light-gray;
     border-color: $moon-super-light-gray;
-    border-radius: 0 8px 8px 0;
-    line-height: normal;
-    letter-spacing: -1px;
   }
   .info-card {
     background-color: $gray;
@@ -70,22 +77,14 @@ body.dark {
   }
 
   #darkmode_on {
-    color: rgb(70, 70, 70);
     background-color: $moon-gray;
     border-color: $moon-yellow;
-    border-radius: 8px 0 0 8px;
-    margin: 0 -5px 0 15px;
-    line-height: normal;
-    letter-spacing: 1px;
   }
 
   #darkmode_off {
     color: $moon-gray;
     background-color: $moon-yellow;
     border-color: $moon-yellow;
-    border-radius: 0 8px 8px 0;
-    line-height: normal;
-    letter-spacing: -1px;
   }
 
   .info-card {
@@ -102,6 +101,13 @@ body.dark {
       &:hover {
         color: $moon-super-light-gray;
       }
+    }
+  }
+  .dropdown-menu {
+    background-color: $moon-light-gray;
+    border-color: $moon-purple;
+    a {
+      color: white;
     }
   }
 }
