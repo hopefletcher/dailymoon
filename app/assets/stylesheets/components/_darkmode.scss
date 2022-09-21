@@ -11,6 +11,9 @@
   letter-spacing: -1px;
   font-size: small;
 }
+.dropdown-menu {
+  min-width: -webkit-fill-available;
+}
 
 body.light {
   color: $moon-gray;
@@ -26,6 +29,7 @@ body.light {
   }
   .info-card {
     background-color: $gray;
+    color: $moon-gray;
     h3, p {
     color: $moon-gray;
     }
@@ -66,6 +70,13 @@ body.light {
   .text {
     color: $moon-gray;
   }
+  .dropdown-menu {
+    background-color: $gray;
+    border-color: $moon-purple;
+    a {
+      color: $moon-gray;
+    }
+  }
 }
 
 body.dark {
@@ -104,6 +115,7 @@ body.dark {
     }
   }
   .dropdown-menu {
+    min-width: -webkit-fill-available;
     background-color: $moon-light-gray;
     border-color: $moon-purple;
     a {
