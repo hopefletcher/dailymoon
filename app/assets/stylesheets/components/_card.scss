@@ -2,7 +2,7 @@
   background-size: cover;
   background-position: center;
   background-color: $card-background;
-  padding: 6px 20px;
+  // padding: 6px 20px;
   color: white;
   font-size: 14px;
   border-radius: 8px;
@@ -26,4 +26,9 @@
 .card-header {
   display: flex;
   justify-content: space-between;
+  gap: 17px;
+}
+
+.card-header h4 {
+  color: #845EF1;
 }

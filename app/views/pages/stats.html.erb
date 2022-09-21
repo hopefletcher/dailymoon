@@ -4,7 +4,7 @@
   <div class="info-card my-3 my-2">
   <div class="card-header">
     <h4>✨ Your best phase of the moon cycle...</h4>
-      <%= image_tag @best_phase_img, width: "32px", height: "32px" %>
+      <p><%= image_tag @best_phase_img, width: "32px", height: "32px" %></p>
     </div>
     <p>You tend to feel the best (🥳 + 😀) when the moon is <strong><%= @best_phase %></strong>. Make sure to checkout when the moon will be <%= @best_phase %> this month to see if this pattern continues.</p>
   </div>
@@ -37,7 +37,7 @@
   <p>The moon moves to a different zodiac sign every two-and-a-half days. When the moon is in <strong><%= @best_sign %></strong> you find that you are happiest and most content. Make the most of this phase by doing the things that you love and spreading good energy.</p>
   </div>
 
- <div class="container navigation my-3">
+ <div class="container navigation stats-page my-3">
     <%= link_to "Day", day_path(:date => Date.today), class:"btn btn-dark stats-page-day-btn" %>
     <%= link_to "Month", month_path(:date => params[:date]), class:"btn btn-dark stats-page-month-btn " %>
     <%= link_to "Stats", stats_path, class:"btn btn-dark stats-page-stats-btn" %>

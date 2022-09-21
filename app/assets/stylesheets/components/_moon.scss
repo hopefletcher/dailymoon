@@ -3,6 +3,8 @@
     align-content: center;
     flex-direction: column;
     flex-wrap: wrap;
+    position: relative;
+    bottom: 26px;
 }
 
 .moon-image {
@@ -20,7 +22,7 @@
   align-items: baseline;
   margin-top: 10px;
   position: relative;
-  bottom: 144px;
+  bottom: 175px;
 }
 
 .moon-nav a {
