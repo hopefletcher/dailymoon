@@ -1,15 +1,18 @@
 .footer {
   text-align: center;
-  position: relative;
+  position: fixed;
   bottom: 0px;
-  margin: 0 auto;
+  background: $moon-gray;
+  opacity: 0.95;
 }
 
 .navigation {
   display: flex;
   justify-content: space-between;
   gap: 2px;
-  padding: 0;
+  padding: auto;
+  padding-left: 0;
+  z-index: 1000;
   .btn {
     flex-grow: 1;
   }
