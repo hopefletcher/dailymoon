@@ -6,13 +6,12 @@
 // applying the clear to the div wrapping the first following radio button
 // or checkbox.
 legend ~ div.form-check:first-of-type {
-  clear: left;
+  // clear: left;
 }
 
 .rating {
   font-size: 34px;
   text-align: center;
-  font-size: calc(1.375rem + 1.5vw);
 }
 
 .radio-buttons {
@@ -24,7 +23,6 @@ legend ~ div.form-check:first-of-type {
 }
 
 .mood-form {
-  display: flex;
   input {display: none;}
   input:checked + label {
     opacity: 1;
@@ -62,29 +60,12 @@ label {
   background-image: none !important;
 }
 
-#mood_journal_entry {
-  background-image: none;
-  border-color: #727272;
-  padding: 8px 3px 60px 20px;
-}
-
 .pt-0 {
-  padding-bottom: 20px;
-  padding-top: 20px;
-  margin-top: 40px;
   color: #845EF1;
-}
-
-.emoji_main_text h3 {
-  font-size: xxx-large;
 }
 
 .journal_text h3 {
   color: $moon-purple;
-}
-
-.change-text {
-  font-size: x-large;
 }
 
 option {
