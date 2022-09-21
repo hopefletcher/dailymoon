@@ -35,7 +35,7 @@
   </div>
 
   <!-- Tabs -->
-  <%= render "tabs" %>
+  <div class="tab-day"><%= render "tabs" %></div>
    <div class="container navigation day-nav my-3">
         <%= link_to "Day", day_path(:date => Date.today), class:"btn btn-dark day-page-btn" %>
         <%= link_to "Month", month_path(:date => params[:date]), class:"btn btn-dark day-page-month-btn " %>
