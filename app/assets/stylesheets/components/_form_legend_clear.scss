@@ -56,6 +56,14 @@ label {
 
 .form-control.is-valid {
   background-image: none;
+}
+
+.form-select {
+  background-image: none !important;
+}
+
+#mood_journal_entry {
+  background-image: none;
   border-color: #727272;
   padding: 8px 3px 60px 20px;
 }
@@ -77,4 +85,8 @@ label {
 
 .change-text {
   font-size: x-large;
+}
+
+option {
+  font-size: 16px;
 }
