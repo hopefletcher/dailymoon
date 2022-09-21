@@ -30,6 +30,7 @@ body.light {
   .info-card {
     background-color: $gray;
     color: $moon-gray;
+    border: 1px solid $moon-purple;
     h3, p {
     color: $moon-gray;
     }
@@ -76,6 +77,9 @@ body.light {
     a {
       color: $moon-gray;
     }
+  }
+  .footer {
+    background: $light-gray;
   }
 }
 
