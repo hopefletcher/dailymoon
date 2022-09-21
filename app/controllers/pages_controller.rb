@@ -13,6 +13,7 @@ class PagesController < ApplicationController
     best_phase_img
     poop_phase_img
     mad_phase_img
+    user_moods
   end
 
   private
@@ -125,4 +126,8 @@ class PagesController < ApplicationController
     @mad_phase_img = mad_moons.tally.sort_by { |k, v| v }.reverse[0][0]
   end
 
+  def user_moods
+    moods = Mood.where(user: current_user, date: (Date.today - 7.day)..Date.today)
+    @user_moods = moods.map { |mood| [mood.date.strftime("%b %d"), mood.rating] }.to_h
+  end
 end
