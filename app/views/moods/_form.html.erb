@@ -12,11 +12,9 @@
                           value_method: :first,
                           wrapper_html: { class: 'radio-buttons' } %>
     </div>
-    <%= p.input :journal_entry, wrapper_html: { class: 'h1' } %>
+    <%= p.input :journal_entry %>
     <%= p.hidden_field :id, value: @mood.id %>
     <%= p.hidden_field :date, value: @mood.date %>
-    <%= p.button :submit, "Submit Mood", class: "btn-gradient" %>
+    <%= p.button :submit, "Submit Mood", class: "btn-gradient my-3" %>
   <% end %>
-
-
 </div>
