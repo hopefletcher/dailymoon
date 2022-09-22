@@ -37,7 +37,7 @@ class User < ApplicationRecord
                  :lon => self.longitude
                }.to_json,
       :headers => { 'Content-Type' => 'application/json' },
-      :basic_auth => { :username => "620589", :password => "42167510aaf892ac7f9e0efd947fed78" })
+      :basic_auth => { :username => "820936", :password => "oonbuMVaHeyHCVgnOPGoHABjCVPIJP8Xk37fVCmL" })
       zodiac = results.find { |result| result["name"] == "Sun"}
       self.zodiac_sign = zodiac["sign"]
   end
