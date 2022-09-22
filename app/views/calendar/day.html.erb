@@ -21,7 +21,7 @@
     <% elsif moon_today.date.to_date == Date.today + 1.day %>
       <%= @tomorrow_horoscope %></p>
     <% elsif moon_today.date.to_date < Date.today %>
-    <p>✨ Let the past be the past. This day has come and gone. What has been is what had to be. What has not been, was never meant to be. ✨</p>
+      <p>✨ Let the past be the past. This day has come and gone. What has been is what had to be. What has not been, was never meant to be. ✨</p>
     <% elsif moon_today.date.to_date > Date.today %>
       <p>✨ Don't get too caught up in the future. The time is now and it's advisable to live in the present moment. Come back on <%= (moon_today.date - 1.day).strftime("%B %d") %> at the earliest to see your horoscope for this day. ✨</p>
     <% end %>

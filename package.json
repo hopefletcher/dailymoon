@@ -8,6 +8,8 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
     "bootstrap": "^5.2.0",
+    "chart.js": "^3.9.1",
+    "chartkick": "^4.2.0",
     "stimulus": "^3.1.0",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",

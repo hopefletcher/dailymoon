@@ -36,4 +36,9 @@
     </div>
   <p>The moon moves to a different zodiac sign every two-and-a-half days. When the moon is in <strong><%= @best_sign %></strong> you find that you are happiest and most content. Make the most of this phase by doing the things that you love and spreading good energy.</p>
   </div>
+
+  <div>
+  <%= column_chart @user_moods %>
+  <%= column_chart @mood_chart %>
+  </div>
 </div>
