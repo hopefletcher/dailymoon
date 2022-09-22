@@ -6,16 +6,16 @@
 // applying the clear to the div wrapping the first following radio button
 // or checkbox.
 legend ~ div.form-check:first-of-type {
-  // clear: left;
+  clear: left;
 }
 
 .rating {
-  font-size: 34px;
+  font-size: 32px;
   text-align: center;
 }
 
 .radio-buttons {
-  font-size: 38px;
+  font-size: 32px;
 }
 
 .form-check:hover {
@@ -27,18 +27,21 @@ legend ~ div.form-check:first-of-type {
   input:checked + label {
     opacity: 1;
     border-radius: 50%;
+    background-color: rgba(30, 220, 136, 1);
+  }
+  input:not(:checked) + label {
+    opacity: 0.5;
   }
 }
 
 .form-check {
   display: inline-block;
   justify-content: space-between;
-  // padding: 10px;
-  padding-left: 0.08em;
+  padding-left: 2px;
 }
 
-label {
-  opacity: 0.8;
+.form-check label {
+  width: 48px;
 }
 
 .form-inputs {
@@ -61,11 +64,7 @@ label {
 }
 
 .pt-0 {
-  color: #845EF1;
-}
-
-.journal_text h3 {
-  color: $moon-purple;
+  font-size: 16px;
 }
 
 option {
