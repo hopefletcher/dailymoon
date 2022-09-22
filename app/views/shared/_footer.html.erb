@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-<div class="footer pt-3">
-  <form action="/day" method="get">
-
-    <div class="darkmode">
-      <%# Darkmode %>
-      <button id="darkmode_on" type="submit" name="theme" value="dark">🌙
-      <%# <i class="fa-solid fa-moon"></i> %>
-      </button>
-      <button id="darkmode_off" type="submit" name="theme" value="light">☀️
-      <%# <i class="fa-solid fa-sun"></i> %>
-      </button>
-    </div>
-  </form>
-=======
 <div class="footer py-2">
 <% if user_signed_in? %>
   <div class="container navigation">
@@ -21,5 +6,4 @@
     <%= link_to "Stats", stats_path, class:"btn btn-dark" %>
   </div>
 <% end %>
->>>>>>> master
 </div>
