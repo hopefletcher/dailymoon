@@ -125,5 +125,8 @@ body.dark {
     a {
       color: white;
     }
+    :hover {
+      background-color: $moon-purple;
+    }
   }
 }
