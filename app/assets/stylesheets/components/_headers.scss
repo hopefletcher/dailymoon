@@ -1,6 +1,6 @@
 .date-today {
   text-align: center;
-  line-height: 2.2;
+  // line-height: 2.2;
 }
 
 .date-navigation {
@@ -11,4 +11,8 @@
     font-size: 28px;
     margin: 20px;
   }
+}
+
+.date-today h1 {
+  font-size: xx-large !important;
 }

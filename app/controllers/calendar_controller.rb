@@ -138,6 +138,7 @@ class CalendarController < ApplicationController
   end
 end
 
+
 # def read_json
 #   if params[:start_date] == nil
 #     start_date = Time.now.beginning_of_month.strftime("%Y-%m-%d")
