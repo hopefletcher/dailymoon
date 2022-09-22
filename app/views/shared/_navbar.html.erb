@@ -23,4 +23,26 @@
       <% end %>
     </div>
   <% end %>
+
+
+
+  <script>
+    var num = 100;
+    var radius = 2;
+    var max = 300;
+    createRandomNodes(20, 2, 300);
+    function createRandomNodes(num, radius, max) {
+      var canvas = document.getElementsByClassName("navbar");
+      var context = canvas.getContext("2d");
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      for (var i = 0; i <=num; i++) {
+          context.beginPath();
+          var rand_x = Math.random(i) * max;
+          var rand_y = Math.random(i) * max;
+          context.arc(rand_x, rand_y, radius, 0, 2*Math.PI);
+          context.fill();
+          context.closePath();
+      }
+    }
+  </script>
 </div>

@@ -55,3 +55,88 @@
     width: 100vw;
   }
 }
+
+//day page
+
+.Title p {
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  margin-top: 7px;
+}
+
+.Title-location p {
+  text-align: center;
+  color: white;
+  margin-top: -9px;
+  margin-bottom: 19px;
+}
+
+.Title-moonrise {
+  position: relative;
+  right: 90px;
+  bottom: 119px;
+  text-align: center;
+}
+
+.Title-moonset {
+  position: relative;
+  left: 97px;
+  bottom: 193px;
+  text-align: center;
+}
+
+.Title-moonphase {
+  position: relative;
+  right: 75px;
+  bottom: 74px;
+  text-align: center;
+}
+
+.Title-moon-sign {
+  position: relative;
+  left: 90px;
+  bottom: 148px;
+  text-align: center;
+}
+
+.moon-data h4 {
+  text-align: center;
+  color: #845EF1;
+  font-weight: 700;
+}
+
+.moon-data p {
+  font-weight: 600;
+}
+
+.day-nav {
+  position: relative;
+  bottom: 149px;
+}
+
+.month-page {
+  position: relative;
+  bottom: 34px;
+}
+
+.stats-page {
+  position: relative;
+  top: 29px;
+}
+
+//tabs
+
+.tab-day {
+  position: relative !important;
+  bottom: 157px !important;
+}
+
+.tab-mood {
+  position: relative;
+  bottom: 14px;
+}
+
+.tab-event {
+
+}
