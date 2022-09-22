@@ -1,5 +1,5 @@
 .emoji {
-  font-size: calc(100px + 4vw);
+  font-size: calc(100px + 2vw);
   min-width: 1.4em;
   text-align: center;
   margin-top: 0px;
@@ -53,7 +53,6 @@
 .sad {
   font-size: calc(100px + 4vw);
   min-width: 1.4em;
-  margin: 0.3em 0.4em;
   text-align: center;
 }
 
@@ -91,7 +90,6 @@
 .shit {
   font-size: calc(100px + 4vw);
   min-width: 1.4em;
-  margin: 0.3em 0.4em;
   text-align: center;
 }
 
@@ -130,7 +128,6 @@
 .angry {
   font-size: calc(100px + 4vw);
   min-width: 1.4em;
-  margin: 0.3em 0.4em;
   text-align: center;
 }
 
@@ -168,7 +165,6 @@
 .neutral {
   font-size: calc(100px + 4vw);
   min-width: 1.4em;
-  margin: 0.3em 0.4em;
   text-align: center;
 }
 
@@ -260,5 +256,3 @@
       content: '😁';
   }
 }
-
-// other css

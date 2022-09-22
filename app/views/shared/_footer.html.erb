@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="footer pt-3">
   <form action="/day" method="get">
 
@@ -11,4 +12,14 @@
       </button>
     </div>
   </form>
+=======
+<div class="footer py-2">
+<% if user_signed_in? %>
+  <div class="container navigation">
+    <%= link_to "Day", day_path(:date => Date.today), class:"btn btn-dark" %>
+    <%= link_to "Month", month_path(:date => params[:date]), class:"btn btn-dark" %>
+    <%= link_to "Stats", stats_path, class:"btn btn-dark" %>
+  </div>
+<% end %>
+>>>>>>> master
 </div>

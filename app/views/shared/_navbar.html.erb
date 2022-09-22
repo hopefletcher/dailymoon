@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon mx-3">
+<div class="navbar navbar-expand-sm navbar-light navbar-dailymoon mx-3">
   <% if user_signed_in? %>
     <%= link_to "/", class: "nav-link" do %>
       Hi, <%= current_user.first_name.capitalize %>! <%= @zodiac_emoji %>
@@ -8,6 +8,12 @@
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
         <%= link_to "My Profile", edit_user_registration_path, class: "dropdown-item" %>
         <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { turbo_method: :delete } %>
+        <form action="/day" method="get">
+        <div class="darkmode dropdown-item">
+          <button id="darkmode_on" type="submit" name="theme" value="dark">🌙</button>
+          <button id="darkmode_off" type="submit" name="theme" value="light">☀️</button>
+        </div>
+  </form>
       </div>
     </li>
   <% else %>
@@ -15,9 +21,6 @@
       <%= link_to "/", class: "navbar-brand" do %>
         <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
       <% end %>
-    </div>
-    <div>
-      <%= link_to "Login", new_user_session_path, class: "nav-link" %>
     </div>
   <% end %>
 

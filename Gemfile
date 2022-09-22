@@ -26,8 +26,9 @@ gem 'net-imap', require: false
 gem 'net-pop', require: false
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem 'chartkick'
 gem 'faker'
+gem 'groupdate'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -37,6 +38,7 @@ gem 'devise'
 gem 'rails_admin', '~> 2.0'
 # Geocoder
 gem 'geocoder'
+
 gem 'rails_12factor', group: :production
 gem "simple_calendar", "~> 2.4"
 gem 'sprockets', '< 4.0.0'

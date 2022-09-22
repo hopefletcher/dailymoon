@@ -61,7 +61,7 @@
   margin-top: 10px;
 }
 
-.text {
+.caption {
   margin-bottom: 12px;
   font-size: smaller;
   color: $moon-super-light-gray;
@@ -112,4 +112,15 @@
 .simple-calendar td a {
   color: var(--bs-link-color);
   text-decoration: none;
+}
+
+.simple-calendar .day a {
+  position: relative;
+}
+.event-label {
+  color: $moon-purple;
+  font-size: 18px;
+  position: absolute;
+  left: -4px;
+  top: -2px;
 }
