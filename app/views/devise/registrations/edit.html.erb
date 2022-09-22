@@ -15,7 +15,10 @@
       <% end %>
 
       <%= f.input :birthday,
-                  order: [:day, :month, :year] %>
+                  as: :date,
+                  order: [:day, :month, :year],
+                  start_year: Date.today.year - 90,
+                  end_year: Date.today.year - 18 %>
       <%= f.input :location %>
       <%= f.input :password,
                   hint: "Leave it blank if you don't want to change it",
