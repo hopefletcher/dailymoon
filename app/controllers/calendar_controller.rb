@@ -7,6 +7,8 @@ class CalendarController < ApplicationController
     params[:date] = Date.today if params[:date].nil?
     fetch_moon_data_today if Moon.where(date: params[:date], location: current_user.location.delete(' ')) == []
     @daily_horoscope = daily_horoscope
+    @tomorrow_horoscope = tomorrow_horoscope
+    @yesterday_horoscope = yesterday_horoscope
   end
 
   def month
@@ -21,6 +23,40 @@ class CalendarController < ApplicationController
   def daily_horoscope
     # https://github.com/sameerkumar18/aztro
     uri = URI.parse("https://aztro.sameerkumar.website/?sign=#{current_user.zodiac_sign}&day=today")
+    request = Net::HTTP::Post.new(uri)
+
+    req_options = {
+      use_ssl: uri.scheme == "https",
+    }
+
+    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      http.request(request)
+    end
+
+    your_day = JSON.parse response.body.gsub('=>', ':')
+    your_day["description"]
+  end
+
+  def tomorrow_horoscope
+    # https://github.com/sameerkumar18/aztro
+    uri = URI.parse("https://aztro.sameerkumar.website/?sign=#{current_user.zodiac_sign}&day=tomorrow")
+    request = Net::HTTP::Post.new(uri)
+
+    req_options = {
+      use_ssl: uri.scheme == "https",
+    }
+
+    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      http.request(request)
+    end
+
+    your_day = JSON.parse response.body.gsub('=>', ':')
+    your_day["description"]
+  end
+
+  def yesterday_horoscope
+    # https://github.com/sameerkumar18/aztro
+    uri = URI.parse("https://aztro.sameerkumar.website/?sign=#{current_user.zodiac_sign}&day=yesterday")
     request = Net::HTTP::Post.new(uri)
 
     req_options = {
