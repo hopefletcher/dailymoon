@@ -4,7 +4,7 @@ require "net/http"
 
 class CalendarController < ApplicationController
   def day
-    params[:date] = Date.today if params[:date].nil?
+    params[:date] ||= Date.today
     fetch_moon_data_today if Moon.where(date: params[:date], location: current_user.location.delete(' ')) == []
     @daily_horoscope = daily_horoscope
     tomorrow_horoscope
@@ -13,8 +13,8 @@ class CalendarController < ApplicationController
   end
 
   def month
-    params[:start_date] = params[:date] if params[:start_date].nil?
-    params[:start_date] = Date.today if params[:date].nil?
+    params[:date] ||= Date.today
+    params[:start_date] ||= params[:date]
     fetch_moon_data_month if Moon.where(date: (params[:start_date].to_date.beginning_of_month..params[:start_date].to_date.end_of_month), location: current_user.location.delete(' ')).count < params[:start_date].to_date.end_of_month.day
     # read_json
   end
