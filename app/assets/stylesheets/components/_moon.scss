@@ -18,12 +18,26 @@
 .moon-nav {
   font-size: 22px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: baseline;
-  // margin-top: 10px;
   padding: 0;
+  position: fixed;
+  bottom: 132px;
 }
 
 .moon-nav a {
+  color: white;
+}
+
+.fa-circle {
+  margin: 6px;
+  font-size: 20px;
+}
+
+.fas {
+  color: #373535;
+}
+
+.target {
   color: white;
 }
