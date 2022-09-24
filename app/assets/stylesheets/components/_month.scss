@@ -51,7 +51,7 @@
 .simple-calendar .today {
   background: $moon-gradient !important;
   border-radius: 18px;
-  .text {
+  .caption {
     color: $moon-light-gray;
   }
 }
@@ -107,6 +107,9 @@
   transform: scale(1);
   background:rgb(161, 161, 161);
   border-radius: 18px;
+  .caption {
+    color: $moon-gray;
+  }
 }
 
 .simple-calendar td a {
@@ -121,6 +124,6 @@
   color: $moon-purple;
   font-size: 18px;
   position: absolute;
-  left: -4px;
+  left: -8px;
   top: -2px;
 }
