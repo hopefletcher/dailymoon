@@ -7,7 +7,7 @@
       <%= image_tag "moon1new.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
         <%= link_to "My Profile", edit_user_registration_path, class: "dropdown-item" %>
-        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { turbo_method: :delete } %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :get, class: "dropdown-item" %>
         <form action="/day" method="get">
           <div class="darkmode dropdown-item">
             <button id="darkmode_on" type="submit" name="theme" value="dark">🌙</button>
