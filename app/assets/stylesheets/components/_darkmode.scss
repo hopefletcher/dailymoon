@@ -81,6 +81,27 @@ body.light {
   .footer {
     background: $light-gray;
   }
+  .title-location p {
+    color: $moon-gray;
+  }
+  legend {
+    color: $moon-gray;
+  }
+  label {
+    color: $moon-gray !important;
+  }
+  .form-control {
+    background-color: white;
+  }
+  input.form-control {
+    color: $moon-gray !important;
+  }
+  select {
+    background-color: white;
+  }
+  .form-select {
+    color: $moon-gray !important;
+  }
 }
 
 body.dark {
@@ -118,6 +139,7 @@ body.dark {
       }
     }
   }
+
   .dropdown-menu {
     min-width: -webkit-fill-available;
     background-color: $moon-light-gray;

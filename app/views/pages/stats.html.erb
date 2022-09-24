@@ -1,7 +1,7 @@
 <div class="container page">
   <h1 class="date-today"><%= Time.now.strftime("%b %d, %H:%M") %></h1>
 
-  <div class="info-card my-3 my-2">
+  <div class="info-card">
   <div class="card-header">
     <h4>✨ Your best phase of the moon cycle...</h4>
       <p><%= image_tag @best_phase_img, width: "32px", height: "32px" %></p>
@@ -11,7 +11,7 @@
 
 
   <% if @poop_phase == @best_phase %>
-  <div class="info-card my-3 my-2">
+  <div class="info-card">
     <div class="card-header">
     <h4>💥 Be Mindful of...</h4>
     <%= image_tag @poop_phase_img, width: "32px", height: "32px" %>
@@ -20,7 +20,7 @@
   </div>
 
   <% else %>
-  <div class="info-card my-3 my-2">
+  <div class="info-card">
     <div class="card-header">
       <h4>💥 Be Mindful of...</h4>
       <%= image_tag @mad_phase_img, width: "32px", height: "32px" %>
