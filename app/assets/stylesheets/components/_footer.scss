@@ -2,7 +2,7 @@
   text-align: center;
   position: fixed;
   bottom: 0px;
-  background: $moon-gray;
+  background: linear-gradient(rgba(43, 43, 43, .5), rgb(43, 43, 43));
   opacity: 0.95;
 }
 
@@ -15,6 +15,8 @@
   background-color: white;
   border-radius: 30px;
   .btn {
+    border-radius: 30px;
+    font-weight: 400;
     flex-grow: 1;
     background-color: $white;
     color: $moon-gray;
@@ -28,10 +30,6 @@
     background-color: black;
     color: $white;
     border: none;
+    font-weight: 600;
   }
-}
-
-.navigation .btn {
-  border-radius: 30px;
-  font-weight: 400;
 }
