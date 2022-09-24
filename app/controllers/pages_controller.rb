@@ -130,7 +130,7 @@ class PagesController < ApplicationController
   end
 
   def user_moods
-    moods = Mood.where(user: current_user, date: (Date.today - 7.day)..Date.today)
+    moods = Mood.where(user: current_user, date: (Date.today - 6.day)..Date.today)
     @user_moods = moods.map { |mood| [mood.date.strftime("%b %d"), mood.rating] }.to_h
   end
 
