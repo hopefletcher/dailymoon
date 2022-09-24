@@ -1,7 +1,7 @@
 <div class="container page">
   <h1 class="date-today"><%= Time.now.strftime("%b %d, %H:%M") %></h1>
 
-  <div class="info-card my-3 my-2">
+  <div class="info-card">
   <div class="card-header">
     <h4>✨ Your best phase of the moon cycle...</h4>
       <p><%= image_tag @best_phase_img, width: "32px", height: "32px" %></p>
@@ -11,16 +11,16 @@
 
 
   <% if @poop_phase == @best_phase %>
-  <div class="info-card my-3 my-2">
+  <div class="info-card">
     <div class="card-header">
     <h4>💥 Be Mindful of...</h4>
-    <%= image_tag @poop_phase_img, width: "32px", height: "32px" %>
+    <%= image_tag @mad_phase_img, width: "32px", height: "32px" %>
     </div>
-    <p>Make sure to do some extra self-care time when the moon is <strong><%= @poop_phase %></strong>. The data shows that this phase of the moon cycle that you become the most irritated (😡).</p>
+    <p>Make sure to do some extra self-care time when the moon is <strong><%= @mad_phase %></strong>. The data shows that this phase of the moon cycle that you become the most irritated (😡).</p>
   </div>
 
   <% else %>
-  <div class="info-card my-3 my-2">
+  <div class="info-card">
     <div class="card-header">
       <h4>💥 Be Mindful of...</h4>
       <%= image_tag @mad_phase_img, width: "32px", height: "32px" %>
@@ -37,17 +37,10 @@
   <p>The moon moves to a different zodiac sign every two-and-a-half days. When the moon is in <strong><%= @best_sign %></strong> you find that you are happiest and most content. Make the most of this phase by doing the things that you love and spreading good energy.</p>
   </div>
 
-
- <div class="container navigation stats-page my-3">
-    <%= link_to "Day", day_path(:date => Date.today), class:"btn btn-dark stats-page-day-btn" %>
-    <%= link_to "Month", month_path(:date => params[:date]), class:"btn btn-dark stats-page-month-btn " %>
-    <%= link_to "Stats", stats_path, class:"btn btn-dark stats-page-stats-btn" %>
-  </div>
-
   <div>
   <%# <% raise %>
   <div class="card-header">
-  <h4>Last 7 days of Moods:</h4>
+  <h4>Your week at a glance:</h4>
   </div>
   <%= line_chart @user_moods, library: {
     colors: ['#614BA5'],

@@ -2,7 +2,6 @@
   <%= month_calendar do |date| %>
     <% if current_user.birthday.month == date.month && current_user.birthday.day == date.day %>
       <%= "🎁" %>
-      <%# 📆🗓📅▫🎈 %>
     <% else %>
       <%= date.day %>
     <% end %>
