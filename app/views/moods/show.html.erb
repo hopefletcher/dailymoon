@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-bottom: 80px">
   <div class="date-navigation">
     <% if params[:date] %>
       <%= link_to mood_path(date: (params[:date].to_date - 1)) do %>
@@ -50,4 +50,4 @@
 </div>
 
 <!-- Tabs -->
-<div class="tab-mood"><%= render "tabs" %></div>
+<%= render "tabs" %>
