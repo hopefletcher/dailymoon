@@ -32,12 +32,12 @@
 .fa-circle {
   margin: 6px;
   font-size: 20px;
-}
-
-.fas {
   color: #373535;
 }
 
+.fa-arrow-right, .fa-arrow-left {
+  color: $moon-yellow;
+}
 .target {
   color: white;
 }
