@@ -1,40 +1,29 @@
 <div class="container page">
   <div class="date-navigation">
-      <% if params[:date] %>
-        <%= link_to day_path(date: (params[:date].to_date - 1)) do %>
-          <i class="fas fa-arrow-left"> </i>
-        <% end %>
-        <h1 class="date-today"><%= params[:date].to_date.strftime("%b %d") %>, <%= Time.now.strftime("%H:%M") %></h1>
-        <%= link_to day_path(date: (params[:date].to_date + 1)) do %>
-          <i class="fas fa-arrow-right"> </i>
-        <% end %>
+    <% if params[:date] %>
+      <%= link_to day_path(date: (params[:date].to_date - 1)) do %>
+        <i class="fas fa-arrow-left"> </i>
       <% end %>
-        </div>
-      <% moon_today = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first %>
-    <div class="Title-location"> <p><%= moon_today.display_location %></p></div>
-  <!-- Fetch daily horoscope -->
+      <h1 class="date-today"><%= params[:date].to_date.strftime("%b %d") %>, <%= Time.now.strftime("%H:%M") %></h1>
+      <%= link_to day_path(date: (params[:date].to_date + 1)) do %>
+        <i class="fas fa-arrow-right"> </i>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="title-location"><p><%= @moonlocation %></p></div>
+
   <div class="info-card my-3 mx-2">
-  <% moon_today = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first %>
-  <% if moon_today.date.to_date == Date.today %>
-    <%= @daily_horoscope %></p>
-  <% elsif moon_today.date.to_date == Date.today - 1.day %>
-    <%= @yesterday_horoscope %></p>
-  <% elsif moon_today.date.to_date == Date.today + 1.day %>
-    <%= @tomorrow_horoscope %></p>
-  <% elsif moon_today.date.to_date < Date.today %>
-    <p>✨ Let the past be the past. This day has come and gone. What has been is what had to be. What has not been, was never meant to be. ✨</p>
-  <% elsif moon_today.date.to_date > Date.today %>
-    <p>✨ Don't get too caught up in the future. The time is now and it's advisable to live in the present moment. Come back on <%= (moon_today.date - 1.day).strftime("%B %d") %> at the earliest to see your horoscope for this day. ✨</p>
-  <% end %>
-</div>
+    <%= @daily_horoscope %>
+  </div>
 
   <div class="container moon-data">
     <%= image_tag @moonimage, class: "moon-image", width: "100px" %>
-    <div class="title-moonrise"> <h4>Moonrise</h4> <p><%= @moonrise %></p></div>
-    <div class="title-moonset"> <h4>Moonset</h4> <p><%= @moonset %></p></div>
-    <div class="title-moonphase"> <h4>Moonphase</h4><p> <%= @moonphase %></p></div>
-    <div class="title-moon-sign"> <h4>Moon Sign</h4> <p><%= @moonsign %></div>
+    <div class="title-moonrise"><h4>Moonrise</h4> <p><%= @moonrise %></p></div>
+    <div class="title-moonset"><h4>Moonset</h4> <p><%= @moonset %></p></div>
+    <div class="title-moonphase"><h4>Moonphase</h4><p> <%= @moonphase %></p></div>
+    <div class="title-moon-sign"><h4>Moon Sign</h4> <p><%= @moonsign %></div>
   </div>
 
-  <!-- Tabs -->
   <div><%= render "tabs" %></div>
+</div>

@@ -4,73 +4,19 @@ require "net/http"
 
 class CalendarController < ApplicationController
   def day
-    params[:date] = Date.today if params[:date].nil?
+    params[:date] ||= Date.today
     fetch_moon_data_today if Moon.where(date: params[:date], location: current_user.location.delete(' ')) == []
-    @daily_horoscope = daily_horoscope
-    tomorrow_horoscope
-    yesterday_horoscope
     display_moon_data
+    daily_horoscope
   end
 
   def month
-    params[:start_date] = params[:date] if params[:start_date].nil?
-    params[:start_date] = Date.today if params[:date].nil?
+    params[:date] ||= Date.today
+    params[:start_date] ||= params[:date]
     fetch_moon_data_month if Moon.where(date: (params[:start_date].to_date.beginning_of_month..params[:start_date].to_date.end_of_month), location: current_user.location.delete(' ')).count < params[:start_date].to_date.end_of_month.day
-    # read_json
   end
 
   private
-
-  def daily_horoscope
-    # https://github.com/sameerkumar18/aztro
-    uri = URI.parse("https://aztro.sameerkumar.website/?sign=#{current_user.zodiac_sign}&day=today")
-    request = Net::HTTP::Post.new(uri)
-
-    req_options = {
-      use_ssl: uri.scheme == "https",
-    }
-
-    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-      http.request(request)
-    end
-
-    your_day = JSON.parse response.body.gsub('=>', ':')
-    your_day["description"]
-  end
-
-  def tomorrow_horoscope
-    # https://github.com/sameerkumar18/aztro
-    uri = URI.parse("https://aztro.sameerkumar.website/?sign=#{current_user.zodiac_sign}&day=tomorrow")
-    request = Net::HTTP::Post.new(uri)
-
-    req_options = {
-      use_ssl: uri.scheme == "https",
-    }
-
-    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-      http.request(request)
-    end
-
-    your_day = JSON.parse response.body.gsub('=>', ':')
-    @tomorrow_horoscope = your_day["description"]
-  end
-
-  def yesterday_horoscope
-    # https://github.com/sameerkumar18/aztro
-    uri = URI.parse("https://aztro.sameerkumar.website/?sign=#{current_user.zodiac_sign}&day=yesterday")
-    request = Net::HTTP::Post.new(uri)
-
-    req_options = {
-      use_ssl: uri.scheme == "https",
-    }
-
-    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-      http.request(request)
-    end
-
-    your_day = JSON.parse response.body.gsub('=>', ':')
-    @yesterday_horoscope = your_day["description"]
-  end
 
   def fetch_moon_data_today
     start_date = params[:date].to_date - 3
@@ -97,7 +43,6 @@ class CalendarController < ApplicationController
       Moon.create(phase: md["moonphase"], moon_phase_name: @moon_phase_name, moon_phase_img: @moon_phase_img, date: md["datetime"], moonrise: moonrise, moonset: moonset, location: data["address"], display_location: data["resolvedAddress"], moon_sign: fetch_moon_sign(md["datetime"]))
     end
   end
-
 
   def define_moon_phase(day_data)
     moon_phase = day_data["moonphase"]
@@ -141,18 +86,43 @@ class CalendarController < ApplicationController
   def display_moon_data
     moon_today = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first
     @moonimage = moon_today.moon_phase_img
-    if moon_today.moonrise
-      @moonrise = moon_today.moonrise.strftime("%H:%M %Z")
-    else
-      @moonrise = "No moonrise today"
+    @moonrise = moon_today.moonrise.strftime("%H:%M %Z") if moon_today.moonrise
+    @moonset = moon_today.moonset.strftime("%H:%M %Z") if moon_today.moonset
+    @moonphase = moon_today.moon_phase_name
+    @moonsign = moon_today.moon_sign
+    @moonlocation = moon_today.display_location
+  end
+
+  def daily_horoscope
+    moon_today = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first
+    if moon_today.date == Date.today
+      fetch_daily_horoscope("today")
+    elsif moon_today.date == Date.today - 1
+      fetch_daily_horoscope("yesterday")
+    elsif moon_today.date == Date.today + 1
+      fetch_daily_horoscope("tomorrow")
+    elsif moon_today.date < Date.today
+      @daily_horoscope = "✨ Let the past be the past. This day has come and gone. What has been is what had to be. What has not been, was never meant to be. ✨"
+    elsif moon_today.date > Date.today
+      @daily_horoscope = "✨ Don't get too caught up in the future. The time is now and it's advisable to live in the present moment. Come back on #{(moon_today.date - 1.day).strftime("%B %d")} at the earliest to see your horoscope for this day. ✨"
     end
-    if moon_today.moonset
-      @moonset = moon_today.moonset.strftime("%H:%M %Z")
-    else
-      @moonset = "No moonset today"
+  end
+
+  def fetch_daily_horoscope(day)
+    # https://github.com/sameerkumar18/aztro
+    uri = URI.parse("https://aztro.sameerkumar.website/?sign=#{current_user.zodiac_sign}&day=#{day}")
+    request = Net::HTTP::Post.new(uri)
+
+    req_options = {
+      use_ssl: uri.scheme == "https",
+    }
+
+    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      http.request(request)
     end
-      @moonphase = moon_today.moon_phase_name
-      @moonsign = moon_today.moon_sign
+
+    your_day = JSON.parse response.body.gsub('=>', ':')
+    @daily_horoscope = your_day["description"]
   end
 end
 
