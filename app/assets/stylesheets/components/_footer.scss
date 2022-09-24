@@ -9,20 +9,29 @@
 .navigation {
   display: flex;
   justify-content: space-between;
-  gap: 2px;
-  padding: auto;
-  padding-left: 0;
+  gap: 3px;
+  padding: 3px 4px;
   z-index: 1000;
-  .btn {
-    flex-grow: 1;
-  }
   background-color: white;
   border-radius: 30px;
+  .btn {
+    flex-grow: 1;
+    background-color: $white;
+    color: $moon-gray;
+    border: none;
+    &:hover {
+      background-color: $moon-light-gray;
+      color: white;
+    }
+  }
+  .active {
+    background-color: black;
+    color: $white;
+    border: none;
+  }
 }
 
 .navigation .btn {
-  padding: 8px;
-  margin: 5px;
   border-radius: 30px;
-  font-weight: 600;
+  font-weight: 400;
 }

@@ -7,8 +7,9 @@ class CalendarController < ApplicationController
     params[:date] = Date.today if params[:date].nil?
     fetch_moon_data_today if Moon.where(date: params[:date], location: current_user.location.delete(' ')) == []
     @daily_horoscope = daily_horoscope
-    @tomorrow_horoscope = tomorrow_horoscope
-    @yesterday_horoscope = yesterday_horoscope
+    tomorrow_horoscope
+    yesterday_horoscope
+    display_moon_data
   end
 
   def month
@@ -51,7 +52,7 @@ class CalendarController < ApplicationController
     end
 
     your_day = JSON.parse response.body.gsub('=>', ':')
-    your_day["description"]
+    @tomorrow_horoscope = your_day["description"]
   end
 
   def yesterday_horoscope
@@ -68,7 +69,7 @@ class CalendarController < ApplicationController
     end
 
     your_day = JSON.parse response.body.gsub('=>', ':')
-    your_day["description"]
+    @yesterday_horoscope = your_day["description"]
   end
 
   def fetch_moon_data_today
@@ -135,6 +136,23 @@ class CalendarController < ApplicationController
       :basic_auth => {:username => "#{ENV["ASTRO_API_USERNAME"]}", :password => "#{ENV["ASTRO_API_KEY"]}"} )
       moon = @result.find { |result| result["name"] == "Moon"}
       @moon_sign = moon["sign"]
+  end
+
+  def display_moon_data
+    moon_today = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first
+    @moonimage = moon_today.moon_phase_img
+    if moon_today.moonrise
+      @moonrise = moon_today.moonrise.strftime("%H:%M %Z")
+    else
+      @moonrise = "No moonrise today"
+    end
+    if moon_today.moonset
+      @moonset = moon_today.moonset.strftime("%H:%M %Z")
+    else
+      @moonset = "No moonset today"
+    end
+      @moonphase = moon_today.moon_phase_name
+      @moonsign = moon_today.moon_sign
   end
 end
 
