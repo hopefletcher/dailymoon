@@ -40,8 +40,12 @@ legend ~ div.form-check:first-of-type {
   padding-left: 2px;
 }
 
-.form-check label {
+.form-check-label {
   width: 48px;
+}
+
+.form-check-label.boolean.optional {
+  width: 100%;
 }
 
 .form-inputs {
