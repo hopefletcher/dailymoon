@@ -14,9 +14,9 @@
   <div class="info-card my-3 my-2">
     <div class="card-header">
     <h4>💥 Be Mindful of...</h4>
-    <%= image_tag @poop_phase_img, width: "32px", height: "32px" %>
+    <%= image_tag @mad_phase_img, width: "32px", height: "32px" %>
     </div>
-    <p>Make sure to do some extra self-care time when the moon is <strong><%= @poop_phase %></strong>. The data shows that this phase of the moon cycle that you become the most irritated (😡).</p>
+    <p>Make sure to do some extra self-care time when the moon is <strong><%= @mad_phase %></strong>. The data shows that this phase of the moon cycle that you become the most irritated (😡).</p>
   </div>
 
   <% else %>
@@ -38,8 +38,42 @@
   </div>
 
   <div>
-  <%= column_chart @user_moods %>
-  <%= column_chart @mood_chart %>
+  <%# <% raise %>
+  <div class="card-header">
+  <h4>Your week at a glance:</h4>
+  </div>
+  <%= line_chart @user_moods, library: {
+    colors: ['#614BA5'],
+    chart: {
+      backgroundColor: '#2B2B2B'
+    },
+    xAxis: {
+      lineColor: '#614BA5',
+      labels: {
+        style: {
+        color: 'white'
+        }
+      }
+    },
+
+    yAxis: {
+      gridLineColor: 'transparent',
+        labels: {
+          style: {
+            color: 'transparent'
+              }
+            },
+      minorGridLineColor: 'transparent',
+      tickColor: 'transparent'
+    },
+    plotOptions: {
+      marker: {
+        lineColor: '#614BA5'
+      },
+    },
+  }
+
+  %>
   </div>
 
 </div>

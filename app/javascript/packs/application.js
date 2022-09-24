@@ -14,4 +14,39 @@ ActiveStorage.start()
 
 import "controllers"
 import "bootstrap"
-// import "chartkick/chart.js"
+import "chartkick/highcharts"
+
+const Chartkick = require("chartkick");
+Chartkick.use(require("highcharts"));
+
+Chartkick.options = {
+  library: {"plotOptions": {
+    "series": {
+      enableMouseTracking: false,
+      "pointWidth": 30,
+      "dataLabels": {
+        useHTML: true,
+        enabled: true,
+        crop: false,
+        overflow: 'allow',
+        formatter: function() {
+          if (this.y === 1)  {return "😢"}
+          else if (this.y === 2)  {return "💩"}
+          else if (this.y === 3)  {return "😡"}
+          else if (this.y === 4)  {return "😐"}
+          else if (this.y === 5)  {return "☺️"}
+          else if (this.y === 5)  {return "😀"}
+          },
+        style: {
+          fontFamily: 'Montserrat',
+          fontWeight: 400,
+          fontSize: '16px',
+          color: '#614BA5',
+          chart: {
+            backgroundColor: null,
+          },
+        }
+      }
+    }
+  }}
+}

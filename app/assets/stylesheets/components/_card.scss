@@ -2,16 +2,13 @@
   background-size: cover;
   background-position: center;
   background-color: $card-background;
-  // padding: 6px 20px;
+  padding: 16px;
   color: white;
   font-size: 14px;
   border-radius: 8px;
   h3, p {
     color: white;
   }
-  font-weight: 600;
-  text-align: justify;
-  margin-top: 24px !important;
   p {
     margin-bottom: 0;
   }
@@ -33,5 +30,5 @@
 }
 
 .card-header h4 {
-  color: #845EF1;
+  color: $moon-purple;
 }
