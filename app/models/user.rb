@@ -37,7 +37,7 @@ class User < ApplicationRecord
                  :lon => self.longitude
                }.to_json,
       :headers => { 'Content-Type' => 'application/json' },
-      :basic_auth => { :username => "820936", :password => "oonbuMVaHeyHCVgnOPGoHABjCVPIJP8Xk37fVCmL" })
+      :basic_auth => { :username => ENV["ASTRO_API_USERNAME"], :password => ENV["ASTRO_API_KEY"] })
       zodiac = results.find { |result| result["name"] == "Sun"}
       self.zodiac_sign = zodiac["sign"]
   end
