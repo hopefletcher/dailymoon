@@ -1,50 +1,78 @@
-.emoji {
+.moon {
   font-size: calc(100px + 2vw);
   min-width: 1.4em;
   text-align: center;
   margin-top: 0px;
 }
 
-.emoji::after {
+.moon::after {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
 
 .moon::after {
-  content: '🌕';
+  background: url('moon1new.png');
+  background-size: 100px;
+  content: "moon";
+  color: transparent;
   animation-name: moon;
   animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 
 @keyframes moon {
   12.5% {
-      content: '🌖';
+    background: url('moon2waxingcrescent.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   25% {
-      content: '🌗';
+    background: url('moon3firstquarter.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   37.5% {
-      content: '🌘 ';
+    background: url('moon4waxinggibbous.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   50% {
-      content: '🌑';
+    background: url('moon5full.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   62.5% {
-      content: '🌒';
+    background: url('moon6waninggibbous.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   75% {
-      content: '🌓';
+    background: url('moon7lastquarter.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   87.5% {
-      content: '🌔';
+    background: url('moon8waningcrescent.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }
 
