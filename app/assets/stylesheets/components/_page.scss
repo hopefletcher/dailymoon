@@ -57,43 +57,42 @@
 }
 
 //day page
-
-.Title p {
+.title p {
   text-align: center;
   color: white;
   font-weight: 600;
   margin-top: 7px;
 }
 
-.Title-location p {
+.title-location p {
   text-align: center;
   color: white;
   margin-top: -9px;
   margin-bottom: 19px;
 }
 
-.Title-moonrise {
+.title-moonrise {
   position: relative;
   right: 90px;
   bottom: 119px;
   text-align: center;
 }
 
-.Title-moonset {
+.title-moonset {
   position: relative;
   left: 97px;
   bottom: 193px;
   text-align: center;
 }
 
-.Title-moonphase {
+.title-moonphase {
   position: relative;
   right: 75px;
   bottom: 74px;
   text-align: center;
 }
 
-.Title-moon-sign {
+.title-moon-sign {
   position: relative;
   left: 90px;
   bottom: 148px;
@@ -103,7 +102,6 @@
 .moon-data h4 {
   text-align: center;
   color: #845EF1;
-  font-weight: 700;
 }
 
 .moon-data p {
@@ -126,7 +124,6 @@
 }
 
 //tabs
-
 .tab-day {
   position: relative !important;
   bottom: 157px !important;
