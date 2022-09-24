@@ -45,8 +45,42 @@
   </div>
 
   <div>
-  <%= column_chart @user_moods %>
-  <%= column_chart @mood_chart %>
+  <%# <% raise %>
+  <div class="card-header">
+  <h4>Last 7 days of Moods:</h4>
+  </div>
+  <%= line_chart @user_moods, library: {
+    colors: ['#614BA5'],
+    chart: {
+      backgroundColor: '#2B2B2B'
+    },
+    xAxis: {
+      lineColor: '#614BA5',
+      labels: {
+        style: {
+        color: 'white'
+        }
+      }
+    },
+
+    yAxis: {
+      gridLineColor: 'transparent',
+        labels: {
+          style: {
+            color: 'transparent'
+              }
+            },
+      minorGridLineColor: 'transparent',
+      tickColor: 'transparent'
+    },
+    plotOptions: {
+      marker: {
+        lineColor: '#614BA5'
+      },
+    },
+  }
+
+  %>
   </div>
 
 </div>
