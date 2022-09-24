@@ -9,11 +9,11 @@
         <%= link_to "My Profile", edit_user_registration_path, class: "dropdown-item" %>
         <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { turbo_method: :delete } %>
         <form action="/day" method="get">
-        <div class="darkmode dropdown-item">
-          <button id="darkmode_on" type="submit" name="theme" value="dark">🌙</button>
-          <button id="darkmode_off" type="submit" name="theme" value="light">☀️</button>
-        </div>
-  </form>
+          <div class="darkmode dropdown-item">
+            <button id="darkmode_on" type="submit" name="theme" value="dark">🌙</button>
+            <button id="darkmode_off" type="submit" name="theme" value="light">☀️</button>
+          </div>
+        </form>
       </div>
     </li>
   <% else %>
@@ -23,16 +23,18 @@
       <% end %>
     </div>
   <% end %>
+  <canvas id="canv"></canvas>
 
 
 
   <script>
-    var num = 100;
+    var num = 50;
     var radius = 2;
-    var max = 300;
-    createRandomNodes(20, 2, 300);
+    var max = 250;
+    createRandomNodes(50, 2, 250);
     function createRandomNodes(num, radius, max) {
-      var canvas = document.getElementsByClassName("navbar");
+      var canvas = document.getElementById("canv");
+      console.log(canvas)
       var context = canvas.getContext("2d");
       context.clearRect(0, 0, canvas.width, canvas.height);
       for (var i = 0; i <=num; i++) {
@@ -40,6 +42,7 @@
           var rand_x = Math.random(i) * max;
           var rand_y = Math.random(i) * max;
           context.arc(rand_x, rand_y, radius, 0, 2*Math.PI);
+          context.fillStyle = "#ffdc64";
           context.fill();
           context.closePath();
       }
