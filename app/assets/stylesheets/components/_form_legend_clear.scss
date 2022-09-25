@@ -27,7 +27,7 @@ legend ~ div.form-check:first-of-type {
   input:checked + label {
     opacity: 1;
     border-radius: 50%;
-    background-color: rgba(30, 220, 136, 1);
+    background-color: $moon-purple;
   }
   input:not(:checked) + label {
     opacity: 0.5;
