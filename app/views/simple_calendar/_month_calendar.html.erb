@@ -1,15 +1,17 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
     <div class="previous">
-      <%= link_to t('simple_calendar.previous', default: '<'), calendar.url_for_previous_view %>
-      <%# <i class="fas fa-arrow-leTOft"></i> %>
+      <%= link_to calendar.url_for_previous_view do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
     </div>
     <div class="date">
       <span class="calendar-title" style="font-size: 40px"><%= I18n.t("date.abbr_month_names")[start_date.month] %> <%= start_date.year %>
     </div>
     <div class="next">
-      <%= link_to t('simple_calendar.next', default: '>'), calendar.url_for_next_view %>
-    <%# <i class="fas fa-arrow-right"></i> %>
+      <%= link_to calendar.url_for_next_view do %>
+        <i class="fas fa-arrow-right"></i>
+      <% end %>
     </div>
   </div>
 
