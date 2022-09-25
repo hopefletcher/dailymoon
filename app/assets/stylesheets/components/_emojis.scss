@@ -2,15 +2,11 @@
   font-size: calc(100px + 2vw);
   min-width: 1.4em;
   text-align: center;
-  margin-top: 0px;
 }
 
 .moon::after {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-}
-
-.moon::after {
   background: url('moon1new.png');
   background-size: 100px;
   content: "moon";

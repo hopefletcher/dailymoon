@@ -11,17 +11,21 @@
       <% end %>
     <% end %>
   </div>
-    <% @events.each do |event| %>
-      <%= link_to edit_event_path(event), class: "a-card" do %>
-        <div class="info-card my-3 mx-2">
-          <%= event.start_time.strftime("%H:%M") %> - <%= event.end_time.strftime("%H:%M") %>
-          <h3><%= event.title %></h3>
-          <p><%= event.description %></p>
-          <%= link_to "Remove Event",
-                            event_path(event),
-                            method: :delete,
-                            data: { confirm: "Are you sure you want to delete this event?"} %>
-        </div>
+    <% if @events == [] %>
+      <p style="text-align: center; margin: 50px 0"><em>You don't have any events planned for today</em></p>
+    <% else %>
+      <% @events.each do |event| %>
+        <%= link_to edit_event_path(event), class: "a-card" do %>
+          <div class="info-card my-3 mx-2">
+            <%= event.start_time.strftime("%H:%M") %> - <%= event.end_time.strftime("%H:%M") %>
+            <h3><%= event.title %></h3>
+            <p><%= event.description %></p>
+            <%= link_to "Remove Event",
+                              event_path(event),
+                              method: :delete,
+                              data: { confirm: "Are you sure you want to delete this event?"} %>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
     <div class="btn-wrapper">
