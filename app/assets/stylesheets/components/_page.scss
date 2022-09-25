@@ -1,6 +1,41 @@
 .container.page {
-  margin-bottom: 65px;
+  margin-bottom: 90px;
   padding: 0;
+}
+
+@media (max-width: 1920px) {
+  /* For a screen < 960px, this CSS will be read */
+  .container.page {
+    width: 750px;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* For a screen < 960px, this CSS will be read */
+  .container.page {
+    width: 650px;
+  }
+}
+
+@media (max-width: 960px) {
+  /* For a screen < 960px, this CSS will be read */
+  .container.page {
+    width: 75vw;
+  }
+}
+
+@media (max-width: 720px) {
+  /* For a screen < 720px, this CSS will be read */
+  .container.page {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 540px) {
+  /* For a screen < 540px, this CSS will be read */
+  .container.page {
+    width: 100vw;
+  }
 }
 
 //day page
@@ -53,35 +88,4 @@
 
 .moon-data p {
   font-weight: 600;
-}
-
-.day-nav {
-  position: relative;
-  bottom: 149px;
-}
-
-.month-page {
-  position: relative;
-  bottom: 34px;
-}
-
-.stats-page {
-  position: relative;
-  top: 29px;
-}
-
-// tabs
-.tab-day {
-  position: relative !important;
-  bottom: 157px !important;
-}
-
-.tab-mood {
-  position: relative;
-  bottom: 14px;
-}
-
-// stars
-canvas {
-  z-index: -1;
 }
