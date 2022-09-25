@@ -36,28 +36,29 @@ class MoodsController < ApplicationController
     redirect_to mood_path(date: @mood.date)
   end
 
+  private
+
   def set_emoji
-    if @mood.rating == 1
+    case @mood.rating
+    when 1
       @emoji = "😢"
-    elsif @mood.rating == 2
+    when 2
       @emoji = "💩"
-    elsif @mood.rating == 3
+    when 3
       @emoji = "😡"
-    elsif @mood.rating == 4
+    when 4
       @emoji = "😐"
-    elsif @mood.rating == 5
-      @emoji = "🥳"
-    elsif @mood.rating == 6
+    when 5
+      @emoji = "😊"
+    when 6
       @emoji = "😀"
     end
   end
 
-  private
-
   def display_emoji
     case @emoji
     when "😢"
-      @emoji_class="sad"
+      @emoji_class='sad'
     when "💩"
       @emoji_class='shit'
     when "😡"
@@ -67,7 +68,7 @@ class MoodsController < ApplicationController
     when "😊"
       @emoji_class='good'
     when "😀"
-      @emoji_class='happy_class'
+      @emoji_class='happy'
     end
   end
 

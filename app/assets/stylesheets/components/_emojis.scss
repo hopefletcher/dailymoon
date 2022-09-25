@@ -72,7 +72,7 @@
 // Sad emoji
 
 .sad {
-  font-size: calc(65px + 4vw);
+  font-size: calc(60px + 4vw);
   min-width: 1.4em;
   text-align: center;
 }
@@ -80,9 +80,6 @@
 .sad::after {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-}
-
-.sad::after {
   content: '😔';
   animation-name: sad;
   animation-duration: 7s;
@@ -103,7 +100,7 @@
 // Shit emoji
 
 .shit {
-  font-size: calc(65px + 4vw);
+  font-size: calc(60px + 4vw);
   min-width: 1.4em;
   text-align: center;
 }
@@ -111,9 +108,6 @@
 .shit::after {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-}
-
-.shit::after {
   content: '😖';
   animation-name: shit;
   animation-duration: 7s;
@@ -135,7 +129,7 @@
 // Angry emoji
 
 .angry {
-  font-size: calc(65px + 4vw);
+  font-size: calc(60px + 4vw);
   min-width: 1.4em;
   text-align: center;
 }
@@ -143,9 +137,6 @@
 .angry::after {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-}
-
-.angry::after {
   content: '😠';
   animation-name: angry;
   animation-duration: 7s;
@@ -167,7 +158,7 @@
 // neutral emoji
 
 .neutral {
-  font-size: calc(65px + 4vw);
+  font-size: calc(60px + 4vw);
   min-width: 1.4em;
   text-align: center;
 }
@@ -175,9 +166,6 @@
 .neutral::after {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-}
-
-.neutral::after {
   content: '😑';
   animation-name: neutral;
   animation-duration: 7s;
@@ -195,7 +183,7 @@
 // good emoji
 
 .good {
-  font-size: calc(65px + 4vw);
+  font-size: calc(60px + 4vw);
   min-width: 1.4em;
   margin: 0.3em 0.4em;
   text-align: center;
@@ -204,9 +192,6 @@
 .good::after {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-}
-
-.good::after {
   content: '😊';
   animation-name: good;
   animation-duration: 7s;
@@ -224,7 +209,7 @@
 // happy emoji
 
 .happy {
-  font-size: calc(65px + 4vw);
+  font-size: calc(60px + 4vw);
   min-width: 1.4em;
   text-align: center;
 }
@@ -232,9 +217,6 @@
 .happy::after {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-}
-
-.happy::after {
   content: '😄';
   animation-name: happy;
   animation-duration: 7s;
