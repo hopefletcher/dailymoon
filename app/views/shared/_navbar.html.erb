@@ -1,4 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-dailymoon mx-3">
+  <canvas id="canv"></canvas>
   <% if user_signed_in? %>
     <%= link_to "/", class: "nav-link" do %>
       Hi, <%= current_user.first_name.capitalize %>! <%= @zodiac_emoji %>
@@ -17,9 +18,6 @@
       </div>
     </li>
   <% end %>
-  <canvas id="canv"></canvas>
-
-
 
   <script>
     var num = 50;
