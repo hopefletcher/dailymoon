@@ -1,4 +1,4 @@
-<div class="container" style="margin-bottom: 80px">
+<div class="container page" style="margin-bottom: 80px">
   <div class="date-navigation">
     <% if params[:date] %>
       <%= link_to mood_path(date: (params[:date].to_date - 1)) do %>
@@ -14,25 +14,7 @@
   <div class="emoji">
     <h2>Today you are feeling:</h2>
     <div class="emoji_img">
-      <% if @emoji == "😢" %>
-        <% sad_class = "sad"%>
-          <div class='<%= sad_class %>'></div>
-      <% elsif @emoji == "💩" %>
-        <% shit_class = "shit"%>
-          <div class='<%= shit_class %>'></div>
-      <% elsif @emoji == "😡" %>
-        <% angry_class = "angry"%>
-          <div class='<%= angry_class %>'></div>
-      <% elsif @emoji == "😐" %>
-        <% neutral_class = "neutral"%>
-          <div class='<%= neutral_class %>'></div>
-      <% elsif @emoji == "😊" %>
-        <% good_class = "good"%>
-          <div class='<%= good_class %>'></div>
-      <% else @emoji == "😀" %>
-        <% happy_class = "happy"%>
-          <div class='<%= happy_class %>'></div>
-      <% end %>
+      <div class="<%= @class %>"></div>
     </div>
   </div>
 

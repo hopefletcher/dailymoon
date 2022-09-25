@@ -7,6 +7,7 @@ class MoodsController < ApplicationController
       redirect_to new_mood_path(date: @date)
     else
       set_emoji
+      display_emoji
     end
   end
 
@@ -52,6 +53,23 @@ class MoodsController < ApplicationController
   end
 
   private
+
+  def display_emoji
+    case @emoji
+    when "😢"
+      @class="sad"
+    when "💩"
+      @class='shit'
+    when "😡"
+      @class='angry'
+    when "😐"
+      @class='neutral'
+    when "😊"
+      @class='good'
+    when "😀"
+      @class='happy_class'
+    end
+  end
 
   def mood_params
     params.require(:mood).permit(:rating, :journal_entry, :date, :id)

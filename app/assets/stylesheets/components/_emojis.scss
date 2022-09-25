@@ -10,7 +10,6 @@
   animation-iteration-count: infinite;
 }
 
-
 .moon::after {
   background: url('moon1new.png');
   background-size: 100px;
@@ -32,42 +31,36 @@
     background-repeat: no-repeat;
     background-position: center;
   }
-
   25% {
     background: url('moon3firstquarter.png');
     background-size: 100px;
     background-repeat: no-repeat;
     background-position: center;
   }
-
   37.5% {
     background: url('moon4waxinggibbous.png');
     background-size: 100px;
     background-repeat: no-repeat;
     background-position: center;
   }
-
   50% {
     background: url('moon5full.png');
     background-size: 100px;
     background-repeat: no-repeat;
     background-position: center;
   }
-
   62.5% {
     background: url('moon6waninggibbous.png');
     background-size: 100px;
     background-repeat: no-repeat;
     background-position: center;
   }
-
   75% {
     background: url('moon7lastquarter.png');
     background-size: 100px;
     background-repeat: no-repeat;
     background-position: center;
   }
-
   87.5% {
     background: url('moon8waningcrescent.png');
     background-size: 100px;
@@ -79,7 +72,7 @@
 // Sad emoji
 
 .sad {
-  font-size: calc(100px + 4vw);
+  font-size: calc(65px + 4vw);
   min-width: 1.4em;
   text-align: center;
 }
@@ -89,25 +82,19 @@
   animation-iteration-count: infinite;
 }
 
-
 .sad::after {
   content: '😔';
   animation-name: sad;
   animation-duration: 7s;
 }
 
-
 @keyframes sad {
   25% {
       content: '😥';
   }
-
-
   50% {
       content: '😣';
   }
-
-
   75% {
       content: '😞';
   }
@@ -116,7 +103,7 @@
 // Shit emoji
 
 .shit {
-  font-size: calc(100px + 4vw);
+  font-size: calc(65px + 4vw);
   min-width: 1.4em;
   text-align: center;
 }
@@ -126,25 +113,19 @@
   animation-iteration-count: infinite;
 }
 
-
 .shit::after {
   content: '😖';
   animation-name: shit;
   animation-duration: 7s;
 }
 
-
 @keyframes shit {
   25% {
       content: '😵‍💫';
   }
-
-
   50% {
       content: '😵';
   }
-
-
   75% {
       content: '💩';
   }
@@ -154,7 +135,7 @@
 // Angry emoji
 
 .angry {
-  font-size: calc(100px + 4vw);
+  font-size: calc(65px + 4vw);
   min-width: 1.4em;
   text-align: center;
 }
@@ -163,7 +144,6 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-
 
 .angry::after {
   content: '😠';
@@ -176,13 +156,9 @@
   25% {
       content: '😤';
   }
-
-
   50% {
       content: '😡';
   }
-
-
   75% {
       content: '🤬';
   }
@@ -191,7 +167,7 @@
 // neutral emoji
 
 .neutral {
-  font-size: calc(100px + 4vw);
+  font-size: calc(65px + 4vw);
   min-width: 1.4em;
   text-align: center;
 }
@@ -201,20 +177,16 @@
   animation-iteration-count: infinite;
 }
 
-
 .neutral::after {
   content: '😑';
   animation-name: neutral;
   animation-duration: 7s;
 }
 
-
 @keyframes neutral {
   25% {
       content: '😐';
   }
-
-
   50% {
       content: '😒';
   }
@@ -223,7 +195,7 @@
 // good emoji
 
 .good {
-  font-size: calc(100px + 4vw);
+  font-size: calc(65px + 4vw);
   min-width: 1.4em;
   margin: 0.3em 0.4em;
   text-align: center;
@@ -234,20 +206,16 @@
   animation-iteration-count: infinite;
 }
 
-
 .good::after {
   content: '😊';
   animation-name: good;
   animation-duration: 7s;
 }
 
-
 @keyframes good {
   25% {
       content: '😋';
   }
-
-
   50% {
       content: '🤗';
   }
@@ -256,7 +224,7 @@
 // happy emoji
 
 .happy {
-  font-size: calc(100px + 4vw);
+  font-size: calc(65px + 4vw);
   min-width: 1.4em;
   text-align: center;
 }
@@ -266,20 +234,16 @@
   animation-iteration-count: infinite;
 }
 
-
 .happy::after {
   content: '😄';
   animation-name: happy;
   animation-duration: 7s;
 }
 
-
 @keyframes happy {
   25% {
       content: '😀';
   }
-
-
   50% {
       content: '😁';
   }

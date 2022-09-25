@@ -1,7 +1,4 @@
 .container.page {
-  // display: flex;
-  // flex-direction: column;
-  // min-height: 100vh;
   margin-bottom: 65px;
   padding: 0;
 }
@@ -11,9 +8,6 @@
   .container.page {
     width: 750px;
   }
-  // .footer {
-  //   width: 750px;
-  // }
 }
 
 @media (max-width: 1024px) {
@@ -21,9 +15,6 @@
   .container.page {
     width: 650px;
   }
-  // .footer {
-  //   width: 650px;
-  // }
 }
 
 @media (max-width: 960px) {
@@ -31,9 +22,6 @@
   .container.page {
     width: 75vw;
   }
-  // .footer {
-  //   width: 75vw;
-  // }
 }
 
 @media (max-width: 720px) {
@@ -41,9 +29,6 @@
   .container.page {
     width: 90vw;
   }
-  // .footer {
-  //   width: 90vw;
-  // }
 }
 
 @media (max-width: 540px) {
@@ -51,9 +36,6 @@
   .container.page {
     width: 100vw;
   }
-  // .footer {
-  //   width: 100vw;
-  // }
 }
 
 //day page
