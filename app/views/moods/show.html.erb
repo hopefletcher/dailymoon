@@ -4,7 +4,7 @@
       <%= link_to mood_path(date: (params[:date].to_date - 1)) do %>
         <i class="fas fa-arrow-left"> </i>
       <% end %>
-      <h1 class="date-today"><%= params[:date].to_date.strftime("%b %d") %>, <%= Time.now.strftime("%H:%M") %></h1>
+      <h1 class="date-today my-3"><%= params[:date].to_date.strftime("%b %d") %></h1>
       <%= link_to mood_path(date: (params[:date].to_date + 1)) do %>
         <i class="fas fa-arrow-right"> </i>
       <% end %>
