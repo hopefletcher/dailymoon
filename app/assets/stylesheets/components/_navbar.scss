@@ -1,5 +1,6 @@
 .navbar-dailymoon {
   justify-content: space-between;
+  background-color: rgba(0,0,0,0) !important;
 }
 
 .navbar-dailymoon .navbar-collapse {
@@ -12,5 +13,4 @@
 
 li.nav-item {
   list-style-type: none;
-  z-index: 999;
 }
