@@ -57,17 +57,17 @@ class MoodsController < ApplicationController
   def display_emoji
     case @emoji
     when "😢"
-      @class="sad"
+      @emoji_class="sad"
     when "💩"
-      @class='shit'
+      @emoji_class='shit'
     when "😡"
-      @class='angry'
+      @emoji_class='angry'
     when "😐"
-      @class='neutral'
+      @emoji_class='neutral'
     when "😊"
-      @class='good'
+      @emoji_class='good'
     when "😀"
-      @class='happy_class'
+      @emoji_class='happy_class'
     end
   end
 
