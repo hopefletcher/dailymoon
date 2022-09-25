@@ -48,8 +48,21 @@ legend ~ div.form-check:first-of-type {
   width: 100%;
 }
 
+.form-inputs .user_password {
+  margin-bottom: 16px !important;
+}
+
 .form-inputs {
   text-align: center;
+}
+
+.form-inputs div {
+  margin-bottom: 0 !important;
+}
+
+.form-actions input.btn {
+  margin: 24px 0;
+  width: 100%;
 }
 
 .optional {
