@@ -4,7 +4,11 @@
       Hi, <%= current_user.first_name.capitalize %>! <%= @zodiac_emoji %>
     <% end %>
     <li class="nav-item dropdown">
-      <%= image_tag "moon1new.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% if cookies[:theme] == "dark" %>
+        <%= image_tag "moon5full.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% else %>
+        <%= image_tag "moon1new.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
         <%= link_to "My Profile", edit_user_registration_path, class: "dropdown-item" %>
         <%= link_to "Sign out", destroy_user_session_path, method: :get, class: "dropdown-item" %>
