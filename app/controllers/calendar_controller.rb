@@ -95,6 +95,7 @@ class CalendarController < ApplicationController
       @moonset = moon_today.moonset.strftime("%H:%M %Z")
     else
       @moonset = "N/A"
+    end
     @moonphase = moon_today.moon_phase_name
     @moonsign = moon_today.moon_sign
     @moonlocation = moon_today.display_location
