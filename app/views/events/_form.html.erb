@@ -8,6 +8,6 @@
       <%= p.input :location %>
       <%= p.button :submit, "Submit Event", class: "btn-gradient my-3" %>
     <% end %>
-    <%= link_to "Cancel", events_path(date: (params[:date])) %>
+    <%= link_to "Cancel", events_path(date: @event.start_time.to_date) %>
   </div>
 </div>
