@@ -38,6 +38,30 @@
   }
 }
 
+// for Galaxy S8+
+@media (max-width: 375px) {
+  .simple-calendar td {
+    .image {
+      margin: 3px 0;
+    }
+    .caption {
+      margin: 0;
+    }
+  }
+  .form-inputs .user_password {
+    margin-bottom: 5px !important;
+  }
+  .form-label {
+    margin: 15px 0 5px 0;
+  }
+  .form-inputs .form-control, .form-select {
+    padding: 3px 15px;
+  }
+  .form-text {
+    font-size: small;
+  }
+}
+
 //day page
 .title p {
   text-align: center;
