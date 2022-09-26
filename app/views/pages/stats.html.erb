@@ -6,7 +6,7 @@
     <h4>Your best phase of the moon cycle...</h4>
       <p><%= image_tag @best_phase_img, width: "32px", height: "32px" %></p>
     </div>
-    <p>You tend to feel the best (🥳 + 😀) when the moon is <strong><%= @best_phase %></strong>. Make sure to checkout when the moon will be <%= @best_phase %> this month to see if this pattern continues.</p>
+    <p>You tend to feel the best (🥳 + 😀) when the moon is <strong class="text_highlights"><%= @best_phase %></strong>. Make sure to checkout when the moon will be <%= @best_phase %> this month to see if this pattern continues.</p>
   </div>
 
 
@@ -16,7 +16,7 @@
     <h4>Be Mindful of...</h4>
     <%= image_tag @mad_phase_img, width: "32px", height: "32px" %>
     </div>
-    <p>Make sure to do some extra self-care time when the moon is <strong><%= @mad_phase %></strong>. The data shows that this phase of the moon cycle that you become the most irritated (😡).</p>
+    <p>Make sure to do some extra self-care time when the moon is <strong class="text_highlights"><%= @mad_phase %></strong>. The data shows that this phase of the moon cycle that you become the most irritated (😡).</p>
   </div>
 
   <% else %>
@@ -25,7 +25,7 @@
       <h4>Be Mindful of...</h4>
       <%= image_tag @mad_phase_img, width: "32px", height: "32px" %>
       </div>
-      <p>Make sure to do some extra self-care time when the moon is <strong><%= @poop_phase %></strong>. The data shows that this phase of the moon cycle when you tend to feel the crappiest (💩) .</p>
+      <p>Make sure to do some extra self-care time when the moon is <strong class="text_highlights"><%= @poop_phase %></strong>. The data shows that this phase of the moon cycle when you tend to feel the crappiest (💩) .</p>
     </div>
   <% end %>
 
@@ -34,7 +34,7 @@
       <h4>Look to the signs...</h4>
       <h4 style="font-size: 32px;"><%= @moon_zodiac %></h4>
     </div>
-  <p>The moon moves to a different zodiac sign every two-and-a-half days. When the moon is in <strong><%= @best_sign %></strong> you find that you are happiest and most content. Make the most of this phase by doing the things that you love and spreading good energy.</p>
+  <p>The moon moves to a different zodiac sign every two-and-a-half days. When the moon is in <strong class="text_highlights"><%= @best_sign %></strong> you find that you are happiest and most content. Make the most of this phase by doing the things that you love and spreading good energy.</p>
   </div>
 
   <div class="info-card">

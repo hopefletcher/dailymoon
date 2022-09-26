@@ -102,6 +102,12 @@ body.light {
   .form-select {
     color: $moon-gray !important;
   }
+  .card-header h4 {
+    color: $moon-gray;
+  }
+  .text_highlights {
+    color: $moon-purple;
+  }
 }
 
 body.dark {
