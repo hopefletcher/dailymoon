@@ -18,12 +18,13 @@
   </div>
 
   <div class="container moon-data">
-    <div class="d-flex justify-content-between w-100 px-2">
-      <div><h4>Moonrise</h4> <p><%= @moonrise %></p></div>
-      <div><h4>Moonset</h4> <p><%= @moonset %></p></div>
+  <%= raise %>
+    <div class="d-flex justify-content-between w-100 px-4">
+      <div><h4>Moonrise</h4> <p><%= @moonrise %> ↑</p></div>
+      <div><h4>Moonset</h4> <p><%= @moonset %> ↓</p></div>
     </div>
     <%= image_tag @moonimage, class: "moon-image", width: "100px" %>
-    <div class="d-flex justify-content-between w-100 px-2">
+    <div class="d-flex justify-content-between w-100 px-4">
       <div><h4>Moonphase</h4><p> <%= @moonphase %></p></div>
       <div><h4>Moon Sign</h4> <p><%= @moonsign %></div>
     </div>
