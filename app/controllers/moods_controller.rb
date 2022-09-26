@@ -32,8 +32,12 @@ class MoodsController < ApplicationController
   def update
     @mood = Mood.find(mood_params[:id])
     @mood.update(mood_params)
-    @mood.save!
-    redirect_to mood_path(date: @mood.date)
+    @mood.save
+    if @mood.save
+      redirect_to mood_path(date: @mood.date)
+    else
+      render :new
+    end
   end
 
   private
