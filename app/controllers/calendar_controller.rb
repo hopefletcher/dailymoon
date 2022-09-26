@@ -86,8 +86,15 @@ class CalendarController < ApplicationController
   def display_moon_data
     moon_today = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first
     @moonimage = moon_today.moon_phase_img
-    @moonrise = moon_today.moonrise.strftime("%H:%M %Z") if moon_today.moonrise
-    @moonset = moon_today.moonset.strftime("%H:%M %Z") if moon_today.moonset
+    if moon_today.moonrise
+      @moonrise = moon_today.moonrise.strftime("%H:%M %Z")
+    else
+      @moonrise = "N/A"
+    end
+    if moon_today.moonset
+      @moonset = moon_today.moonset.strftime("%H:%M %Z")
+    else
+      @moonset = "N/A"
     @moonphase = moon_today.moon_phase_name
     @moonsign = moon_today.moon_sign
     @moonlocation = moon_today.display_location
