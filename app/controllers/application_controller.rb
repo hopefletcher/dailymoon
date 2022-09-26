@@ -56,4 +56,27 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def display_emoji
+    case @mood_rating
+    when 1
+      @emoji = "😢"
+      @emoji_class='sad'
+    when 2
+      @emoji = "💩"
+      @emoji_class='shit'
+    when 3
+      @emoji = "😡"
+      @emoji_class='angry'
+    when 4
+      @emoji = "😐"
+      @emoji_class='neutral'
+    when 5
+      @emoji = "😊"
+      @emoji_class='good'
+    when 6
+      @emoji = "😀"
+      @emoji_class='happy'
+    end
+  end
 end

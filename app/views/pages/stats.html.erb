@@ -39,7 +39,7 @@
 
   <div class="info-card">
     <div class="card-header">
-      <h4>Your week at a glance</h4>
+      <h4>Your week at a glance...</h4>
     </div>
   <%= line_chart @user_moods, library: {
     colors: ['#614BA5'],
@@ -71,8 +71,25 @@
       },
     },
   }
-
   %>
   </div>
 
+  <div class="info-card my-2">
+    <div class="card-header">
+      <h4>Your personal moon cycle...</h4>
+    </div>
+    <div class="card-header my-3 px-2">
+      <%= image_tag "moon1new.png", alt: "New Moon", style: "width: 35px;" %>
+      <%= image_tag "moon3firstquarter.png", alt: "First Quarter", style: "width: 35px;" %>
+      <%= image_tag "moon5full.png", alt: "Full Moon", style: "width: 35px;" %>
+      <%= image_tag "moon7lastquarter.png", alt: "Last Quarter", style: "width: 35px;" %>
+    </div>
+    <div class="card-header my-3 px-2">
+      <div style="font-size: 24px;"><%= @mood_new_moon %></div>
+      <div style="font-size: 24px;"><%= @mood_first_quarter %></div>
+      <div style="font-size: 24px;"><%= @mood_full_moon %></div>
+      <div style="font-size: 24px;"><%= @mood_last_quarter %></div>
+    </div>
+
+  </div>
 </div>

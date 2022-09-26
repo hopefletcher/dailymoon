@@ -14,9 +14,10 @@ class PagesController < ApplicationController
     poop_phase_img
     mad_phase_img
     user_moods
-    # moon_chart
-    # moon_breakdown
-    # mood_chart
+    @mood_new_moon = mood_for(0.0)
+    @mood_first_quarter = mood_for(0.25)
+    @mood_full_moon = mood_for(0.5)
+    @mood_last_quarter = mood_for(0.75)
   end
 
   private
@@ -132,6 +133,23 @@ class PagesController < ApplicationController
   def user_moods
     moods = Mood.where(user: current_user, date: (Date.today - 6.day)..Date.today).order(:date)
     @user_moods = moods.map { |mood| [mood.date.strftime("%a"), mood.rating] }.to_h
+  end
+
+  def mood_for(moonphase)
+    moods = []
+    mood_ratings = []
+    moons = Moon.where(phase: moonphase)
+    moons.each do |moon|
+      moods.push(Mood.where(date: moon.date).first)
+    end
+    moods.each do |mood|
+      if !mood.nil?
+      mood_ratings.push(mood.rating)
+      end
+    end
+    @mood_rating = mood_ratings.max_by {|i| mood_ratings.count(i)}
+    display_emoji
+    @emoji
   end
 
   # def moon_chart
