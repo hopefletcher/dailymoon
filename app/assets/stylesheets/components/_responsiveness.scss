@@ -38,7 +38,7 @@
   }
 }
 
-// for Galaxy S8+
+  /* for Galaxy S8+ */
 @media (max-width: 375px) {
   .simple-calendar td {
     .image {
@@ -60,56 +60,4 @@
   .form-text {
     font-size: small;
   }
-}
-
-//day page
-.title p {
-  text-align: center;
-  color: white;
-  font-weight: 600;
-  margin-top: 7px;
-}
-
-.title-location p {
-  text-align: center;
-  color: white;
-  margin-top: -9px;
-  margin-bottom: 19px;
-}
-
-.title-moonrise {
-  position: relative;
-  right: 90px;
-  bottom: 119px;
-  text-align: center;
-}
-
-.title-moonset {
-  position: relative;
-  left: 97px;
-  bottom: 193px;
-  text-align: center;
-}
-
-.title-moonphase {
-  position: relative;
-  right: 75px;
-  bottom: 74px;
-  text-align: center;
-}
-
-.title-moon-sign {
-  position: relative;
-  left: 90px;
-  bottom: 148px;
-  text-align: center;
-}
-
-.moon-data h4 {
-  text-align: center;
-  color: #845EF1;
-}
-
-.moon-data p {
-  font-weight: 600;
 }
