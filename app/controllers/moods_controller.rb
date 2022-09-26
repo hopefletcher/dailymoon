@@ -19,8 +19,8 @@ class MoodsController < ApplicationController
   def create
     @mood = Mood.new(mood_params)
     @mood.user = current_user
-    @mood.save!
-    if @mood.save!
+    @mood.save
+    if @mood.save
       redirect_to mood_path(date: @mood.date)
     else
       render :new
