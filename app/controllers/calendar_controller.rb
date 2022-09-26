@@ -98,6 +98,7 @@ class CalendarController < ApplicationController
     end
     @moonphase = moon_today.moon_phase_name
     @moonsign = moon_today.moon_sign
+    @moon_emoji = zodiac_emoji(@moonsign.downcase)
     @moonlocation = moon_today.display_location
   end
 
@@ -132,8 +133,38 @@ class CalendarController < ApplicationController
     your_day = JSON.parse response.body.gsub('=>', ':')
     @daily_horoscope = your_day["description"]
   end
-end
 
+  def zodiac_emoji(emoji)
+    case emoji
+    when "aries"
+      "♈️"
+    when "taurus"
+      "♉️"
+    when "gemini"
+      "♊️"
+    when "cancer"
+      "♋️"
+    when "leo"
+      "♌️"
+    when "virgo"
+      "♍️"
+    when "libra"
+      "♎️"
+    when "scorpio"
+      "♏️"
+    when "sagittarius"
+      "♐️"
+    when "capricorn"
+      "♑️"
+    when "aquarius"
+      "♒️"
+    when "pisces"
+      "♓️"
+    else
+      "🐓"
+    end
+  end
+end
 
 # def read_json
 #   if params[:start_date] == nil
