@@ -39,8 +39,6 @@
                 <div class="event-label">
                   <% event_day = Event.where(date: day) %>
                   <% if event_day != [] %>•
-
-                    <%# <i class="fa-regular fa-calendar"></i> %>
                   <% end %>
                 </div>
 
@@ -57,14 +55,6 @@
                     <% end %>
                   </div>
                 <% end %>
-                <%# <% @current_month_moons.each do |m| %>
-                  <%# <% if m["date"] === day.to_s %>
-                    <%# <div class="image"><img src="<%= m["moon_phase_img"], width="30px">
-                    <%# </div> %>
-                    <%# <div class="caption"><%= m["moon_phase_name"] %>
-                    <%# </div> %>
-                  <%# <% end %>
-                <%# <% end %>
               <% end %>
             <% end %>
             </span>

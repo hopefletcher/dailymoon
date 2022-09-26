@@ -1,9 +1,9 @@
-<div class="footer py-2">
-<% if user_signed_in? %>
-  <div class="container navigation" id="nav">
-    <%= link_to "Day", day_path(:date => Date.today), class:"btn #{"active" if action_name == "day" || action_name == "show" || action_name == "index" || action_name == "new"}" %>
-    <%= link_to "Month", month_path(:date => params[:date]), class:"btn #{"active" if action_name == "month"}" %>
-    <%= link_to "Stats", stats_path, class:"btn #{"active" if action_name == "stats"}" %>
-  </div>
-<% end %>
+<div class="footer py-2 container page">
+  <% if user_signed_in? && !current_page?(:controller => 'events', :action => 'new') && action_name != "edit" %>
+    <div class="container navigation" id="nav">
+      <%= link_to "Day", day_path(:date => Date.today), class:"btn #{"active" if action_name == "day" || action_name == "show" || action_name == "index" || action_name == "new"}" %>
+      <%= link_to "Month", month_path(:date => params[:date]), class:"btn #{"active" if action_name == "month"}" %>
+      <%= link_to "Stats", stats_path, class:"btn #{"active" if action_name == "stats"}" %>
+    </div>
+  <% end %>
 </div>

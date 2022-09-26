@@ -1,12 +1,15 @@
 .emoji {
   text-align: center;
   font-size: 48px;
-  margin: 48px 0px;
+  margin-top: 20px;
 }
 
 .journal {
   text-align: center;
-  margin-top: -58px;
+  margin: 20px 0;
+  p {
+    margin: 0;
+  }
 }
 
 .journal-entry {

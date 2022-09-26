@@ -48,6 +48,10 @@ legend ~ div.form-check:first-of-type {
   width: 100%;
 }
 
+.form-check-input.boolean.optional {
+  border-color: $moon-yellow;
+}
+
 .form-inputs .user_password {
   margin-bottom: 16px !important;
 }
@@ -96,4 +100,8 @@ legend ~ div.form-check:first-of-type {
 
 option {
   font-size: 16px;
+}
+
+.simple_form {
+  margin: 0 5px;
 }
