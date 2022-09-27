@@ -120,6 +120,9 @@ body.light {
   a.btn-gradient {
     color: white;
   }
+  .nav-link {
+    color: $moon-gray;
+  }
 }
 
 body.dark {
@@ -168,5 +171,9 @@ body.dark {
     :hover {
       background-color: $moon-purple;
     }
+  }
+
+  .nav-link {
+    color: white;
   }
 }
