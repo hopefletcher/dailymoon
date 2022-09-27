@@ -6,7 +6,7 @@
       <% end %>
     </div>
     <div class="date">
-      <h1 class="date-today my-3"><%= params[:date].to_date.strftime("%b %d") %></h1>
+      <div class="calendar-title my-3" style="font-size: 40px"><%= I18n.t("date.abbr_month_names")[start_date.month] %> <%= start_date.year %></div>
     </div>
     <div class="next">
       <%= link_to calendar.url_for_next_view do %>
@@ -37,7 +37,8 @@
                 <% end %>
 
                 <div class="event-label">
-                  <% event_day = Event.where(date: day) %>
+                  <% event_day = Event.where(start_time: day) %>
+                  <% event_day += Event.where(date: day) %>
                   <% if event_day != [] %>•
                   <% end %>
                 </div>

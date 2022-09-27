@@ -144,7 +144,7 @@ class PagesController < ApplicationController
     mood_ratings = []
     moons = Moon.where(phase: moonphase)
     moons.each do |moon|
-      moods.push(Mood.where(date: moon.date).first)
+      moods.push(Mood.where(user: current_user, date: moon.date).first)
     end
     moods.each do |mood|
       if !mood.nil?
