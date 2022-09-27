@@ -23,10 +23,12 @@ body.light {
     color: white;
     background-color: $moon-gray;
   }
+
   #darkmode_off {
     color: $moon-super-light-gray;
     border-color: $moon-super-light-gray;
   }
+
   .info-card {
     background-color: $gray;
     color: $moon-gray;
@@ -48,29 +50,37 @@ body.light {
       }
     }
   }
+
   .fas {
     color: $moon-purple;
   }
+
   .moon-nav i {
     color: $moon-gray;
   }
+
   th {
     color: $moon-light-gray;
   }
+
   td a {
     color: $moon-purple;
     font-weight: bold;
   }
+
   .simple-calendar .today {
     background: $moon-super-light-gray !important;
     border-radius: 18px;
   }
+
   .simple-calendar a {
     color: $moon-gray;
   }
+
   .text {
     color: $moon-gray;
   }
+
   .dropdown-menu {
     background-color: $gray;
     border-color: $moon-purple;
@@ -78,50 +88,69 @@ body.light {
       color: $moon-gray;
     }
   }
+
   .footer {
     background: $light-gray;
   }
+
   .title-location p {
     color: $moon-gray;
   }
+
   legend {
     color: $moon-gray;
   }
+
   label {
     color: $moon-gray !important;
   }
+
   .form-control {
     background-color: white;
   }
+
   input.form-control {
     color: $moon-gray !important;
   }
+
   select {
     background-color: white;
   }
+
   .form-select {
     color: $moon-gray !important;
   }
+
   .card-header h4 {
     color: $moon-gray;
   }
+
   .text_highlights {
     color: $moon-purple;
   }
+
   .moon-nav {
     background: linear-gradient(rgba(244,244,244,0) 0%, rgba(244,244,244,0.5) 30%, rgba(244,244,244,1) 100%) !important;
   }
+
   .target {
     color: $moon-purple !important;
   }
+
   a {
     color: $moon-purple;
   }
+
   a.btn-gradient {
     color: white;
   }
+
   .nav-link {
     color: $moon-gray;
+  }
+
+  .form-check-input {
+    background-color: white;
   }
 }
 

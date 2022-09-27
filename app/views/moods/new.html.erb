@@ -10,7 +10,9 @@
       <% end %>
     <% end %>
   </div>
-  <% if params[:date].to_date < Date.today %>
+  <!-- If you try to create empty Mood errors pops up -->
+  <% if params[:date].to_date <= Date.today %>
+  <!-- Problem persists without conditional (no params[:date] to :new) -->
     <%= render "form", mood: @mood %>
   <% else %>
     <p style="text-align: center; margin: 50px 0"><em>You can't really predict your mood in the future, can you? 🔮</em></p>
