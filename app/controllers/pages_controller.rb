@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     poop_phase
     mad_phase
     best_sign
-    moon_zodiac
+    @moon_zodiac = zodiac_emoji(@best_sign.downcase)
     best_phase_img
     poop_phase_img
     mad_phase_img
@@ -65,34 +65,34 @@ class PagesController < ApplicationController
     @best_sign = good_moonsigns.tally.sort_by { |k, v| v }.reverse[0][0]
   end
 
-  def moon_zodiac
-    case @best_sign
-    when "Aries"
-      @moon_zodiac = "♈️"
-    when "Taurus"
-      @moon_zodiac = "♉️"
-    when "Gemini"
-      @moon_zodiac = "♊️"
-    when "Cancer"
-      @moon_zodiac = "♋️"
-    when "Leo"
-      @moon_zodiac = "♌️"
-    when "Virgo"
-      @moon_zodiac = "♍️"
-    when "Libra"
-      @moon_zodiac = "♎️"
-    when "Scorpio"
-      @moon_zodiac = "♏️"
-    when "Sagittarius"
-      @moon_zodiac = "♐️"
-    when "Capricorn"
-      @moon_zodiac = "♑️"
-    when "Aquarius"
-      @moon_zodiac = "♒️"
-    when "Pisces"
-      @moon_zodiac = "♓️"
+  def zodiac_emoji(emoji)
+    case emoji
+    when "aries"
+      "♈️"
+    when "taurus"
+      "♉️"
+    when "gemini"
+      "♊️"
+    when "cancer"
+      "♋️"
+    when "leo"
+      "♌️"
+    when "virgo"
+      "♍️"
+    when "libra"
+      "♎️"
+    when "scorpio"
+      "♏️"
+    when "sagittarius"
+      "♐️"
+    when "capricorn"
+      "♑️"
+    when "aquarius"
+      "♒️"
+    when "pisces"
+      "♓️"
     else
-      @moon_zodiac = "🐓"
+      "🐓"
     end
   end
 

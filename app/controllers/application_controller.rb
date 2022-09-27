@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
       redirect_to(request.referrer || root_path)
     end
 
-    @zodiac_emoji = zodiac_emoji
+    current_user ? @zodiac_emoji = zodiac_emoji(current_user.zodiac_sign.downcase) : "🐓"
   end
 
   protected
@@ -24,36 +24,34 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def zodiac_emoji
-    if current_user
-      case current_user.zodiac_sign.downcase
-      when "aries"
-        "♈️"
-      when "taurus"
-        "♉️"
-      when "gemini"
-        "♊️"
-      when "cancer"
-        "♋️"
-      when "leo"
-        "♌️"
-      when "virgo"
-        "♍️"
-      when "libra"
-        "♎️"
-      when "scorpio"
-        "♏️"
-      when "sagittarius"
-        "♐️"
-      when "capricorn"
-        "♑️"
-      when "aquarius"
-        "♒️"
-      when "pisces"
-        "♓️"
-      else
-        "🐓"
-      end
+  def zodiac_emoji(emoji)
+    case emoji
+    when "aries"
+      "♈️"
+    when "taurus"
+      "♉️"
+    when "gemini"
+      "♊️"
+    when "cancer"
+      "♋️"
+    when "leo"
+      "♌️"
+    when "virgo"
+      "♍️"
+    when "libra"
+      "♎️"
+    when "scorpio"
+      "♏️"
+    when "sagittarius"
+      "♐️"
+    when "capricorn"
+      "♑️"
+    when "aquarius"
+      "♒️"
+    when "pisces"
+      "♓️"
+    else
+      "🐓"
     end
   end
 end

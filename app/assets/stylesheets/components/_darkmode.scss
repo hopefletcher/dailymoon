@@ -102,6 +102,18 @@ body.light {
   .form-select {
     color: $moon-gray !important;
   }
+  .moon-nav {
+    background: linear-gradient(rgba(244,244,244,0) 0%, rgba(244,244,244,0.5) 30%, rgba(244,244,244,1) 100%) !important;
+  }
+  .target {
+    color: $moon-purple !important;
+  }
+  a {
+    color: $moon-purple;
+  }
+  a.btn-gradient {
+    color: white;
+  }
 }
 
 body.dark {

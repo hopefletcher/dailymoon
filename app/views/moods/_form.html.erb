@@ -10,9 +10,12 @@
                                        ['6', '😀']],
                           label_method: :second,
                           value_method: :first,
-                          wrapper_html: { class: 'radio-buttons' } %>
+                          wrapper_html: { class: 'radio-buttons' },
+                          required: true,
+                          error: "Don't fool yourself... Tell us how you feel." %>
     </div>
-    <%= p.input :journal_entry %>
+    <%= p.input :journal_entry, required: true,
+                                error: "This does not seem right." %>
     <%= p.hidden_field :id, value: @mood.id %>
     <%= p.hidden_field :date, value: @mood.date %>
     <%= p.button :submit, "Submit Mood", class: "btn-gradient my-3" %>
