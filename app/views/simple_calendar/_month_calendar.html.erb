@@ -37,7 +37,8 @@
                 <% end %>
 
                 <div class="event-label">
-                  <% event_day = Event.where(date: day) %>
+                  <% event_day = Event.where(start_time: day) %>
+                  <% event_day += Event.where(date: day) %>
                   <% if event_day != [] %>•
                   <% end %>
                 </div>
