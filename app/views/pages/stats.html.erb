@@ -28,15 +28,7 @@
       </div>
       <p>Make sure to do some extra self-care time when the moon is <strong class="text_highlights"><%= @mad_phase %></strong>. The data shows that this phase of the moon cycle that you become the most irritated (😡).</p>
     </div>
-
   <% else %>
-  <div class="info-card">
-    <div class="card-header">
-      <h4>Be Mindful of...</h4>
-      <%= image_tag "moon5full.png", width: "32px", height: "32px" %>
-      </div>
-      <p>Make sure to do some extra self-care time when the moon is <strong class="text_highlights">Full.</strong>. The data shows that this phase of the moon cycle when you tend to feel the crappiest (💩) .</p>
-    </div>
   <% end %>
 
   <div class="info-card my-2">
@@ -95,10 +87,10 @@
       <%= image_tag "moon7lastquarter.png", alt: "Last Quarter", style: "width: 35px;" %>
     </div>
     <div class="card-header my-3 px-2">
-      <div style="font-size: 24px;"><%= @mood_new_moon %></div>
-      <div style="font-size: 24px;"><%= @mood_first_quarter %></div>
-      <div style="font-size: 24px;"><%= @mood_full_moon %></div>
-      <div style="font-size: 24px;"><%= @mood_last_quarter %></div>
+      <div style="font-size: 35px;"><%= @mood_new_moon %></div>
+      <div style="font-size: 35px;"><%= @mood_first_quarter %></div>
+      <div style="font-size: 35px;"><%= @mood_full_moon %></div>
+      <div style="font-size: 35px;"><%= @mood_last_quarter %></div>
     </div>
   </div>
 </div>
