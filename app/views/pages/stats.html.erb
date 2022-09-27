@@ -90,6 +90,31 @@
       <div style="font-size: 24px;"><%= @mood_full_moon %></div>
       <div style="font-size: 24px;"><%= @mood_last_quarter %></div>
     </div>
+  </div>
 
+  <div class="info-card my-2">
+    <div class="card-header">
+      <h4>Your personal moon cycle...</h4>
+    </div>
+    <div class="card-header my-3" style="gap: 0">
+      <%= image_tag "moon1new.png", alt: "New Moon", style: "width: 25px;" %>
+      <%= image_tag "moon2waxingcrescent.png", alt: "Waxingcrescent", style: "width: 25px;" %>
+      <%= image_tag "moon3firstquarter.png", alt: "First Quarter", style: "width: 25px;" %>
+      <%= image_tag "moon4waxinggibbous.png", alt: "Waxing Gibbous", style: "width: 25px;" %>
+      <%= image_tag "moon5full.png", alt: "Full Moon", style: "width: 25px;" %>
+      <%= image_tag "moon6waninggibbous.png", alt: "Waning Gibbous", style: "width: 25px;" %>
+      <%= image_tag "moon7lastquarter.png", alt: "Last Quarter", style: "width: 25px;" %>
+      <%= image_tag "moon8waningcrescent.png", alt: "Waning Crescent", style: "width: 25px;" %>
+    </div>
+    <div class="card-header my-3">
+      <div style="font-size: 16px;"><%= @mood_new_moon %></div>
+      <div style="font-size: 16px;"><%= @mood_waxing_crescent %></div>
+      <div style="font-size: 16px;"><%= @mood_first_quarter %></div>
+      <div style="font-size: 16px;"><%= @mood_waxing_gibbous %></div>
+      <div style="font-size: 16px;"><%= @mood_full_moon %></div>
+      <div style="font-size: 16px;"><%= @mood_waning_gibbous %></div>
+      <div style="font-size: 16px;"><%= @mood_last_quarter %></div>
+      <div style="font-size: 16px;"><%= @mood_waning_crescent %></div>
+    </div>
   </div>
 </div>

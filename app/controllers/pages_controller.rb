@@ -15,9 +15,13 @@ class PagesController < ApplicationController
     mad_phase_img
     user_moods
     @mood_new_moon = mood_for(0.0)
+    @mood_waxing_crescent = mood_for(0.13)
     @mood_first_quarter = mood_for(0.25)
+    @mood_waxing_gibbous = mood_for(0.38)
     @mood_full_moon = mood_for(0.5)
+    @mood_waning_gibbous = mood_for(0.62)
     @mood_last_quarter = mood_for(0.75)
+    @mood_waning_crescent = mood_for(0.87)
   end
 
   private
