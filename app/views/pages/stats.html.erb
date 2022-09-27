@@ -12,7 +12,7 @@
   </div>
 
 
-  <% if @poop_phase == @best_phase %>
+  <% if @poop_phase != @best_phase %>
   <div class="info-card">
     <div class="card-header">
       <h4>Be Mindful of...</h4>
@@ -20,22 +20,22 @@
       </div>
       <p>Make sure to do some extra self-care time when the moon is <strong class="text_highlights"><%= @poop_phase %></strong>. The data shows that this phase of the moon cycle when you tend to feel the crappiest (💩) .</p>
     </div>
-
-  <div class="info-card">
-    <div class="card-header">
-    <h4>Be Mindful of...</h4>
-    <%= image_tag @mad_phase_img, width: "32px", height: "32px" %>
+  <% elsif @poop_phase != @mad_phase %>
+    <div class="info-card">
+      <div class="card-header">
+      <h4>Be Mindful of...</h4>
+      <%= image_tag @mad_phase_img, width: "32px", height: "32px" %>
+      </div>
+      <p>Make sure to do some extra self-care time when the moon is <strong class="text_highlights"><%= @mad_phase %></strong>. The data shows that this phase of the moon cycle that you become the most irritated (😡).</p>
     </div>
-    <p>Make sure to do some extra self-care time when the moon is <strong class="text_highlights"><%= @mad_phase %></strong>. The data shows that this phase of the moon cycle that you become the most irritated (😡).</p>
-  </div>
 
   <% else %>
   <div class="info-card">
     <div class="card-header">
       <h4>Be Mindful of...</h4>
-      <%= image_tag @mad_phase_img, width: "32px", height: "32px" %>
+      <%= image_tag "moon5full.png", width: "32px", height: "32px" %>
       </div>
-      <p>Make sure to do some extra self-care time when the moon is <strong class="text_highlights"><%= @poop_phase %></strong>. The data shows that this phase of the moon cycle when you tend to feel the crappiest (💩) .</p>
+      <p>Make sure to do some extra self-care time when the moon is <strong class="text_highlights">Full.</strong>. The data shows that this phase of the moon cycle when you tend to feel the crappiest (💩) .</p>
     </div>
   <% end %>
 
