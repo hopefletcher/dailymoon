@@ -6,7 +6,7 @@
       <% end %>
     </div>
     <div class="date">
-      <h1 class="date-today my-3"><%= I18n.t("date.abbr_month_names")[start_date.month] %></h1>
+      <h1 class="date-today my-3"><%= I18n.t("date.abbr_month_names")[start_date.month] %> <%= start_date.year %></h1>
     </div>
     <div class="next">
       <%= link_to calendar.url_for_next_view do %>
