@@ -1,12 +1,12 @@
 <div class="simple-calendar">
-  <div class="calendar-heading">
+  <div class="date-navigation">
     <div class="previous">
       <%= link_to calendar.url_for_previous_view do %>
         <i class="fas fa-arrow-left"></i>
       <% end %>
     </div>
     <div class="date">
-      <span class="calendar-title" style="font-size: 40px"><%= I18n.t("date.abbr_month_names")[start_date.month] %> <%= start_date.year %>
+      <h1 class="date-today my-3"><%= params[:date].to_date.strftime("%b %d") %></h1>
     </div>
     <div class="next">
       <%= link_to calendar.url_for_next_view do %>

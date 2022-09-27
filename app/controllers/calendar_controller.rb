@@ -87,17 +87,18 @@ class CalendarController < ApplicationController
     moon_today = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first
     @moonimage = moon_today.moon_phase_img
     if moon_today.moonrise
-      @moonrise = moon_today.moonrise.strftime("%H:%M %Z")
+      @moonrise = moon_today.moonrise.strftime("%H:%M")
     else
       @moonrise = "N/A"
     end
     if moon_today.moonset
-      @moonset = moon_today.moonset.strftime("%H:%M %Z")
+      @moonset = moon_today.moonset.strftime("%H:%M")
     else
       @moonset = "N/A"
     end
     @moonphase = moon_today.moon_phase_name
     @moonsign = moon_today.moon_sign
+    @moon_emoji = zodiac_emoji(@moonsign.downcase)
     @moonlocation = moon_today.display_location
   end
 
@@ -132,8 +133,38 @@ class CalendarController < ApplicationController
     your_day = JSON.parse response.body.gsub('=>', ':')
     @daily_horoscope = your_day["description"]
   end
-end
 
+  def zodiac_emoji(emoji)
+    case emoji
+    when "aries"
+      "♈️"
+    when "taurus"
+      "♉️"
+    when "gemini"
+      "♊️"
+    when "cancer"
+      "♋️"
+    when "leo"
+      "♌️"
+    when "virgo"
+      "♍️"
+    when "libra"
+      "♎️"
+    when "scorpio"
+      "♏️"
+    when "sagittarius"
+      "♐️"
+    when "capricorn"
+      "♑️"
+    when "aquarius"
+      "♒️"
+    when "pisces"
+      "♓️"
+    else
+      "🐓"
+    end
+  end
+end
 
 # def read_json
 #   if params[:start_date] == nil
