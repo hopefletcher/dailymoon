@@ -2,7 +2,7 @@ class EventsController < ApplicationController
 
   def index
     @datetime = DateTime.parse(date_params)
-    @events = Event.where(start_time: @datetime.all_day, user_id: current_user.id)
+    @events = Event.where(start_time: @datetime.all_day, user_id: current_user.id).order(start_time: :asc)
   end
 
   def new
