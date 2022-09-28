@@ -87,10 +87,10 @@
       <%= image_tag "moon7lastquarter.png", alt: "Last Quarter", style: "width: 35px;" %>
     </div>
     <div class="card-header my-3 px-2">
-      <div style="font-size: 35px;"><%= @mood_new_moon %></div>
-      <div style="font-size: 35px;"><%= @mood_first_quarter %></div>
-      <div style="font-size: 35px;"><%= @mood_full_moon %></div>
-      <div style="font-size: 35px;"><%= @mood_last_quarter %></div>
+      <div style="font-size: 35px;"><%= @mood_new_moon || "<div style='font-size: 12px; text-align: center'><em>no</br>data</em></div>".html_safe %></div>
+      <div style="font-size: 35px;"><%= @mood_first_quarter || "<div style='font-size: 12px; text-align: center'><em>no</br>data</em></div>".html_safe %></div>
+      <div style="font-size: 35px;"><%= @mood_full_moon || "<div style='font-size: 12px; text-align: center'><em>no</br>data</em></div>".html_safe %></div>
+      <div style="font-size: 35px;"><%= @mood_last_quarter || "<div style='font-size: 12px; text-align: center'><em>no</br>data</em></div>".html_safe %></div>
     </div>
   </div>
 </div>
