@@ -16,3 +16,10 @@
   display: flex;
   justify-content: center;
 }
+
+.button_to input {
+  border: none;
+  background: $moon-light-gray;
+  color: $moon-yellow;
+  padding: 0;
+}

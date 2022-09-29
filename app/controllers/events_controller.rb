@@ -1,22 +1,24 @@
 class EventsController < ApplicationController
 
   def index
-    @date = DateTime.parse(date_params)
-    @events = Event.where(start_time: @date.all_day)
+    @datetime = DateTime.parse(date_params)
+    @events = Event.where(start_time: @datetime.all_day, user_id: current_user.id).order(start_time: :asc)
   end
 
   def new
-    @date = DateTime.parse(date_params)
-    @event = Event.new(start_time: @date)
+    @date = Date.parse(date_params)
+    @datetime = DateTime.parse(date_params)
+    @event = Event.new(date: @date, start_time: @datetime)
   end
 
   def create
     @event = Event.new(event_params)
     @event.user = current_user
+    @event.date = params[:date]
     @event.start_time = @event.start_time.to_datetime
     @event.end_time = @event.end_time.to_datetime
     if @event.save!
-      redirect_to events_path(date: @event.start_time)
+      redirect_to events_path(date: @event.date)
     else
       render :new
     end
@@ -38,7 +40,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to events_path(date: @event.start_time)
+    redirect_to events_path(date: params[:date])
   end
 
   private
@@ -48,6 +50,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :start_time, :end_time, :description, :location)
+    params.require(:event).permit(:title, :start_time, :end_time, :description, :location, :date)
   end
 end

@@ -17,6 +17,7 @@ class MoodsController < ApplicationController
   end
 
   def create
+    params[:date] ||= params[:mood][:date]
     @mood = Mood.new(mood_params)
     @mood.user = current_user
     @mood.save
