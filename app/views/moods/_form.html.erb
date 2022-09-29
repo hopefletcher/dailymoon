@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-controller="mood">
   <%= simple_form_for @mood do |p| %>
     <div class="mood-form">
       <%= p.input :rating, as: :radio_buttons,
@@ -11,14 +11,22 @@
                           label_method: :second,
                           value_method: :first,
                           wrapper_html: { class: 'radio-buttons' },
+                          input_html: { data: { action: 'change->mood#enable' } },
                           required: true,
                           error: "Don't fool yourself... Tell us how you feel." %>
     </div>
     <%= p.input :journal_entry, required: true,
-                                error: "This does not seem right." %>
+                                error: "This does not seem right.",
+                                input_html: { data: { action: 'keyup->mood#enable' } } %>
     <%= p.hidden_field :id, value: @mood.id %>
     <%= p.hidden_field :date, value: @mood.date %>
-    <%= p.button :submit, "Submit Mood", class: "btn-gradient my-3" %>
+    <!-- Figure out if emoji and journal_entry have input to enable btn again -->
+    <!-- Stimulus Controller or normal JS -->
+    <div data-mood-target="output">
+      <%= p.button :submit, "Submit Mood",
+                  class: "btn-gradient my-3",
+                  disabled: true %>
+    </div>
   <% end %>
   <%= link_to "Cancel", mood_path(date: (params[:date])) if action_name == "edit"%>
 </div>
