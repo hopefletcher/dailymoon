@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def zodiac_emoji(emoji)
-    case emoji
+  def zodiac_emoji(zodiac_sign)
+    case zodiac_sign
     when "aries"
       "♈️"
     when "taurus"
