@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get 'stats', to: 'pages#stats'
   get 'month', to: 'calendar#month'
   get 'day', to: 'calendar#day'
+  get 'set_theme', to: 'application#set_theme'
 end
