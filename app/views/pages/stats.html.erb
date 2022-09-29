@@ -1,3 +1,7 @@
+<% content_for :meta_title, "#{DEFAULT_META["meta_product_name"]} - #{@best_phase.upcase} is your ideal moonphase" %>
+<% content_for :meta_description, "See your personal statistics about your mood in correlation with the moon!" %>
+<%# <% content_for :meta_image, @best_phase_img %>
+
 <div class="container page">
   <div class="date-navigation pt-3">
     <h1 class="date-today"><%= Time.now.strftime("%b %d") %></h1>

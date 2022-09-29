@@ -1,3 +1,6 @@
+<% content_for :meta_title, " #{DEFAULT_META["meta_product_name"]} - Your monthly overview" %>
+<% content_for :meta_description, "Check out how the moon aligns with you plans and get ready to follow the signs!" %>
+
 <div class="container page">
   <%= month_calendar do |date| %>
     <% if current_user.birthday.month == date.month && current_user.birthday.day == date.day %>
