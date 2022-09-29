@@ -6,7 +6,7 @@
       <%= p.input :end_time, as: :time, default: @event.start_time.utc + 60.minutes, :minute_step => 15 %>
       <%= p.input :description, as: :text, :input_html => { :rows => 3 } %>
       <%= p.input :location %>
-      <%= p.button :submit, "Submit Event", class: "btn-gradient my-3" %>
+      <%= p.button :button, "Submit Event", type: "submit", name: "date", value: @date, class: "btn-gradient my-3" %>
     <% end %>
     <%= link_to "Cancel", events_path(date: @event.start_time.to_date) %>
   </div>

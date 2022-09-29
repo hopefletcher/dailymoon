@@ -1,4 +1,4 @@
-<div class="simple-calendar">
+<div class="simple-calendar container">
   <div class="date-navigation">
     <div class="previous">
       <%= link_to calendar.url_for_previous_view do %>
@@ -37,8 +37,8 @@
                 <% end %>
 
                 <div class="event-label">
-                  <% event_day = Event.where(start_time: day) %>
-                  <% event_day += Event.where(date: day) %>
+                  <% event_day = Event.where(start_time: day, user_id: current_user.id) %>
+                  <% event_day += Event.where(date: day, user_id: current_user.id) %>
                   <% if event_day != [] %>•
                   <% end %>
                 </div>
