@@ -11,15 +11,15 @@
     <p>You tend to feel the best (🥳 + 😀) when the moon is <strong class="text_highlights"><%= @best_phase %></strong>. Make sure to checkout when the moon will be <%= @best_phase %> this month to see if this pattern continues.</p>
   </div>
 
-
   <% if @poop_phase != @best_phase %>
   <div class="info-card">
     <div class="card-header">
       <h4>Be Mindful of...</h4>
-      <%= image_tag @mad_phase_img, width: "32px", height: "32px" %>
+      <%= image_tag @poop_phase_img, width: "32px", height: "32px" %>
       </div>
       <p>Make sure to do some extra self-care time when the moon is <strong class="text_highlights"><%= @poop_phase %></strong>. The data shows that this phase of the moon cycle when you tend to feel the crappiest (💩) .</p>
     </div>
+
   <% elsif @poop_phase != @mad_phase %>
     <div class="info-card">
       <div class="card-header">
