@@ -105,3 +105,8 @@ option {
 .simple_form {
   margin: 0 5px;
 }
+
+.btn:disabled {
+  border: 0;
+  opacity: 0.2;
+}
