@@ -38,7 +38,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:format])
     @event.destroy
     redirect_to events_path(date: params[:date])
   end
