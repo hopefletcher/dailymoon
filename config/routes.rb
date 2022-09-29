@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   resources :events, only: [:index, :new, :create, :edit, :update, :destroy]
 
-  delete 'events', to: 'events#destroy'
   get 'stats', to: 'pages#stats'
   get 'month', to: 'calendar#month'
   get 'day', to: 'calendar#day'
