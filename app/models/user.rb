@@ -20,42 +20,40 @@ class User < ApplicationRecord
   private
 
   def assign_zodiac_sign
-    birthday = self.birthday
-    if birthday.day < 10
-      birthday_day = "0" + birthday.day.to_s
+    if self.birthday.day < 10
+      birthday_day = "0" + self.birthday.day.to_s
     else
-      birthday_day = birthday.day.to_s
+      birthday_day = self.birthday.day.to_s
     end
+    birthday = (self.birthday.month.to_s + birthday_day).to_i
 
-    bd = (birthday.month.to_s + birthday_day).to_i
-    if (1221..1231).include?(bd) || (101..119).include?(bd)
-      @user_zodiac_sign = "Capricorn"
-    elsif (120..217).include?(bd)
-      @user_zodiac_sign = "Aquarius"
-    elsif (218..319).include?(bd)
-      @user_zodiac_sign = "Pisces"
-    elsif (320..419).include?(bd)
-      @user_zodiac_sign = "Aries"
-    elsif (420..520).include?(bd)
-      @user_zodiac_sign = "Taurus"
-    elsif (521..620).include?(bd)
-      @user_zodiac_sign = "Gemini"
-    elsif (621..721).include?(bd)
-      @user_zodiac_sign = "Cancer"
-    elsif (722..822).include?(bd)
-      @user_zodiac_sign = "Leo"
-    elsif (823..922).include?(bd)
-      @user_zodiac_sign = "Virgo"
-    elsif (923..1022).include?(bd)
-      @user_zodiac_sign = "Libra"
-    elsif (1023..1121).include?(bd)
-      @user_zodiac_sign = "Scorpio"
-    elsif (1122..1220).include?(bd)
-      @user_zodiac_sign = "Sagittarius"
+    if (1221..1231).include?(birthday) || (101..119).include?(birthday)
+      self.zodiac_sign = "Capricorn"
+    elsif (120..217).include?(birthday)
+      self.zodiac_sign = "Aquarius"
+    elsif (218..319).include?(birthday)
+      self.zodiac_sign = "Pisces"
+    elsif (320..419).include?(birthday)
+      self.zodiac_sign = "Aries"
+    elsif (420..520).include?(birthday)
+      self.zodiac_sign = "Taurus"
+    elsif (521..620).include?(birthday)
+      self.zodiac_sign = "Gemini"
+    elsif (621..721).include?(birthday)
+      self.zodiac_sign = "Cancer"
+    elsif (722..822).include?(birthday)
+      self.zodiac_sign = "Leo"
+    elsif (823..922).include?(birthday)
+      self.zodiac_sign = "Virgo"
+    elsif (923..1022).include?(birthday)
+      self.zodiac_sign = "Libra"
+    elsif (1023..1121).include?(birthday)
+      self.zodiac_sign = "Scorpio"
+    elsif (1122..1220).include?(birthday)
+      self.zodiac_sign = "Sagittarius"
     else
-      @user_zodiac_sign = "undefined"
+      self.zodiac_sign = "undefined"
     end
-    self.zodiac_sign = @user_zodiac_sign
   end
 
   # def fetch_zodiac_sign
