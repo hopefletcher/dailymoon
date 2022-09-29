@@ -152,6 +152,11 @@ body.light {
   .form-check-input {
     background-color: white;
   }
+
+  .button_to input {
+    background: $gray;
+    color: $moon-purple;
+  }
 }
 
 body.dark {

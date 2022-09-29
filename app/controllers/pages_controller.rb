@@ -1,18 +1,17 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
-  def home
-  end
+  def home; end
 
   def stats
-    best_phase
-    poop_phase
-    mad_phase
-    best_sign
+    @best_phase = mood_phase("moon_phase_name", 5, 6)
+    @poop_phase = mood_phase("moon_phase_name", 2)
+    @mad_phase = mood_phase("moon_phase_name", 3)
+    @best_phase_img = mood_phase("moon_phase_img", 5, 6)
+    @poop_phase_img = mood_phase("moon_phase_img", 2)
+    @mad_phase_img = mood_phase("moon_phase_img", 3)
+    @best_sign = mood_phase("moon_sign", 5, 6)
     @moon_zodiac = zodiac_emoji(@best_sign.downcase)
-    best_phase_img
-    poop_phase_img
-    mad_phase_img
     user_moods
     @mood_new_moon = mood_for(0.0)
     @mood_first_quarter = mood_for(0.25)
@@ -22,81 +21,34 @@ class PagesController < ApplicationController
 
   private
 
-  def best_phase
-    good_moods = Mood.where(rating: 5 || 6)
-    good_dates = good_moods.map do |mood|
+  def mood_phase(key, rating1, *rating2)
+    # finding the dates of moods with a certain rating
+    moods = Mood.where(rating: rating1, user_id: current_user.id) + Mood.where(rating: rating2, user_id: current_user.id)
+    dates = moods.map do |mood|
       mood.date
     end
-    good_moons = good_dates.map do |good_date|
-      Moon.where(date: good_dates, location: current_user.location.delete(' ')).first.moon_phase_name
+    # finding the moons for these dates
+    moons = dates.map do |date|
+      Moon.where(date: dates, location: current_user.location.delete(' '))
     end
-    @best_phase = good_moons.tally.sort_by { |k, v| v }.reverse[0][0]
-  end
-
-  def poop_phase
-    poop_moods = Mood.where(rating: 2)
-    poop_dates = poop_moods.map do |mood|
-      mood.date
+    # creating a new array with all occurances of a specific attribute (key) from these moons
+    if moons != []
+      result = moons.first.map do |moon|
+        moon[key.to_sym]
+      end
+    # counting each occurence, sorting them by the most occuring value and returning this value
+      result.tally.sort_by { |k, v| v }.reverse[0][0]
+    # rescue in case no moods are available
+    else
+      case key
+      when "moon_phase_img"
+        "moon3firstquarter.png"
+      when "moon_phase_name"
+        "First Quarter"
+      when "moon_sign"
+        "Virgo"
+      end
     end
-    poop_moons = poop_dates.map do |poop_date|
-      Moon.where(date: poop_dates, location: current_user.location.delete(' ')).first.moon_phase_name
-    end
-    @poop_phase = poop_moons.tally.sort_by { |k, v| v }.reverse[0][0]
-  end
-
-  def mad_phase
-    mad_moods = Mood.where(rating: 3)
-    mad_dates = mad_moods.map do |mood|
-      mood.date
-    end
-    mad_moons = mad_dates.map do |mad_date|
-      Moon.where(date: mad_dates, location: current_user.location.delete(' ')).first.moon_phase_name
-    end
-    @mad_phase = mad_moons.tally.sort_by { |k, v| v }.reverse[0][0]
-  end
-
-  def best_sign
-    good_moods = Mood.where(rating: 5 || 6)
-    good_dates = good_moods.map do |mood|
-      mood.date
-    end
-    good_moonsigns = good_dates.map do |good_date|
-      Moon.where(date: good_dates, location: current_user.location.delete(' ')).first.moon_sign
-    end
-    @best_sign = good_moonsigns.tally.sort_by { |k, v| v }.reverse[0][0]
-  end
-
-  def best_phase_img
-    good_moods = Mood.where(rating: 5 || 6)
-    good_dates = good_moods.map do |mood|
-      mood.date
-    end
-    good_moons = good_dates.map do |good_date|
-      Moon.where(date: good_dates, location: current_user.location.delete(' ')).first.moon_phase_img
-    end
-    @best_phase_img = good_moons.tally.sort_by { |k, v| v }.reverse[0][0]
-  end
-
-  def poop_phase_img
-    poop_moods = Mood.where(rating: 2)
-    poop_dates = poop_moods.map do |mood|
-      mood.date
-    end
-    poop_moons = poop_dates.map do |poop_date|
-      Moon.where(date: poop_dates, location: current_user.location.delete(' ')).first.moon_phase_img
-    end
-    @poop_phase_img = poop_moons.tally.sort_by { |k, v| v }.reverse[0][0]
-  end
-
-  def mad_phase_img
-    mad_moods = Mood.where(rating: 3)
-    mad_dates = mad_moods.map do |mood|
-      mood.date
-    end
-    mad_moons = mad_dates.map do |mad_date|
-      Moon.where(date: mad_dates, location: current_user.location.delete(' ')).first.moon_phase_img
-    end
-    @mad_phase_img = mad_moons.tally.sort_by { |k, v| v }.reverse[0][0]
   end
 
   def user_moods
@@ -120,6 +72,7 @@ class PagesController < ApplicationController
     display_emoji
     @emoji
   end
+end
 
   # def moon_chart
   #   moods = Mood.where(user: current_user)
@@ -174,4 +127,3 @@ class PagesController < ApplicationController
   # def mood_chart
   #   @mood_chart = [["Waning Crescent", @avg_waning_crescent], ["First Quarter", @avg_first_quarter], ["Waxing Gibbous", @avg_waxing_crescent], ["Full Moon", @avg_full_moon], ["Waning Gibbous", @avg_waning_gibbous],[ "Last Quarter", 0], ["Waxing Crescent", @avg_waxing_crescent], ["New Moon", @avg_new_moon]]
   # end
-end
