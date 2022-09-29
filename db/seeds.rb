@@ -17,6 +17,8 @@ filipedias = User.create!(email: "filipediasit@gmail.com", password: "123456", f
 hopefletcher = User.create!(email: "thehopefletcher@gmail.com", password: "123456", first_name: "Hope", last_name: "Fletcher", location: "Barcelona, Spain", birthday: "1992-06-04", zodiac_sign: "gemini", admin: true)
 
 puts " creating User moods"
+
+#Filipe Seed
 start_date = Date.new(2022, 7, 1)
 end_date = Date.new(2022, 9, 27)
 (start_date..end_date).each do |date|
@@ -28,25 +30,66 @@ end_date = Date.new(2022, 9, 27)
   )
   mood.save!
 end
+date1 = Date.new(2022, 9, 28)
 mood1 = Mood.new(
   rating: 4,
   journal_entry: "Just another day in the office",
-  date: "2022, 9, 28",
+  date: date1,
   user: filipedias
 )
 mood1.save!
+date2 = Date.new(2022, 9, 29)
 mood2 = Mood.new(
   rating: 5,
-  journal_entry: "Got a brand new car",
-  date: "2022, 9, 29",
+  journal_entry: "Got a brand new car !!!!!",
+  date: date2,
   user: filipedias
 )
 mood2.save!
+date3 = Date.new(2022, 9, 30)
 mood3 = Mood.new(
   rating: 3,
-  journal_entry: "They scracth my brand new car!",
-  date: "2022, 9, 30",
+  journal_entry: "They scracth my brand new car, GOD DAMN!",
+  date: date3,
   user: filipedias
+)
+mood3.save!
+
+#Hope Seed
+
+start_date = Date.new(2022, 7, 1)
+end_date = Date.new(2022, 9, 27)
+(start_date..end_date).each do |date|
+  mood = Mood.new(
+    rating: rand(1..5),
+    journal_entry: Faker::Hipster.paragraph(sentence_count: 4),
+    date: date,
+    user: hopefletcher
+  )
+  mood.save!
+end
+date1 = Date.new(2022, 9, 28)
+mood1 = Mood.new(
+  rating: 4,
+  journal_entry: "Just another day in the office",
+  date: date1,
+  user: hopefletcher
+)
+mood1.save!
+date2 = Date.new(2022, 9, 29)
+mood2 = Mood.new(
+  rating: 5,
+  journal_entry: "Got a brand new car !!!!!",
+  date: date2,
+  user: hopefletcher
+)
+mood2.save!
+date3 = Date.new(2022, 9, 30)
+mood3 = Mood.new(
+  rating: 3,
+  journal_entry: "They scratch my brand new car, GOD DAMN!",
+  date: date3,
+  user: hopefletcher
 )
 mood3.save!
 
