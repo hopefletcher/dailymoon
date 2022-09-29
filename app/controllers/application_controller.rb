@@ -1,17 +1,21 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-  before_action :set_theme
+  before_action :set_theme, :set_zodiac_emoji
   # Setting up additional sign up fields for Devise
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def set_theme
-    if params[:theme].present?
-      theme = params[:theme].to_sym
-      # session[:theme] = theme
-      cookies[:theme] = theme
-      redirect_to(request.referrer || root_path)
-    end
+    cookies[:theme] ||= "light"
 
+    return unless params[:theme].present?
+
+    theme = params[:theme].to_sym
+    # session[:theme] = theme
+    cookies[:theme] = theme
+    redirect_to(request.referrer || root_path)
+  end
+
+  def set_zodiac_emoji
     current_user ? @zodiac_emoji = zodiac_emoji(current_user.zodiac_sign.downcase) : "🐓"
   end
 

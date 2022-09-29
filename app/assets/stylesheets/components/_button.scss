@@ -22,4 +22,12 @@
   background: $moon-light-gray;
   color: $moon-yellow;
   padding: 0;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.edit_btn {
+  display: flex;
+  gap: 18px;
 }
