@@ -12,6 +12,87 @@ fakeuser2 = User.create!(email: "user2@mail.com", password: "123456", first_name
 fakeuser3 = User.create!(email: "user3@mail.com", password: "123456",  first_name: "fake3", last_name: "user3", location: "Lisbon, Portugal", birthday: "2002-09-01", zodiac_sign: "virgo", admin: false)
 fakeuser4 = User.create!(email: "user4@mail.com", password: "123456",  first_name: "fake4", last_name: "user4", location: "Alameda, California", birthday: "1990-10-31", zodiac_sign: "scorpio", admin: false)
 
+puts " Creating the Demos User"
+filipedias = User.create!(email: "filipediasit@gmail.com", password: "123456", first_name: "Filipe", last_name: "Dias", location: "Lisbon, Portugal", birthday: "1994-06-04", zodiac_sign: "gemini", admin: true)
+hopefletcher = User.create!(email: "thehopefletcher@gmail.com", password: "123456", first_name: "Hope", last_name: "Fletcher", location: "Barcelona, Spain", birthday: "1992-06-04", zodiac_sign: "gemini", admin: true)
+
+puts " creating User moods"
+
+#Filipe Seed
+start_date = Date.new(2022, 7, 1)
+end_date = Date.new(2022, 9, 27)
+(start_date..end_date).each do |date|
+  mood = Mood.new(
+    rating: rand(1..5),
+    journal_entry: Faker::Hipster.paragraph(sentence_count: 4),
+    date: date,
+    user: filipedias
+  )
+  mood.save!
+end
+date1 = Date.new(2022, 9, 28)
+mood1 = Mood.new(
+  rating: 4,
+  journal_entry: "Just another day in the office",
+  date: date1,
+  user: filipedias
+)
+mood1.save!
+date2 = Date.new(2022, 9, 29)
+mood2 = Mood.new(
+  rating: 5,
+  journal_entry: "Got a brand new car !!!!!",
+  date: date2,
+  user: filipedias
+)
+mood2.save!
+date3 = Date.new(2022, 9, 30)
+mood3 = Mood.new(
+  rating: 3,
+  journal_entry: "They scracth my brand new car, GOD DAMN!",
+  date: date3,
+  user: filipedias
+)
+mood3.save!
+
+#Hope Seed
+
+start_date = Date.new(2022, 7, 1)
+end_date = Date.new(2022, 9, 27)
+(start_date..end_date).each do |date|
+  mood = Mood.new(
+    rating: rand(1..5),
+    journal_entry: Faker::Hipster.paragraph(sentence_count: 4),
+    date: date,
+    user: hopefletcher
+  )
+  mood.save!
+end
+date1 = Date.new(2022, 9, 28)
+mood1 = Mood.new(
+  rating: 4,
+  journal_entry: "Just another day in the office",
+  date: date1,
+  user: hopefletcher
+)
+mood1.save!
+date2 = Date.new(2022, 9, 29)
+mood2 = Mood.new(
+  rating: 5,
+  journal_entry: "Got a brand new car !!!!!",
+  date: date2,
+  user: hopefletcher
+)
+mood2.save!
+date3 = Date.new(2022, 9, 30)
+mood3 = Mood.new(
+  rating: 3,
+  journal_entry: "They scratch my brand new car, GOD DAMN!",
+  date: date3,
+  user: hopefletcher
+)
+mood3.save!
+
 puts "Creating 2 months of Moods..."
 start_date = Date.new(2022, 8, 1)
 end_date = Date.new(2022, 9, 30)
