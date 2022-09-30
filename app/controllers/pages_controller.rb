@@ -29,12 +29,12 @@ class PagesController < ApplicationController
     end
     # finding the moons for these dates
     moons = dates.map do |date|
-      Moon.where(date: dates, location: current_user.location.delete(' '))
+      Moon.where(date: date, location: current_user.location.delete(' '))
     end
     # creating a new array with all occurances of a specific attribute (key) from these moons
     if moons != []
-      result = moons.first.map do |moon|
-        moon[key.to_sym]
+      result = moons.map do |moon|
+        moon.first[key.to_sym]
       end
     # counting each occurence, sorting them by the most occuring value and returning this value
       result.tally.sort_by { |k, v| v }.reverse[0][0]
