@@ -11,7 +11,7 @@ class PagesController < ApplicationController
     @poop_phase_img = mood_phase("moon_phase_img", 2)
     @mad_phase_img = mood_phase("moon_phase_img", 3)
     @best_sign = mood_phase("moon_sign", 5, 6)
-    @moon_zodiac = zodiac_emoji(@best_sign.downcase)
+    @moon_zodiac = zodiac_emoji(@best_sign.downcase) if @best_sign
     user_moods
     @mood_new_moon = mood_for(0.0)
     @mood_first_quarter = mood_for(0.25)
@@ -29,25 +29,15 @@ class PagesController < ApplicationController
     end
     # finding the moons for these dates
     moons = dates.map do |date|
-      Moon.where(date: dates, location: current_user.location.delete(' '))
+      Moon.where(date: date, location: current_user.location.delete(' '))
     end
     # creating a new array with all occurances of a specific attribute (key) from these moons
     if moons != []
-      result = moons.first.map do |moon|
-        moon[key.to_sym]
+      result = moons.map do |moon|
+        moon.first[key.to_sym]
       end
     # counting each occurence, sorting them by the most occuring value and returning this value
       result.tally.sort_by { |k, v| v }.reverse[0][0]
-    # rescue in case no moods are available
-    else
-      case key
-      when "moon_phase_img"
-        "moon3firstquarter.png"
-      when "moon_phase_name"
-        "First Quarter"
-      when "moon_sign"
-        "Virgo"
-      end
     end
   end
 
