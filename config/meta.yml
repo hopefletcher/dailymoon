@@ -1,0 +1,5 @@
+meta_product_name: "DailyMoon"
+meta_title: "DailyMoon - Observe How the Moon Affects your Day-to-Day"
+meta_description: "We provide a space for you to empower yourself with the knowledge of how the moon affects your mood and daily life."
+meta_image: "fbmetatag.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards

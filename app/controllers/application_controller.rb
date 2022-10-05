@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
     current_user ? @zodiac_emoji = zodiac_emoji(current_user.zodiac_sign.downcase) : "🐓"
   end
 
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
+
   protected
 
   def configure_permitted_parameters
