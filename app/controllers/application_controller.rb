@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def set_theme
-    cookies[:theme] ||= "light"
+    cookies[:theme] ||= "dark"
 
     return unless params[:theme].present?
 
