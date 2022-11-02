@@ -1,0 +1,1 @@
+GET https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Lisbon,PT/?key=R597FYUYAA9JQJRLNDNTD4C6E&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset
