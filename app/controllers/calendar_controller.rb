@@ -1,6 +1,7 @@
 require "json"
 require "open-uri"
 require "net/http"
+require "nokogiri"
 
 class CalendarController < ApplicationController
   def day
@@ -35,6 +36,7 @@ class CalendarController < ApplicationController
     data_serialized = URI.open(url).read
     data = JSON.parse(data_serialized)
     moon_data = data["days"]
+    @timezone = data["timezone"]
 
     moon_data.each do |md|
       define_moon_phase(md)
@@ -66,21 +68,13 @@ class CalendarController < ApplicationController
   end
 
   def fetch_moon_sign(day)
-    @url = 'https://json.astrologyapi.com/v1/planets'
-    @result = HTTParty.post(@url,
-      :body => { :day => day.to_date.day,
-                 :month => day.to_date.month,
-                 :year => day.to_date.year,
-                 :min => Time.now.min,
-                 :hour => Time.now.hour,
-                 :tzone => 1,
-                 :lat => 41.3926679,
-                 :lon => 2.1401891
-               }.to_json,
-      :headers => { 'Content-Type' => 'application/json' },
-      :basic_auth => {:username => "#{ENV["ASTRO_API_USERNAME"]}", :password => "#{ENV["ASTRO_API_KEY"]}"} )
-      moon = @result.find { |result| result["name"] == "Moon"}
-      @moon_sign = moon["sign"]
+    date_day = day.to_date.day
+    date_month = day.to_date.month
+    date_year = day.to_date.year
+    url = "https://www.lunarium.co.uk/calculators/moonsign/?birthDay=#{date_day}&birthMonth=#{date_month}&birthYear=#{date_year}&birthHour=12&birthMinute=0&timeNotKnown=true&timeZone=#{@timezone}"
+    html = URI.open(url)
+    doc = Nokogiri::HTML(html)
+    doc.search(".container h2")[0].text.strip.split(" ")[-1]
   end
 
   def display_moon_data
@@ -133,8 +127,25 @@ class CalendarController < ApplicationController
     your_day = JSON.parse response.body.gsub('=>', ':')
     @daily_horoscope = your_day["description"]
   end
-
 end
+
+# def fetch_moon_sign_with_api(day)
+#   @url = 'https://json.astrologyapi.com/v1/planets'
+#   @result = HTTParty.post(@url,
+#     :body => { :day => day.to_date.day,
+#                :month => day.to_date.month,
+#                :year => day.to_date.year,
+#                :min => Time.now.min,
+#                :hour => Time.now.hour,
+#                :tzone => 1,
+#                :lat => 41.3926679,
+#                :lon => 2.1401891
+#              }.to_json,
+#     :headers => { 'Content-Type' => 'application/json' },
+#     :basic_auth => {:username => "#{ENV["ASTRO_API_USERNAME"]}", :password => "#{ENV["ASTRO_API_KEY"]}"} )
+#     moon = @result.find { |result| result["name"] == "Moon"}
+#     @moon_sign = moon["sign"]
+# end
 
 # def read_json
 #   if params[:start_date] == nil
