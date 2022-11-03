@@ -1,1 +1,3 @@
-GET https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Lisbon,PT/?key=R597FYUYAA9JQJRLNDNTD4C6E&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset
+GET https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Lisbon,PT/2022-11-02/?key=R597FYUYAA9JQJRLNDNTD4C6E&include=days&elements=datetime,moonphase,sunrise,sunset,moonrise,moonset
+
+GET https://ohmanda.com/api/horoscope/scorpio/
