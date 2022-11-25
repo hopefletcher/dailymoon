@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: mydailymoon_development
+  database: dailymoon_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: mydailymoon_test
+  database: dailymoon_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: mydailymoon_production
-  username: mydailymoon
-  password: <%= ENV['MYDAILYMOON_DATABASE_PASSWORD'] %>
+  database: dailymoon_production
+  username: dailymoon
+  password: <%= ENV['DAILYMOON_DATABASE_PASSWORD'] %>
