@@ -32,6 +32,7 @@ class PagesController < ApplicationController
       Moon.where(date: date, location: current_user.location.delete(' '))
     end
     # creating a new array with all occurances of a specific attribute (key) from these moons
+    raise
     if moons.any?
       result = moons.map do |moon|
         moon.first[key.to_sym]
