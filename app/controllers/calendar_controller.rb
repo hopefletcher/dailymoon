@@ -98,7 +98,6 @@ class CalendarController < ApplicationController
 
   def daily_horoscope
     moon_today = Moon.where(date: params[:date], location: current_user.location.delete(' ')).first
-    raise
     if moon_today.date == Date.today
       fetch_daily_horoscope("today")
     elsif moon_today.date == Date.today - 1
