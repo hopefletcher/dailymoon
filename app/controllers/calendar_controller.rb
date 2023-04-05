@@ -145,7 +145,7 @@ class CalendarController < ApplicationController
     url = "https://www.horoscope.com/us/horoscopes/general/horoscope-general-daily-tomorrow.aspx?sign=9"
     html_file = URI.open(url).read
     html_doc = Nokogiri::HTML.parse(html_file)
-    result = html_doc.css(".main-horoscope p").first.text.match(/.-.(.*)\./).to_s.delete_prefix(" - ")
+    @daily_horoscope = html_doc.css(".main-horoscope p").first.text.match(/.-.(.*)\./).to_s.delete_prefix(" - ")
   end
 end
 
