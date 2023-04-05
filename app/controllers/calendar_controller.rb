@@ -142,7 +142,7 @@ class CalendarController < ApplicationController
       "pisces" => 12,
     }
 
-    url = "https://www.horoscope.com/us/horoscopes/general/horoscope-general-daily-#{day}.aspx?#{signs[current_user.zodiac_sign]}"
+    url = "https://www.horoscope.com/us/horoscopes/general/horoscope-general-daily-#{day}.aspx?sign=#{signs[current_user.zodiac_sign]}"
     html_file = URI.open(url).read
     html_doc = Nokogiri::HTML.parse(html_file)
     @daily_horoscope = html_doc.css(".main-horoscope p").first.text.match(/.-.(.*)\./).to_s.delete_prefix(" - ")
