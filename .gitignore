@@ -35,9 +35,8 @@
 yarn-debug.log*
 .yarn-integrity
 # Ignore .env file containing credentials.
-.env*
+# .env*
 # Ignore Mac and Linux file system files
 *.swp
 .DS_Store
-.env*
 .api_key.rb
